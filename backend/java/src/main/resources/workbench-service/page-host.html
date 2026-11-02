@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>工作台页面</title>
+  <style>
+    :root{color-scheme:light dark;--surface:#fff;--border:#e7e7eb;--text:#292936;--muted:#656575;--accent:#6c63f0;--danger:#b42318;--shadow:0 4px 20px #2020361a}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font:14px -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--surface);color:var(--text);overflow:hidden}
+    #page{display:block;border:0;width:100%;height:100%}
+    #refresh{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:20;display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--accent);box-shadow:var(--shadow);cursor:pointer;transition:transform .15s,box-shadow .15s}
+    #refresh:hover{transform:translateY(-2px);box-shadow:0 6px 24px #20203626}#refresh:active{transform:translateY(0)}#refresh:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}#refresh:disabled{cursor:wait;opacity:.55}
+    #status{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:calc(max(20px,env(safe-area-inset-bottom)) + 60px);z-index:20;max-width:min(420px,calc(100vw - 40px));padding:12px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--muted);box-shadow:var(--shadow);line-height:1.6;overflow-wrap:anywhere}
+    #status:empty,#project-controls:empty{display:none}
+    #project-controls{position:fixed;top:max(20px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:20;max-width:calc(100vw - 40px);padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);box-shadow:var(--shadow)}
+    #project-controls select{display:block;width:280px;max-width:100%;height:40px;padding:0 12px;font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px}
+    @media(prefers-color-scheme:dark){:root{--surface:#242428;--border:#414148;--text:#ededf0;--muted:#b9b9c4;--accent:#a39cff;--danger:#ff9b91;--shadow:0 4px 20px #0006}}
+    @media(prefers-reduced-motion:reduce){#refresh{transition:none}}
+    @media(max-width:480px){#refresh{right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom))}#status{right:16px;bottom:calc(max(16px,env(safe-area-inset-bottom)) + 60px)}}
+  </style>
+</head>
+<body>
+  <span id="title" hidden>工作台页面</span><span id="updated" hidden></span>
+  <iframe id="page" title="工作台页面" sandbox='allow-scripts' referrerpolicy="no-referrer"></iframe>
+  <div id="project-controls"></div>
+  <div id="status" role="status" aria-live="polite">正在验证访问权限…</div>
+  <button id="refresh" type="button" title="刷新数据" aria-label="刷新数据" aria-describedby="updated">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 7a7 7 0 0 1 11.55-1.65L20 8M4 16l2.35 2.65A7 7 0 0 0 17.9 17"/></svg>
+  </button>
+  <script src="../host.js"></script>
+</body>
+</html>

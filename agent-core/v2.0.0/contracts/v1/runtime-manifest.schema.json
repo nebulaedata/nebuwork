@@ -1,0 +1,1249 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "tenantId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "ownerId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "workbenchId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "taskId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "primaryExpertId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_.:-]+$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "service": {
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_.:-]+$"
+        },
+        "releaseId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_.:-]+$"
+        },
+        "outputSchema": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {}
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        }
+      },
+      "required": [
+        "operationId",
+        "releaseId",
+        "outputSchema"
+      ],
+      "additionalProperties": false
+    },
+    "platformMcp": {
+      "type": "object",
+      "properties": {
+        "catalogVersion": {
+          "type": "string"
+        },
+        "workbenchId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_.:-]+$"
+        },
+        "policyRevision": {
+          "type": "integer"
+        },
+        "policy": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "scope": {
+              "type": "string",
+              "enum": [
+                "current_project",
+                "selected",
+                "account"
+              ]
+            },
+            "tools": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "resources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "connectionId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "enabled",
+            "scope",
+            "tools",
+            "resources"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "catalogVersion",
+        "workbenchId",
+        "policyRevision",
+        "policy"
+      ],
+      "additionalProperties": false
+    },
+    "resolvedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bundleVersions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "version": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "hash"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "instructions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string",
+            "default": "AGENTS.md"
+          },
+          "scope": {
+            "type": "string",
+            "default": ""
+          },
+          "content": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "content",
+          "revision"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "objectKey": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mediaType": {
+            "type": "string",
+            "default": "application/octet-stream"
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "size",
+          "objectKey"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "directory": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "default": false
+          },
+          "available": {
+            "type": "boolean",
+            "default": true
+          },
+          "revision": {
+            "type": "string"
+          },
+          "requiredFiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "directory",
+          "revision"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "mcp": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "transport": {
+            "type": "string",
+            "enum": [
+              "http",
+              "stdio"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "command": {
+            "type": "string"
+          },
+          "args": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          },
+          "credentialRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "required": {
+            "type": "boolean",
+            "default": false
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "transport"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "providerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_.:-]+$"
+        },
+        "revision": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "protocol": {
+          "type": "string",
+          "const": "openai-compatible"
+        },
+        "baseUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "credentialRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_.:-]+$"
+        },
+        "contextWindow": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "default": 32768
+        },
+        "maxTokens": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "default": 8192
+        },
+        "reasoning": {
+          "type": "boolean",
+          "default": false
+        },
+        "images": {
+          "type": "boolean",
+          "default": false
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "default": 120000
+        }
+      },
+      "required": [
+        "providerId",
+        "revision",
+        "protocol",
+        "baseUrl",
+        "model",
+        "credentialRef"
+      ],
+      "additionalProperties": false
+    },
+    "experts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "instructions": {
+            "type": "string"
+          },
+          "skillIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9_.:-]+$"
+            },
+            "default": []
+          },
+          "model": {
+            "type": "object",
+            "properties": {
+              "providerId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_.:-]+$"
+              },
+              "revision": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              },
+              "protocol": {
+                "type": "string",
+                "const": "openai-compatible"
+              },
+              "baseUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "model": {
+                "type": "string",
+                "minLength": 1
+              },
+              "credentialRef": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_.:-]+$"
+              },
+              "contextWindow": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "default": 32768
+              },
+              "maxTokens": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "default": 8192
+              },
+              "reasoning": {
+                "type": "boolean",
+                "default": false
+              },
+              "images": {
+                "type": "boolean",
+                "default": false
+              },
+              "temperature": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 2
+              },
+              "timeoutMs": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "default": 120000
+              }
+            },
+            "required": [
+              "providerId",
+              "revision",
+              "protocol",
+              "baseUrl",
+              "model",
+              "credentialRef"
+            ],
+            "additionalProperties": false
+          },
+          "runtime": {
+            "type": "object",
+            "properties": {
+              "instructions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string",
+                      "default": "AGENTS.md"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "default": ""
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "revision": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "content",
+                    "revision"
+                  ],
+                  "additionalProperties": false
+                },
+                "default": []
+              },
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "objectKey": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "mediaType": {
+                      "type": "string",
+                      "default": "application/octet-stream"
+                    }
+                  },
+                  "required": [
+                    "path",
+                    "sha256",
+                    "size",
+                    "objectKey"
+                  ],
+                  "additionalProperties": false
+                },
+                "default": []
+              },
+              "skills": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "directory": {
+                      "type": "string"
+                    },
+                    "required": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "available": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "revision": {
+                      "type": "string"
+                    },
+                    "requiredFiles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": []
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "directory",
+                    "revision"
+                  ],
+                  "additionalProperties": false
+                },
+                "default": []
+              },
+              "mcp": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "transport": {
+                      "type": "string",
+                      "enum": [
+                        "http",
+                        "stdio"
+                      ]
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "command": {
+                      "type": "string"
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": []
+                    },
+                    "credentialRef": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "required": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "tools": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "transport"
+                  ],
+                  "additionalProperties": false
+                },
+                "default": []
+              },
+              "knowledgeRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128,
+                  "pattern": "^[A-Za-z0-9_.:-]+$"
+                }
+              },
+              "knowledgeReferences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "scopeKind": {
+                      "type": "string",
+                      "enum": [
+                        "project",
+                        "expert"
+                      ]
+                    },
+                    "scopeId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "scopeKind",
+                    "scopeId"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "databaseReferences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 240
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 2400,
+                      "default": ""
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "sqlite",
+                        "mysql",
+                        "postgresql"
+                      ]
+                    },
+                    "scopeKind": {
+                      "type": "string",
+                      "enum": [
+                        "project",
+                        "workbench",
+                        "expert"
+                      ]
+                    },
+                    "scopeId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "configVersion": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "permissions": {
+                      "type": "object",
+                      "properties": {
+                        "read": {
+                          "type": "boolean"
+                        },
+                        "write": {
+                          "type": "boolean"
+                        },
+                        "schema": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "read",
+                        "write",
+                        "schema"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "type",
+                    "scopeKind",
+                    "scopeId",
+                    "configVersion",
+                    "permissions"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "businessTools": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128,
+                      "pattern": "^[A-Za-z0-9_.:-]+$"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "capability": {
+                      "type": "string",
+                      "enum": [
+                        "workflow",
+                        "knowledge",
+                        "memory",
+                        "service",
+                        "database"
+                      ]
+                    },
+                    "operation": {
+                      "type": "string"
+                    },
+                    "parameters": {
+                      "type": "object",
+                      "additionalProperties": {},
+                      "default": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    },
+                    "required": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "replay": {
+                      "type": "string",
+                      "enum": [
+                        "read",
+                        "idempotent",
+                        "reconcile"
+                      ],
+                      "default": "reconcile"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "description",
+                    "capability",
+                    "operation"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "instructions"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "businessTools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "capability": {
+            "type": "string",
+            "enum": [
+              "workflow",
+              "knowledge",
+              "memory",
+              "service",
+              "database"
+            ]
+          },
+          "operation": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {},
+            "default": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": {
+            "type": "boolean",
+            "default": false
+          },
+          "replay": {
+            "type": "string",
+            "enum": [
+              "read",
+              "idempotent",
+              "reconcile"
+            ],
+            "default": "reconcile"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "capability",
+          "operation"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "memory": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "facts": {
+          "type": "array",
+          "items": {}
+        },
+        "problems": {
+          "type": "array",
+          "items": {},
+          "default": []
+        }
+      },
+      "required": [
+        "status",
+        "facts"
+      ],
+      "additionalProperties": false,
+      "default": {
+        "status": "disabled",
+        "facts": [],
+        "problems": []
+      }
+    },
+    "knowledgeRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9_.:-]+$"
+      },
+      "default": []
+    },
+    "knowledgeReferences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "scopeKind": {
+            "type": "string",
+            "enum": [
+              "project",
+              "expert"
+            ]
+          },
+          "scopeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "scopeKind",
+          "scopeId"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "databaseReferences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 240
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 2400,
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "sqlite",
+              "mysql",
+              "postgresql"
+            ]
+          },
+          "scopeKind": {
+            "type": "string",
+            "enum": [
+              "project",
+              "workbench",
+              "expert"
+            ]
+          },
+          "scopeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_.:-]+$"
+          },
+          "configVersion": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          },
+          "permissions": {
+            "type": "object",
+            "properties": {
+              "read": {
+                "type": "boolean"
+              },
+              "write": {
+                "type": "boolean"
+              },
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "read",
+              "write",
+              "schema"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "type",
+          "scopeKind",
+          "scopeId",
+          "configVersion",
+          "permissions"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "sessionGrants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9_.:-]+$"
+      },
+      "default": []
+    },
+    "image": {
+      "type": "string",
+      "default": "nebu-agent-sandbox:1"
+    },
+    "imageDigest": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "cpu": {
+          "type": "number",
+          "const": 2
+        },
+        "memoryMiB": {
+          "type": "number",
+          "const": 2048
+        },
+        "pids": {
+          "type": "number",
+          "const": 256
+        },
+        "workspaceMiB": {
+          "type": "number",
+          "const": 512
+        },
+        "maxFileMiB": {
+          "type": "number",
+          "const": 32
+        },
+        "node": {
+          "type": "string",
+          "const": "22.19.0"
+        },
+        "pi": {
+          "type": "string",
+          "const": "1.1.0"
+        }
+      },
+      "required": [
+        "cpu",
+        "memoryMiB",
+        "pids",
+        "workspaceMiB",
+        "maxFileMiB",
+        "node",
+        "pi"
+      ],
+      "additionalProperties": false,
+      "default": {
+        "cpu": 2,
+        "memoryMiB": 2048,
+        "pids": 256,
+        "workspaceMiB": 512,
+        "maxFileMiB": 32,
+        "node": "22.19.0",
+        "pi": "1.1.0"
+      }
+    },
+    "permissionProfile": {
+      "type": "string",
+      "const": "full_access",
+      "default": "full_access"
+    },
+    "maxExpertConcurrency": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 16,
+      "default": 3
+    },
+    "maxTurns": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "default": 128
+    },
+    "workspaceRevision": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0
+    },
+    "degraded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "resourceId": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "resourceId",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "default": []
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "tenantId",
+    "ownerId",
+    "projectId",
+    "taskId",
+    "resolvedAt",
+    "model"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

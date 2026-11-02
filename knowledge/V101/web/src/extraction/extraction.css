@@ -1,0 +1,120 @@
+.extraction-filters {
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+.extraction-settings summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.extraction-settings details[open] summary {
+  margin-bottom: 16px;
+}
+.extraction-workspace {
+  min-width: 0;
+}
+.extraction-workspace .t-table td {
+  vertical-align: top;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.extraction-workspace .t-tabs__content {
+  padding-top: 12px;
+}
+.extraction-heading {
+  align-items: flex-start;
+  gap: 20px;
+}
+.extraction-heading h3 {
+  margin: 0 0 8px;
+}
+.extraction-summary {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  align-items: center;
+}
+.extraction-history {
+  margin: 16px 0;
+  max-width: 900px;
+}
+.extraction-evidence {
+  padding: 16px 24px;
+  background: var(--td-bg-color-secondarycontainer);
+}
+.extraction-quote {
+  margin-bottom: 16px;
+}
+.extraction-quote blockquote {
+  margin: 8px 0 12px;
+  padding: 8px 16px;
+  border-left: 3px solid var(--td-brand-color);
+  white-space: pre-wrap;
+}
+.extraction-quote .t-button {
+  margin: 0 8px 8px 0;
+}
+.extraction-record-state {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+.document-grid.document-extraction-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+.document-extraction-grid > aside {
+  display: none;
+}
+.document-category-tabs {
+  margin: 16px 0;
+}
+.document-application-panel {
+  min-width: 0;
+}
+.extraction-progress-summary {
+  margin: 16px 0;
+  gap: 16px;
+}
+.extraction-progress-summary > div {
+  min-width: 0;
+}
+.extraction-progress-summary .help {
+  overflow-wrap: anywhere;
+}
+.extraction-block-progress {
+  margin: 12px 0 20px;
+  overflow-x: auto;
+}
+.extraction-block-progress td {
+  overflow-wrap: anywhere;
+  white-space: normal;
+  vertical-align: top;
+}
+.extraction-block-progress summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 0;
+}
+.pipeline-view.is-extraction .pipeline-bar.is-partially_failed {
+  background: var(--td-warning-color);
+}
+.pipeline-view.is-extraction .pipeline-dot.is-partially_failed {
+  background: var(--td-warning-color);
+}
+@media (max-width: 800px) {
+  .extraction-progress-summary {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .extraction-progress-summary > .t-button {
+    align-self: flex-start;
+    flex-shrink: 0;
+  }
+  .extraction-heading {
+    flex-direction: column;
+  }
+  .extraction-filters > * {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,1057 @@
+{
+  "agents": [
+    {
+      "id": "a1",
+      "name": "法务审查专家 · 明察",
+      "role": "合同合规审查",
+      "tagline": "擅长识别合同中的付款、违约、知识产权与管辖条款风险。",
+      "model": "DeepSeek-V3.2",
+      "initials": "明",
+      "color": "#6C63F0",
+      "extensionIds": [
+        "x1",
+        "x4",
+        "x7"
+      ],
+      "templateIds": [
+        "pt1"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a1-1",
+          "name": "经营周报自动生成",
+          "kind": "workflow",
+          "desc": "数据拉取→清洗→归因→成稿的全自动周报流水线。",
+          "wf": {
+            "source": "ERP 销售/库存数据集 + 财务三表(只读连接)",
+            "rules": "剔除异常值后按周聚合;环比波动 >±15% 触发异动归因子流程",
+            "input": "统计周期、业务线范围、对比基准期",
+            "output": "周报文档(.docx) + 指标看板链接 + 异动清单",
+            "nodes": [
+              {
+                "t": "数据拉取",
+                "d": "按周期从数据源抽取销售/库存/财务数据",
+                "id": "sop-a1-1-node-0"
+              },
+              {
+                "t": "清洗聚合",
+                "d": "异常值剔除、口径对齐、周维度聚合",
+                "id": "sop-a1-1-node-1"
+              },
+              {
+                "t": "异动归因",
+                "d": "波动超阈指标下钻业务线,生成归因说明",
+                "id": "sop-a1-1-node-2"
+              },
+              {
+                "t": "报告成稿",
+                "d": "套用周报模板成稿并推送订阅人",
+                "id": "sop-a1-1-node-3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sop-a1-2",
+          "name": "月度经营复盘标准流程",
+          "kind": "process",
+          "desc": "面向管理层的月度复盘会议材料准备与汇报规范。",
+          "proc": {
+            "materials": [
+              "经营复盘模板 v3.docx",
+              "2025H1 复盘范例.pdf"
+            ],
+            "specRefs": [
+              "经营分析制度(2025 修订)",
+              "管理汇报口径规范 v2"
+            ],
+            "steps": [
+              {
+                "t": "数据核对",
+                "d": "与财务确认结账口径,核对关键指标一致性",
+                "sys": "ERP 系统",
+                "rpa": true,
+                "id": "sop-a1-2-node-0"
+              },
+              {
+                "t": "材料起草",
+                "d": "按模板起草复盘材料,初稿提交业务负责人确认",
+                "id": "sop-a1-2-node-1"
+              },
+              {
+                "t": "汇报演练",
+                "d": "预演汇报问答,整理高频质询问题清单",
+                "id": "sop-a1-2-node-2"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a1-0",
+          "name": "周报口径",
+          "desc": "周报数据口径与展示规范"
+        },
+        {
+          "id": "rs-a1-1",
+          "name": "异常预警",
+          "desc": "指标异动阈值与归因要求"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a1-0",
+          "ruleSetId": "rs-a1-0",
+          "name": "周报数据冻结口径",
+          "content": "周报数据以每周五 18:00 为冻结时点,之后的变动计入下期报告。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a1-1",
+          "ruleSetId": "rs-a1-0",
+          "name": "缺失数据处理",
+          "content": "数据源缺失超过 4 小时的指标以「—」展示并附说明,禁止估算填充。",
+          "enabled": false
+        },
+        {
+          "id": "rule-a1-2",
+          "ruleSetId": "rs-a1-1",
+          "name": "指标异动阈值",
+          "content": "核心指标环比波动超过 ±15% 时触发异动标注,并要求输出归因说明。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a2",
+      "name": "经营分析专家 · 观澜",
+      "role": "经营数据分析",
+      "tagline": "从取数到归因,输出可直接上会使用的经营分析结论。",
+      "model": "Qwen3-235B",
+      "initials": "观",
+      "color": "#4C9AFF",
+      "extensionIds": [
+        "x2",
+        "x8",
+        "x6"
+      ],
+      "templateIds": [
+        "pt2",
+        "pt7"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a2-base",
+          "name": "经营分析专家 · 观澜标准作业流程",
+          "kind": "process",
+          "desc": "专家标准作业流程",
+          "proc": {
+            "materials": [],
+            "specRefs": [],
+            "steps": [
+              {
+                "t": "确认分析口径",
+                "d": "",
+                "id": "sop-a2-base-node-0"
+              },
+              {
+                "t": "编写并执行 SQL",
+                "d": "",
+                "id": "sop-a2-base-node-1"
+              },
+              {
+                "t": "异常归因与交叉验证",
+                "d": "",
+                "id": "sop-a2-base-node-2"
+              },
+              {
+                "t": "生成图表与结论",
+                "d": "",
+                "id": "sop-a2-base-node-3"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a2-0",
+          "name": "信息采集",
+          "desc": "信息源可信度与交叉验证"
+        },
+        {
+          "id": "rs-a2-1",
+          "name": "简报生成",
+          "desc": "简报时效与降级策略"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a2-0",
+          "ruleSetId": "rs-a2-0",
+          "name": "信息源可信校验",
+          "content": "竞品动态优先采集官网公告与主流媒体报道,社交媒体信息需双源交叉验证。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a2-1",
+          "ruleSetId": "rs-a2-1",
+          "name": "晨报时效约束",
+          "content": "晨报必须在 08:30 前生成,超过时限自动降级为摘要版并标注原因。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a3",
+      "name": "舆情研判专家 · 闻涛",
+      "role": "舆情监测研判",
+      "tagline": "对海量提及进行聚类、情感研判与传播链路还原。",
+      "model": "Kimi-K2",
+      "initials": "闻",
+      "color": "#3FB6B2",
+      "extensionIds": [
+        "x3",
+        "x9",
+        "x10"
+      ],
+      "templateIds": [
+        "pt3"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a3-base",
+          "name": "舆情研判专家 · 闻涛标准作业流程",
+          "kind": "process",
+          "desc": "专家标准作业流程",
+          "proc": {
+            "materials": [],
+            "specRefs": [],
+            "steps": [
+              {
+                "t": "多源信号采集",
+                "d": "",
+                "id": "sop-a3-base-node-0"
+              },
+              {
+                "t": "聚类去重",
+                "d": "",
+                "id": "sop-a3-base-node-1"
+              },
+              {
+                "t": "情感与烈度分级",
+                "d": "",
+                "id": "sop-a3-base-node-2"
+              },
+              {
+                "t": "生成预警与日报",
+                "d": "",
+                "id": "sop-a3-base-node-3"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a3-0",
+          "name": "会话分流",
+          "desc": "会话优先级识别规则"
+        },
+        {
+          "id": "rs-a3-1",
+          "name": "会话质检",
+          "desc": "回复质检与人工复核触发"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a3-0",
+          "ruleSetId": "rs-a3-0",
+          "name": "高优先级会话识别",
+          "content": "涉及退款、投诉关键词的会话自动标记为高优先级并置顶分配。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a3-1",
+          "ruleSetId": "rs-a3-1",
+          "name": "承诺表述人工复核",
+          "content": "回复中包含承诺性时限表述(如「24 小时内必达」)时触发人工复核。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a4",
+      "name": "财税审校专家 · 钧衡",
+      "role": "财税条款审校",
+      "tagline": "复核合同中的税率、发票、结算与账期条款的一致性。",
+      "model": "DeepSeek-V3.2",
+      "initials": "钧",
+      "color": "#E09A5B",
+      "extensionIds": [
+        "x1",
+        "x7"
+      ],
+      "templateIds": [
+        "pt1",
+        "pt6"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a4-base",
+          "name": "财税审校专家 · 钧衡标准作业流程",
+          "kind": "process",
+          "desc": "专家标准作业流程",
+          "proc": {
+            "materials": [],
+            "specRefs": [],
+            "steps": [
+              {
+                "t": "提取财税条款",
+                "d": "",
+                "id": "sop-a4-base-node-0"
+              },
+              {
+                "t": "税率口径校验",
+                "d": "",
+                "id": "sop-a4-base-node-1"
+              },
+              {
+                "t": "输出差异清单",
+                "d": "",
+                "id": "sop-a4-base-node-2"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a4-0",
+          "name": "简历筛选",
+          "desc": "候选人初筛口径"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a4-0",
+          "ruleSetId": "rs-a4-0",
+          "name": "候选人年限过滤",
+          "content": "工作年限与岗位要求差距超过 2 年的候选人自动降级,进入备选池。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a5",
+      "name": "数据可视化专家 · 丹青",
+      "role": "图表与报告",
+      "tagline": "把分析结论转化为管理层一眼可读的图表与版式。",
+      "model": "Qwen3-235B",
+      "initials": "丹",
+      "color": "#B074E8",
+      "extensionIds": [
+        "x8"
+      ],
+      "templateIds": [
+        "pt2"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a5-base",
+          "name": "数据可视化专家 · 丹青标准作业流程",
+          "kind": "process",
+          "desc": "专家标准作业流程",
+          "proc": {
+            "materials": [],
+            "specRefs": [],
+            "steps": [
+              {
+                "t": "选择图表类型",
+                "d": "",
+                "id": "sop-a5-base-node-0"
+              },
+              {
+                "t": "渲染校验",
+                "d": "",
+                "id": "sop-a5-base-node-1"
+              },
+              {
+                "t": "嵌入报告模板",
+                "d": "",
+                "id": "sop-a5-base-node-2"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a5-0",
+          "name": "代码评审",
+          "desc": "PR 评审红线"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a5-0",
+          "ruleSetId": "rs-a5-0",
+          "name": "数据库变更评审",
+          "content": "涉及数据库结构变更的 PR 必须附加回滚方案,否则评审不予通过。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a6",
+      "name": "发布检查专家 · 守门",
+      "role": "发布风险检查",
+      "tagline": "按发布清单逐项核验,拦截高风险变更。",
+      "model": "Kimi-K2",
+      "initials": "守",
+      "color": "#E078B0",
+      "extensionIds": [
+        "x9"
+      ],
+      "templateIds": [
+        "pt4"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a6-base",
+          "name": "发布检查专家 · 守门标准作业流程",
+          "kind": "process",
+          "desc": "专家标准作业流程",
+          "proc": {
+            "materials": [],
+            "specRefs": [],
+            "steps": [
+              {
+                "t": "拉取变更集",
+                "d": "",
+                "id": "sop-a6-base-node-0"
+              },
+              {
+                "t": "逐项核验清单",
+                "d": "",
+                "id": "sop-a6-base-node-1"
+              },
+              {
+                "t": "风险分级",
+                "d": "",
+                "id": "sop-a6-base-node-2"
+              },
+              {
+                "t": "起草发布通告",
+                "d": "",
+                "id": "sop-a6-base-node-3"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a6-0",
+          "name": "内容合规",
+          "desc": "敏感宣称拦截口径"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a6-0",
+          "ruleSetId": "rs-a6-0",
+          "name": "敏感宣称拦截",
+          "content": "涉及医疗、金融功效宣称的文案一律拦截并转人工审核。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a7",
+      "name": "运维诊断专家 · 司南",
+      "role": "系统巡检诊断",
+      "tagline": "7×24 巡检服务器健康度,异常自动定位、分级并生成处置工单。",
+      "model": "DeepSeek-V3.2",
+      "initials": "司",
+      "color": "#E0645F",
+      "extensionIds": [],
+      "templateIds": [
+        "pt8"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a7-1",
+          "name": "服务器巡检工作流",
+          "kind": "workflow",
+          "desc": "定时巡检→指标采集→阈值判定→工单派发的自动化巡检。",
+          "wf": {
+            "source": "Prometheus 指标 + 主机 Agent 采集(120 台)",
+            "rules": "磁盘 >80% 预警 / >90% 派单;同告警 10 分钟收敛",
+            "input": "巡检计划(cron)、主机分组",
+            "output": "巡检报告 + 异常工单",
+            "nodes": [
+              {
+                "t": "指标采集",
+                "d": "按计划拉取 CPU/内存/磁盘/网络指标",
+                "id": "sop-a7-1-node-0"
+              },
+              {
+                "t": "阈值判定",
+                "d": "套用巡检规则集逐项判定水位",
+                "id": "sop-a7-1-node-1"
+              },
+              {
+                "t": "工单派发",
+                "d": "异常项自动生成工单并指派值班人",
+                "id": "sop-a7-1-node-2"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a7-0",
+          "name": "巡检",
+          "desc": "巡检阈值与派单规则"
+        },
+        {
+          "id": "rs-a7-1",
+          "name": "告警",
+          "desc": "告警收敛与升级策略"
+        },
+        {
+          "id": "rs-a7-2",
+          "name": "电网无人机缺陷扫描规则",
+          "desc": "无人机巡检影像的缺陷识别与分级上报"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a7-0",
+          "ruleSetId": "rs-a7-0",
+          "name": "磁盘水位预警",
+          "content": "磁盘使用率超过 80% 触发预警,超过 90% 自动升级为处置工单。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a7-1",
+          "ruleSetId": "rs-a7-1",
+          "name": "告警收敛窗口",
+          "content": "同一告警源 10 分钟内重复触发自动收敛为一条,避免告警风暴。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a7-2",
+          "ruleSetId": "rs-a7-2",
+          "name": "缺陷识别置信度阈值",
+          "content": "绝缘子破损、金具锈蚀等缺陷识别置信度 ≥0.85 才自动定级,低于阈值转人工复核。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a7-3",
+          "ruleSetId": "rs-a7-2",
+          "name": "杆塔异物分级上报",
+          "content": "杆塔异物按距导线距离分级:≤1 米紧急上报调度,1-3 米 24 小时内处置,>3 米纳入周计划。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a8",
+      "name": "日志分析专家 · 烛照",
+      "role": "日志根因分析",
+      "tagline": "从海量日志中聚类异常模式,还原故障链路并定位根因。",
+      "model": "Kimi-K2",
+      "initials": "烛",
+      "color": "#5BB8E0",
+      "extensionIds": [],
+      "templateIds": [
+        "pt8"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a8-base",
+          "name": "日志分析专家 · 烛照标准作业流程",
+          "kind": "process",
+          "desc": "专家标准作业流程",
+          "proc": {
+            "materials": [],
+            "specRefs": [],
+            "steps": [
+              {
+                "t": "拉取故障时段日志",
+                "d": "",
+                "id": "sop-a8-base-node-0"
+              },
+              {
+                "t": "异常模式聚类",
+                "d": "",
+                "id": "sop-a8-base-node-1"
+              },
+              {
+                "t": "链路还原",
+                "d": "",
+                "id": "sop-a8-base-node-2"
+              },
+              {
+                "t": "输出根因与复盘建议",
+                "d": "",
+                "id": "sop-a8-base-node-3"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a8-0",
+          "name": "日志分析",
+          "desc": "日志聚类与派单规则"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a8-0",
+          "ruleSetId": "rs-a8-0",
+          "name": "异常聚类派单",
+          "content": "ERROR 级日志聚类后,样本数 Top3 的模式自动生成排查任务。",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "a9",
+      "name": "文书起草专家 · 翰林",
+      "role": "法律文书起草",
+      "tagline": "按模板与交易要素起草合同文书,条款完备性与表述规范双校验。",
+      "model": "Qwen3-235B",
+      "initials": "翰",
+      "color": "#D97757",
+      "extensionIds": [],
+      "templateIds": [
+        "pt1",
+        "pt5"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a9-1",
+          "name": "合同起草流水线",
+          "kind": "workflow",
+          "desc": "要素采集→条款组装→合规校验→排版输出的合同起草工作流。",
+          "wf": {
+            "source": "合同模板库 + 交易要素表单 + 法务条款库",
+            "rules": "金额 >50 万强制引用法务审核条款;违约金条款 ≤ 合同总额 30%",
+            "input": "交易要素(主体/标的/金额/期限)、合同类型",
+            "output": "合同初稿(.docx) + 合规校验报告",
+            "nodes": [
+              {
+                "t": "要素采集",
+                "d": "解析交易要素表单,校验必填项完整性",
+                "id": "sop-a9-1-node-0"
+              },
+              {
+                "t": "条款组装",
+                "d": "按合同类型从模板库组装条款,填充要素",
+                "id": "sop-a9-1-node-1"
+              },
+              {
+                "t": "合规校验",
+                "d": "套用规则集校验,标红违规条款",
+                "id": "sop-a9-1-node-2"
+              },
+              {
+                "t": "排版输出",
+                "d": "按公文规范排版,输出 docx 与校验报告",
+                "id": "sop-a9-1-node-3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sop-a9-2",
+          "name": "诉讼材料整理标准流程",
+          "kind": "process",
+          "desc": "诉讼卷宗材料的收集、编目与提交标准作业流程。",
+          "proc": {
+            "materials": [
+              "诉讼材料清单模板.xlsx",
+              "证据编目规范.pdf"
+            ],
+            "specRefs": [
+              "民事诉讼证据规定",
+              "法院电子卷宗编目指引"
+            ],
+            "steps": [
+              {
+                "t": "材料收集",
+                "d": "按清单收集证据原件扫描件,登记缺失项",
+                "sys": "案件管理系统",
+                "rpa": true,
+                "id": "sop-a9-2-node-0"
+              },
+              {
+                "t": "证据编目",
+                "d": "按编目规范编号、撰写证据说明",
+                "id": "sop-a9-2-node-1"
+              },
+              {
+                "t": "提交核验",
+                "d": "核对份数与格式,通过诉讼平台提交",
+                "sys": "电子诉讼平台",
+                "id": "sop-a9-2-node-2"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a9-0",
+          "name": "文书起草",
+          "desc": "起草阻断与模板引用规则"
+        },
+        {
+          "id": "rs-a9-1",
+          "name": "合规校验",
+          "desc": "条款合规红线"
+        },
+        {
+          "id": "rs-a9-2",
+          "name": "合同文件审查规则",
+          "desc": "合同文本的条款完整性与主体资质审查"
+        },
+        {
+          "id": "rs-a9-3",
+          "name": "采购文件审查规则",
+          "desc": "采购文件资质与预算合规审查"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a9-0",
+          "ruleSetId": "rs-a9-0",
+          "name": "大额合同法务条款",
+          "content": "合同金额超过 50 万元必须引用法务审核条款模板,缺失时阻断生成。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a9-1",
+          "ruleSetId": "rs-a9-1",
+          "name": "违约金上限校验",
+          "content": "违约金条款约定不得超过合同总额的 30%,超出时标红并提示修改。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a9-2",
+          "ruleSetId": "rs-a9-2",
+          "name": "条款完整性校验",
+          "content": "合同必须包含主体、标的、价款、履行期限、违约责任五大必备条款,缺失即判定不通过。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a9-3",
+          "ruleSetId": "rs-a9-2",
+          "name": "合同主体资质核验",
+          "content": "签约主体需提供有效营业执照且经营范围内含标的业务,证照临期 30 天内标黄提醒。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a9-4",
+          "ruleSetId": "rs-a9-3",
+          "name": "供应商资质有效期",
+          "content": "供应商资质证书须在有效期内,且近 3 年无重大违法失信记录。",
+          "enabled": true
+        },
+        {
+          "id": "rule-a9-5",
+          "ruleSetId": "rs-a9-3",
+          "name": "采购预算超支预警",
+          "content": "采购报价超过预算 10% 时触发复核流程,需采购委员会书面确认。",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "id": "a10",
+      "name": "案例检索专家 · 判司",
+      "role": "类案判例检索",
+      "tagline": "按争议焦点检索类案判例,提炼裁判要旨供文书引用。",
+      "model": "DeepSeek-V3.2",
+      "initials": "判",
+      "color": "#C25E8E",
+      "extensionIds": [],
+      "templateIds": [
+        "pt5",
+        "pt10"
+      ],
+      "sopSets": [
+        {
+          "id": "sop-a10-base",
+          "name": "案例检索专家 · 判司标准作业流程",
+          "kind": "process",
+          "desc": "专家标准作业流程",
+          "proc": {
+            "materials": [],
+            "specRefs": [],
+            "steps": [
+              {
+                "t": "提炼争议焦点",
+                "d": "",
+                "id": "sop-a10-base-node-0"
+              },
+              {
+                "t": "类案检索与筛选",
+                "d": "",
+                "id": "sop-a10-base-node-1"
+              },
+              {
+                "t": "裁判要旨归纳",
+                "d": "",
+                "id": "sop-a10-base-node-2"
+              },
+              {
+                "t": "生成引用建议",
+                "d": "",
+                "id": "sop-a10-base-node-3"
+              }
+            ]
+          }
+        }
+      ],
+      "ruleSets": [
+        {
+          "id": "rs-a10-0",
+          "name": "类案检索",
+          "desc": "检索报告判例数量与时效"
+        }
+      ],
+      "rules": [
+        {
+          "id": "rule-a10-0",
+          "ruleSetId": "rs-a10-0",
+          "name": "类案数量下限",
+          "content": "检索报告必须包含近 3 年内至少 5 个有效判例,不足时扩大检索范围并说明。",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "extensions": [
+    {
+      "id": "x1",
+      "name": "条款风险识别",
+      "kind": "skill",
+      "desc": "合同条款结构化抽取与风险分级,内置 47 类风险模式。",
+      "version": "v2.4.1",
+      "color": "#6C63F0"
+    },
+    {
+      "id": "x2",
+      "name": "经营归因分析",
+      "kind": "skill",
+      "desc": "指标异动自动归因:价格 / 成本 / 结构三维拆解。",
+      "version": "v1.9.0",
+      "color": "#4C9AFF"
+    },
+    {
+      "id": "x3",
+      "name": "舆情情感研判",
+      "kind": "skill",
+      "desc": "多语言情感极性与传播烈度分级,支持自定义词表。",
+      "version": "v1.5.2",
+      "color": "#3FB6B2"
+    },
+    {
+      "id": "x4",
+      "name": "MCP · 法规检索",
+      "kind": "mcp",
+      "desc": "对接国家法律法规数据库,条文级精确检索。",
+      "version": "v0.8.3",
+      "color": "#E09A5B"
+    },
+    {
+      "id": "x5",
+      "name": "MCP · 企业微信",
+      "kind": "mcp",
+      "desc": "消息收发与群机器人能力,任务结果直达群聊。",
+      "version": "v1.1.0",
+      "color": "#E078B0"
+    },
+    {
+      "id": "x6",
+      "name": "MCP · 知识库同步",
+      "kind": "mcp",
+      "desc": "Obsidian / 语雀知识库双向同步与增量索引。",
+      "version": "v0.6.5",
+      "color": "#8F7BFF"
+    },
+    {
+      "id": "x7",
+      "name": "文档解析",
+      "kind": "plugin",
+      "desc": "docx / pdf / 扫描件 OCR 解析为结构化文档树。",
+      "version": "v3.2.0",
+      "color": "#6C63F0"
+    },
+    {
+      "id": "x8",
+      "name": "图表生成",
+      "kind": "plugin",
+      "desc": "自然语言生成可交互图表,支持瀑布 / 桑基 / 热力。",
+      "version": "v2.1.4",
+      "color": "#4C9AFF"
+    },
+    {
+      "id": "x9",
+      "name": "网页浏览",
+      "kind": "plugin",
+      "desc": "受控浏览器访问与正文抽取,留痕可审计。",
+      "version": "v1.7.7",
+      "color": "#3FB6B2"
+    },
+    {
+      "id": "x10",
+      "name": "钉钉推送",
+      "kind": "plugin",
+      "desc": "审批、预警与日报自动推送到钉钉群。",
+      "version": "v1.3.1",
+      "color": "#E09A5B"
+    }
+  ],
+  "templates": [
+    {
+      "id": "pt1",
+      "name": "合同批量审查流水线",
+      "scene": "法务合规",
+      "desc": "上传合同包 → 条款比对 → 风险清单 → 修订建议底稿,开箱即用。",
+      "color": "#6C63F0",
+      "agents": 2
+    },
+    {
+      "id": "pt2",
+      "name": "经营周报自动化",
+      "scene": "经营分析",
+      "desc": "连接数据集市,每周五自动取数、归因并推送管理群。",
+      "color": "#4C9AFF",
+      "agents": 2
+    },
+    {
+      "id": "pt3",
+      "name": "品牌舆情值守",
+      "scene": "舆情监测",
+      "desc": "7×24 全网监测,负面信号分级预警,每日 8 点出日报。",
+      "color": "#3FB6B2",
+      "agents": 1
+    },
+    {
+      "id": "pt4",
+      "name": "发布前守门",
+      "scene": "研发协同",
+      "desc": "变更集核验 + 风险分级 + 发布通告起草,拦截高风险发布。",
+      "color": "#B074E8",
+      "agents": 1
+    },
+    {
+      "id": "pt5",
+      "name": "投标文件核查",
+      "scene": "法务合规",
+      "desc": "技术标 / 商务标一致性核查与废标项扫描。",
+      "color": "#E09A5B",
+      "agents": 1
+    },
+    {
+      "id": "pt6",
+      "name": "渠道库存巡检",
+      "scene": "经营分析",
+      "desc": "库存周转与滞销风险周度监测,自动生成补货建议。",
+      "color": "#E078B0",
+      "agents": 1
+    },
+    {
+      "id": "pt7",
+      "name": "数据分析看板",
+      "scene": "经营分析",
+      "desc": "连接业务数据源,自动生成核心指标看板与异动归因解读,按日推送。",
+      "color": "#4C9AFF",
+      "agents": 2
+    },
+    {
+      "id": "pt8",
+      "name": "业务系统监控",
+      "scene": "系统运维",
+      "desc": "关键业务链路可用性与性能指标监控,异常自动定位并生成处置工单。",
+      "color": "#E0645F",
+      "agents": 2
+    },
+    {
+      "id": "pt9",
+      "name": "客户之声洞察",
+      "scene": "客户运营",
+      "desc": "汇聚客服会话与评价数据,聚类高频诉求并输出改进建议周报。",
+      "color": "#3FB6B2",
+      "agents": 1
+    },
+    {
+      "id": "pt10",
+      "name": "投研晨会简报",
+      "scene": "行业研究",
+      "desc": "隔夜行情、政策与竞品动态自动汇总,开盘前 30 分钟生成晨会简报。",
+      "color": "#E09A5B",
+      "agents": 2
+    }
+  ],
+  "marketExperts": [
+    {
+      "id": "pa1",
+      "name": "合同谈判专家 · 子衿",
+      "role": "条款博弈与谈判策略",
+      "tagline": "基于 3000+ 份合同谈判案例沉淀的博弈策略库。",
+      "color": "#6C63F0",
+      "model": "DeepSeek-V3.2"
+    },
+    {
+      "id": "pa2",
+      "name": "财报解读专家 · 明镜",
+      "role": "上市公司财报分析",
+      "tagline": "三大报表勾稽校验,异常科目自动标注。",
+      "color": "#4C9AFF",
+      "model": "DeepSeek-V3.2"
+    },
+    {
+      "id": "pa3",
+      "name": "招聘筛评专家 · 伯乐",
+      "role": "简历筛选与面试题生成",
+      "tagline": "岗位画像匹配 + 结构化面试题与评估表。",
+      "color": "#3FB6B2",
+      "model": "DeepSeek-V3.2"
+    },
+    {
+      "id": "pa4",
+      "name": "专利检索专家 · 鲁班",
+      "role": "专利查新与侵权比对",
+      "tagline": "覆盖中美欧专利库,权利要求逐项比对。",
+      "color": "#E09A5B",
+      "model": "DeepSeek-V3.2"
+    },
+    {
+      "id": "pa5",
+      "name": "供应链规划专家 · 运筹",
+      "role": "需求预测与补货规划",
+      "tagline": "多级库存优化,促销弹性系数自学习。",
+      "color": "#B074E8",
+      "model": "DeepSeek-V3.2"
+    },
+    {
+      "id": "pa6",
+      "name": "代码评审专家 · 砺锋",
+      "role": "MR 评审与安全扫描",
+      "tagline": "按团队规范评审 diff,内嵌 OWASP 检查项。",
+      "color": "#E078B0",
+      "model": "DeepSeek-V3.2"
+    }
+  ]
+}

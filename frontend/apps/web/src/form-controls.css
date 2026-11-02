@@ -1,0 +1,35 @@
+/* Native controls share a baseline even outside legacy .field wrappers.
+   Keep specificity low so composed inputs and feature styles retain ownership. */
+:where(input:not([type=checkbox], [type=radio], [type=file], [type=range], [type=color], [type=button], [type=submit], [type=reset], [type=hidden]), textarea, select):where(:not([class*="ant-"], .ant-select *, .ant-input-number *, .ant-picker *, .monaco-editor *, .sp-input *, .input-box *, .lg-input *, .task-search *, .agent-shell *, .dbm-cell-input)) {
+  min-width: 0;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  outline: none;
+  background: var(--surface-2);
+  color: var(--text);
+  font: 13px/1.5 var(--font-body);
+  transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+:where(input, textarea)::placeholder { color: var(--text-dim); opacity: 1; }
+:where(input, textarea, select):where(:not([class*="ant-"], .ant-select *, .ant-input-number *, .ant-picker *, .monaco-editor *, .sp-input *, .input-box *, .lg-input *, .task-search *, .agent-shell *, .dbm-cell-input)):where(:not(:disabled):not([readonly])):hover { border-color: var(--border-strong); }
+:where(input, textarea, select):where(:not([type=checkbox], [type=radio], [type=file], [type=range], [type=color], [type=button], [type=submit], [type=reset], [type=hidden], [class*="ant-"], .ant-select *, .ant-input-number *, .ant-picker *, .monaco-editor *, .sp-input *, .input-box *, .lg-input *, .task-search *, .agent-shell *, .dbm-cell-input)):focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+:where(input, textarea, select):disabled { cursor: not-allowed; }
+:where(input[type=checkbox], input[type=radio]) { accent-color: var(--accent); }
+:where(button, a, input[type=checkbox], input[type=radio]):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+[hidden]:not([hidden="until-found"]) { display: none !important; }
+
+.field > :is(input:not([type=checkbox], [type=radio], [type=file], [type=range], [type=color]), select) { min-height: 40px; }
+.field > :is(input, select, textarea):disabled,
+.engine-settings input:disabled { background: var(--surface-2); color: var(--text-dim); }
+.engine-settings input[readonly], .wf-settings input[readonly] { background: var(--surface-2); color: var(--text-sub); }
+
+@media (prefers-reduced-motion: reduce) {
+  :where(input, textarea, select) { transition: none; }
+}

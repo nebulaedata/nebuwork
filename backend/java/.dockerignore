@@ -1,0 +1,11 @@
+**/target
+**/.git
+**/.env
+**/.env.*
+**/nebu-data
+**/.qa
+**/*.log
+config/application-local.yml
+config/nacos.properties
+logs
+preview-worker

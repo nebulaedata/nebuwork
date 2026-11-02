@@ -1,0 +1,13 @@
+import { describe, it, expect } from 'vitest';
+import { agentReducer, emptyState } from './agentState.js';
+const event=(sequence,type,payload={},sessionId='s')=>({schemaVersion:1,eventId:`e${sequence}`,sessionId,sequence,runId:'r',invocationId:'r',type,occurredAt:'2026-10-15T00:00:00Z',payload});
+const apply=(state,items)=>agentReducer(state,{type:'events',items});
+describe('durable event projection',()=>{
+  it('converges after duplicate, late and replayed packets without duplicate cards or text',()=>{
+    const facts=[event(1,'message.created',{messageId:'u',role:'user',content:'目标'}),event(2,'tool.started',{toolCallId:'t',name:'workspace_read',arguments:{path:'a.md'}}),event(3,'tool.completed',{toolCallId:'t',name:'workspace_read',result:{content:[]}}),event(4,'message.created',{messageId:'a',role:'assistant',content:''}),event(5,'message.delta',{messageId:'a',delta:'已'}),event(6,'message.delta',{messageId:'a',delta:'完成'}),event(7,'message.completed',{messageId:'a',role:'assistant',content:'已完成'}),event(8,'run.completed')];
+    const expected=apply(emptyState('s'),facts);let actual=apply(emptyState('s'),[facts[6],facts[5],facts[2]]);actual=apply(actual,[...facts,...facts]);expect(actual).toEqual(expected);expect(Object.keys(actual.turns[0].tools)).toHaveLength(1);expect(actual.turns[0].messages.a.content).toBe('已完成');
+  });
+  it('projects versioned artifacts and failure messages from the engine contract',()=>{const file={id:'file',version:2,name:'report.md',source:{runId:'r'}};const s=apply(emptyState('s'),[event(1,'artifact.created',{artifact:file}),event(2,'run.failed',{code:'unavailable',message:'必需资源不可用'})]);expect(s.artifacts.file).toEqual(file);expect(s.turns[0].error).toBe('必需资源不可用');});
+  it('ignores events from a previous account or task after switching',()=>{let s=apply(emptyState('one'),[event(1,'message.created',{messageId:'u',content:'private'},'one')]);s=agentReducer(s,{type:'reset',sessionId:'two'});s=apply(s,[event(2,'message.delta',{messageId:'u',delta:'late'},'one')]);expect(s.turns).toEqual([]);expect(s.cursor).toBe(0);});
+  it('uses structural plan and expert facts, never derives progress from prose',()=>{const s=apply(emptyState('s'),[event(1,'message.completed',{messageId:'a',content:'一切都完成了'}),event(2,'plan.updated',{items:[{id:'p',text:'核对',status:'running'}]}),event(3,'expert.delegated',{runId:'child',expertId:'e',name:'分析专家',goal:'核对来源'}),event(4,'input.required',{question:'请指定范围'})]);expect(s.plans.r[0].status).toBe('running');expect(s.experts.child.parentRunId).toBe('r');expect(s.turns[0].status).toBe('waiting_input');});
+});

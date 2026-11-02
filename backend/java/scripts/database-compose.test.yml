@@ -1,0 +1,44 @@
+name: nebu-database-test
+services:
+  mysql:
+    image: mysql:8.0.32
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    environment:
+      MYSQL_ROOT_PASSWORD: database-test-root-password
+      MYSQL_DATABASE: database_test
+      MYSQL_USER: database_test
+      MYSQL_PASSWORD: database-test-password
+    ports: ["127.0.0.1:43316:3306"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pdatabase-test-root-password"]
+      interval: 2s
+      timeout: 2s
+      retries: 60
+    tmpfs: ["/var/lib/mysql"]
+  mariadb:
+    image: mariadb:10.11
+    environment:
+      MARIADB_ROOT_PASSWORD: database-test-root-password
+      MARIADB_DATABASE: database_test
+      MARIADB_USER: database_test
+      MARIADB_PASSWORD: database-test-password
+    ports: ["127.0.0.1:43317:3306"]
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 2s
+      timeout: 2s
+      retries: 60
+    tmpfs: ["/var/lib/mysql"]
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: database_test
+      POSTGRES_USER: database_test
+      POSTGRES_PASSWORD: database-test-password
+    ports: ["127.0.0.1:45436:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U database_test -d database_test"]
+      interval: 2s
+      timeout: 2s
+      retries: 60
+    tmpfs: ["/var/lib/postgresql/data"]

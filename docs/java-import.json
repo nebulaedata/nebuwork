@@ -1,0 +1,1548 @@
+{
+  "importDate": "2026-10-26",
+  "source": "D:\\Work\\Code\\cccs\\content-cloud-cluster-service\\nebuwork-backend-api",
+  "destination": "backend/java",
+  "sourceCommit": "903748d68e2687f784591f9c77134abdae446936",
+  "sourceStatus": [
+    "?? nebuwork-backend-api/.gitignore",
+    "?? nebuwork-backend-api/README-agent-engine.md",
+    "?? nebuwork-backend-api/README-expert-management.md",
+    "?? nebuwork-backend-api/README-knowledge-creation.md",
+    "?? nebuwork-backend-api/README-knowledge-mcp.md",
+    "?? nebuwork-backend-api/README-memory.md",
+    "?? nebuwork-backend-api/README-model-configuration.md",
+    "?? nebuwork-backend-api/README-workbench-management.md",
+    "?? nebuwork-backend-api/README-workflow-integration.md",
+    "?? nebuwork-backend-api/config/nacos/file-preview.example.yml",
+    "?? nebuwork-backend-api/preview-worker/.dockerignore",
+    "?? nebuwork-backend-api/preview-worker/.gitattributes",
+    "?? nebuwork-backend-api/preview-worker/Dockerfile",
+    "?? nebuwork-backend-api/preview-worker/README.md",
+    "?? nebuwork-backend-api/preview-worker/compose.yml",
+    "?? nebuwork-backend-api/preview-worker/entrypoint.sh",
+    "?? nebuwork-backend-api/preview-worker/pom.xml",
+    "?? nebuwork-backend-api/preview-worker/src/main/java/cn/nebulaedata/preview/Converter.java",
+    "?? nebuwork-backend-api/preview-worker/src/main/java/cn/nebulaedata/preview/Worker.java",
+    "?? nebuwork-backend-api/preview-worker/src/test/java/cn/nebulaedata/preview/ConverterTest.java",
+    "?? nebuwork-backend-api/preview-worker/src/test/java/cn/nebulaedata/preview/FormatAcceptance.java",
+    "?? nebuwork-backend-api/scripts/database-compose.test.yml",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentUsage.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/KnowledgeEvidence.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/KnowledgeEvidenceController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseFiles.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseJdbc.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseObjects.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseRuntime.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseService.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSettings.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSqlPolicy.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseWorker.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionMarket.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionMarketController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionRuntime.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeContent.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeContentController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeViews.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpCatalog.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpDispatch.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpFaqFiles.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpInternalController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpSchemas.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpService.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviewController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviews.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FileUploadController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/PreviewSources.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/PreviewWorkerController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceAccess.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceCorsFilter.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceExecutions.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceOperations.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServicePageHtml.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceProtocol.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceProtocolController.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceSupport.java",
+    "?? nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/WorkbenchServices.java",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V21__knowledge_evidence.sql",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V22__platform_mcp.sql",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V23__workbench_services.sql",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V24__workbench_service_usage.sql",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V25__database_resources.sql",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V26__extension_market.sql",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V27__file_previews.sql",
+    "?? nebuwork-backend-api/src/main/resources/db/migration/V28__file_preview_account_lease.sql",
+    "?? nebuwork-backend-api/src/main/resources/workbench-service/host.js",
+    "?? nebuwork-backend-api/src/main/resources/workbench-service/page-host.html",
+    "?? nebuwork-backend-api/src/main/resources/workbench-service/page-sdk.js",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentAcceptanceHostTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentClientTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentEngineConfigurationTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentIntegrationTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentTestSettings.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentUsageTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/FilePreviewBrowserHostTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/HtmlServicePublicationTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/KnowledgeEvidenceTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/PlatformMcpAcceptanceHostTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/PlatformMcpIntegrationTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/WorkbenchServiceBrowserHostTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/WorkbenchServiceExecutionHostTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/WorkbenchServiceIntegrationTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseBrowserHostTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseIntegrationTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSettingsTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSqlPolicyTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertSeed.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionMarketTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationLiveTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationRemoteTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeLargeStreamTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeRestClientTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeUploadTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeV100RestDriverTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeViewsLiveTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeViewsTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpAdapterTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpFaqFilesTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpResourceTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviewMigrationsTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviewsTest.java",
+    "?? nebuwork-backend-api/src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceCorsFilterTest.java",
+    "?? nebuwork-backend-api/src/test/js/workbench-service-page.test.cjs",
+    "?? nebuwork-backend-api/src/test/resources/seed/expert-config-v1.json"
+  ],
+  "sourceFiles": [
+    {
+      "path": ".gitignore",
+      "sha256": "2c1c2c480475e36ae54ccf86e9f4cf3e0df6eed6fd564e70aae3efa82ac4e1f7",
+      "bytes": 28
+    },
+    {
+      "path": "pom.xml",
+      "sha256": "2268a5f8d5c807fe237e16a79612dbddc34bdb5ef6e6f81355f72b1287a99009",
+      "bytes": 6043
+    },
+    {
+      "path": "README-agent-engine.md",
+      "sha256": "b1bd7979b659e03b63d25c59e3539c628e500a49ef2dc2c25e9fd65def2ba8de",
+      "bytes": 6797
+    },
+    {
+      "path": "README-expert-management.md",
+      "sha256": "ccb3cc4dd2c6f9bc2f405aa82b6b5274d2af7427ceec7534a49b4c6f794b35e7",
+      "bytes": 12865
+    },
+    {
+      "path": "README-knowledge-creation.md",
+      "sha256": "4ad6ff067e14fcdbb8161c6a5d33879d85fed01e50a74ef2759346e146adce5b",
+      "bytes": 7793
+    },
+    {
+      "path": "README-knowledge-mcp.md",
+      "sha256": "f109ea8bb40775f45f40b91acaef3ec09d39d4aab167444693ca11fa322ef4a5",
+      "bytes": 4435
+    },
+    {
+      "path": "README-memory.md",
+      "sha256": "5b8f67b13c37091608eb811056615cfc32498ae89578109902e6e2676855bfcd",
+      "bytes": 9266
+    },
+    {
+      "path": "README-model-configuration.md",
+      "sha256": "8a7ce67d769c555cdba4e97c94c9312512a055409e2e8dd35b07fc168cc59937",
+      "bytes": 11522
+    },
+    {
+      "path": "README-workbench-management.md",
+      "sha256": "bbf6db32c9bd439b5d53f7e7be4a04867eec9e09ec2396844e89ee5eb0bd5398",
+      "bytes": 3738
+    },
+    {
+      "path": "README-workflow-integration.md",
+      "sha256": "a45b683d8e69388e07b50524f2d04036b58476ff62f6ac2eecb5481bbfb45729",
+      "bytes": 2199
+    },
+    {
+      "path": "config/nacos/file-preview.example.yml",
+      "sha256": "437697ed374d9f8a77bbc183d0cea9545ca3b81679de22ce20c185e3d78d5b89",
+      "bytes": 488
+    },
+    {
+      "path": "config/nacos/knowledge-mcp.example.yml",
+      "sha256": "34c495af27d25dfbfbba39ea0ad62aca540a4f8a361711943b873915ad5507ed",
+      "bytes": 1194
+    },
+    {
+      "path": "config/nacos/nebuwork-backend-api-dev.example.yml",
+      "sha256": "edf0b149314e8b9067dceeb92ac8bb34229fad0290df57dd1261fcb00972d86b",
+      "bytes": 3603
+    },
+    {
+      "path": "preview-worker/.dockerignore",
+      "sha256": "995c897b3814be0f75c0d78a351bde6682c5e7fec7c7fef8e0ea00b33d15d6ce",
+      "bytes": 18
+    },
+    {
+      "path": "preview-worker/.gitattributes",
+      "sha256": "efe94b73f0116e23335042969a84bfd9d72836e2fba28c95e6e449ce634e11df",
+      "bytes": 40
+    },
+    {
+      "path": "preview-worker/compose.yml",
+      "sha256": "d9666756d3c20e74b99eba8c8119126ff0de06f592f69114b9ed39facc6c5e68",
+      "bytes": 876
+    },
+    {
+      "path": "preview-worker/Dockerfile",
+      "sha256": "25900776f1e314196cebde9952b085d923b99ac7ac65396998697440e3e04393",
+      "bytes": 1131
+    },
+    {
+      "path": "preview-worker/entrypoint.sh",
+      "sha256": "cf920b7ff832f22ca2a9e4408db8fc697ee0e52bf20e2b62b0981b6df3c0ebff",
+      "bytes": 659
+    },
+    {
+      "path": "preview-worker/pom.xml",
+      "sha256": "bf75f77540b62b0de217e6be033c03427fbe118290b213b3f6192b5fa1d44fd7",
+      "bytes": 2430
+    },
+    {
+      "path": "preview-worker/README.md",
+      "sha256": "c2b48e02dab0974ec2fce4639dde4cc498fdf7a9f988d4c62ad1ab7ed6c5d766",
+      "bytes": 2082
+    },
+    {
+      "path": "preview-worker/src/main/java/cn/nebulaedata/preview/Converter.java",
+      "sha256": "a8a3e9cc164108f27e56ba535ffdb835c35ba0c506a5bdf1e44bfed6b659fd17",
+      "bytes": 17233
+    },
+    {
+      "path": "preview-worker/src/main/java/cn/nebulaedata/preview/Worker.java",
+      "sha256": "92cc12210d433d3268b77a54506e323c698907464c63452de8751fbe10fc74fa",
+      "bytes": 8651
+    },
+    {
+      "path": "preview-worker/src/test/java/cn/nebulaedata/preview/ConverterTest.java",
+      "sha256": "cf8368b0ead6b7a94b1c406a7d8d0b512c2c86c1946d62941a1c10bc200cf2b9",
+      "bytes": 4174
+    },
+    {
+      "path": "preview-worker/src/test/java/cn/nebulaedata/preview/FormatAcceptance.java",
+      "sha256": "19b65a378c3e6cd985d23f39941efc0425af4a4aca8e55d482f3debb7f5aa6ee",
+      "bytes": 9055
+    },
+    {
+      "path": "scripts/database-compose.test.yml",
+      "sha256": "87fa5c21ca6a03b694ddce4e15794869613c82cee28fe618eb9d8f4332475f39",
+      "bytes": 1395
+    },
+    {
+      "path": "scripts/Inspect-MemoryMigration.sql",
+      "sha256": "6e7d43bf26ccecda149d6881c7da9cf9a4778caa6762d7710a37535d548f4b9a",
+      "bytes": 2237
+    },
+    {
+      "path": "scripts/Reset-FailedMemoryMigrations.sql",
+      "sha256": "148c47205d7cbc3213019b03ff47bc8c9122d3f21789f17c50022e5cc42842ad",
+      "bytes": 2037
+    },
+    {
+      "path": "scripts/Run-ExpertLocal.ps1",
+      "sha256": "7847e52f01079acf4740f1249614190a83cd23d5859d36ff9db97f0ace2bdb5a",
+      "bytes": 1176
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/NebuworkBackendApiApplication.java",
+      "sha256": "d7a457e2650387475665bd8b0ff2514e661e32e476fcbfca2cba8f6afde003d6",
+      "bytes": 498
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentBridge.java",
+      "sha256": "9f8ccc9be405f9bfdcb537e9435d2b9cc99978724bc4ea8336eeb47d50a1a73c",
+      "bytes": 26079
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentBridgeController.java",
+      "sha256": "8a6b0e6eca94131d0002f7c4a185227c00b770089e6b9fab747c8e3f0466cc5a",
+      "bytes": 937
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentBridgeFilter.java",
+      "sha256": "c7acfa2e54382eb5775df31f70d5812f5e2acbbcdd92166cf9be99582d106287",
+      "bytes": 1431
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentClient.java",
+      "sha256": "6bcdbf4e7c919141fa076af110deebac8a866644d88f74d905c0fb8617185946",
+      "bytes": 14324
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentEndpoint.java",
+      "sha256": "bbf545d52f829274b731c3260523a73fbe85653cef7563a7d2b937df2b1ce1c8",
+      "bytes": 1538
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentEngineConfiguration.java",
+      "sha256": "5890e3e138467d0cb73747d167a2c6d10b24119008aec041e21b323bfb6cbb86",
+      "bytes": 8108
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentEngineConfigurationController.java",
+      "sha256": "21dc3888693c36e73ac5e9d153be8df31dfa5df3fc92575e71a652874270d847",
+      "bytes": 1203
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentModels.java",
+      "sha256": "df27399a071e9a3eb66d2faf0c7d660c36fbda07697807537112334226f8d6e6",
+      "bytes": 3000
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentRequests.java",
+      "sha256": "8e33583691375e66d6d046cf4fd767ca4dc485b8955d992324466e21300b7aa8",
+      "bytes": 1414
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentSettings.java",
+      "sha256": "b5b35010a782fec4b1637bf3acaaf76ce411932b976acd35844ed5de47b1c2d0",
+      "bytes": 3377
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentStore.java",
+      "sha256": "11aad6c773f96926d97d4e27f55a63d35d8a6ac0216c216cf2a29debf3a8cb8d",
+      "bytes": 1412
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentTaskController.java",
+      "sha256": "6e89d318bb23f1fd9ed4763a7616edd09f642671e8f31fee6d928d87a000bc59",
+      "bytes": 7051
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentTasks.java",
+      "sha256": "6144f17a886becf49176993b10449f53ae148a1b1df1038933d147b09d09b8d8",
+      "bytes": 9632
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentToolCatalog.java",
+      "sha256": "0ff22ba970931a07203b78129b68e3df887a3f9d799fb4643e2af041b8b22c27",
+      "bytes": 4824
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentUsage.java",
+      "sha256": "55251cec29b8cae9c99491f5688aa4fa3baf9432ab6ad5608e34e9fc661e7c2e",
+      "bytes": 10644
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/KnowledgeEvidence.java",
+      "sha256": "b1e7f238001de7841881f7c2bbbba8a614494a081532a66dec190da11bec7eb9",
+      "bytes": 8945
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/KnowledgeEvidenceController.java",
+      "sha256": "7ef85ae1e03b0e91ebbf67d6540dec0c66ada3070d296e0cacf196100b92edaf",
+      "bytes": 1944
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/RuntimeResourceController.java",
+      "sha256": "329304869e40ea2f66a0e9f3f154b3d98f08cba1f6c158f6593fa7d122b3172c",
+      "bytes": 2761
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/RuntimeResources.java",
+      "sha256": "7fcb97cf42761225273aa73131be47957200b08ce92dc3fc32dfd6a97f70c0fe",
+      "bytes": 14471
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/common/ApiErrors.java",
+      "sha256": "72d4927f978560671658a83e177f4e50f549626f2b22b6c5e05b20199828b8c2",
+      "bytes": 2043
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/common/ApiException.java",
+      "sha256": "eb318c4a0b13608f47b566f47d4b44ab13bc126635feb3770eaf0d8ae45efd26",
+      "bytes": 236
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/common/ApiSupport.java",
+      "sha256": "178921cd7e4f30463896bf2b8056bd7fc32611102287b557c279f7e5c1028e28",
+      "bytes": 630
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/common/BackgroundJobScheduling.java",
+      "sha256": "22effcfe5081178a72db93ae29dc833394e31df60605934f9c504d56f58c39f5",
+      "bytes": 344
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/common/BusinessValues.java",
+      "sha256": "82980fa9b6bf29c719b43c1ff9f5e87749db9e8d0aa2b81f37cf350466cba1b4",
+      "bytes": 4036
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseController.java",
+      "sha256": "a4e2ccb24dc3a1d6995221ce8a1b1af7acd98cb2139dc066516971ccea37bc65",
+      "bytes": 5584
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseFiles.java",
+      "sha256": "85cb383308f5688df0041d51de4c8e90f82df57c9ce3e4e10cf978b22ae5e4f8",
+      "bytes": 10812
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseJdbc.java",
+      "sha256": "a1f694bce17910336953589972e9652144ac2bb8128c1fb3718cb5b62360c28c",
+      "bytes": 23849
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseObjects.java",
+      "sha256": "43f75c42291d9b75793ca708355573478880ffe83f42a7184c016cd6216329d5",
+      "bytes": 1495
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseRuntime.java",
+      "sha256": "0493e0685f797fddc69f13482994939381e09d443151f5b346ee4cc8fd5a4e5a",
+      "bytes": 11811
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseService.java",
+      "sha256": "b9e079485320a4b7364b368a95ed945a7f35758372eeb275efba5a595a8a95c6",
+      "bytes": 30551
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSettings.java",
+      "sha256": "1f6ac4bcd5df35f10e6655e0d0088222fb224c6eb0d88e8b0439dd68259eaeac",
+      "bytes": 2358
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSqlPolicy.java",
+      "sha256": "716a79ef1ac2b446270b52e0a4dd0edc084d40000831e8d14f1d8592b3a8e75b",
+      "bytes": 5405
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseWorker.java",
+      "sha256": "951a2871ee87db732299156931c000f59392773569b96c95e23376f6dfd743a3",
+      "bytes": 1284
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertAbilityService.java",
+      "sha256": "5d7f980aecf4dffc700a8f99ad5e4b75e6132d93a8673f9f0a9f491b01920113",
+      "bytes": 2676
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertController.java",
+      "sha256": "73aee30d4e649a3bcc5ce73d6191dc5fa59d2492989af16af7b02988ab175fe2",
+      "bytes": 7779
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertMapper.java",
+      "sha256": "2bb91fef3865d48dc87a86ca247849f8554e1cffbb87ba756f8f0371dc547c39",
+      "bytes": 9274
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertService.java",
+      "sha256": "be4a997808c64cc83e9fa8558f8f9126234d5cec781e76fd12dc137cd0f412ba",
+      "bytes": 34276
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionMarket.java",
+      "sha256": "36707a05444e9314bec9aab296ebf60b11014d5e11d4245c3e1e30a1dc52508f",
+      "bytes": 38891
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionMarketController.java",
+      "sha256": "8abd344cd2bb435ec639df380476fc59d43e99b5044cd0bf46c08719665038bc",
+      "bytes": 5749
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionRuntime.java",
+      "sha256": "4c69299dcf6d6427696716b5a2bb5754c835877d373aa4aef43bd5c4721f7db9",
+      "bytes": 956
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/identity/HealthController.java",
+      "sha256": "1d48ee149c98922671299018e92b95bb121876b453de5a6e2f39b8e16b36979c",
+      "bytes": 523
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/identity/RequestIdentity.java",
+      "sha256": "ac473862ee048c2132443c02efee0166caff5d94e695af22ef95bdbb7b765dc1",
+      "bytes": 590
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/identity/SessionFilter.java",
+      "sha256": "3a79f139a74ca8c1753a2847218477bb3599a981fa457753004093cb9417a009",
+      "bytes": 7359
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/identity/UnifiedSessionStore.java",
+      "sha256": "f3d3d0b0f73b50d2d4b34f3cb716958dc6eaea63b2bc0cfb4fbe535ffe007df8",
+      "bytes": 1700
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeAccess.java",
+      "sha256": "6439a2c7aa38a1f8324d6148f545002e19ceed92865cf2c7e53b61afb7ac6335",
+      "bytes": 9778
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeContent.java",
+      "sha256": "ccbe7ab32627bfb8cdea7675cf10fdb91008b81851b265b81d9f76fa9afb7f85",
+      "bytes": 4834
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeContentController.java",
+      "sha256": "cb41a98ad2a1163143b8c043ed5b1f4736ebc9cdc7ec877851b3c2283fb64987",
+      "bytes": 1910
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeController.java",
+      "sha256": "064a1163f64821712d8187666704d8d5c6ddc1cfe1b0aa0a29ed5dbb74c9bcb3",
+      "bytes": 5593
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationConfig.java",
+      "sha256": "c65e925c676a1a050ccd315f4b403c57cb1e74e3dd764e37629ba876da4a2500",
+      "bytes": 8274
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationController.java",
+      "sha256": "ab6ab2131f0711182c1367b7a0e8eff1f23580a36441ce151e8df07017016816",
+      "bytes": 2901
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationRemote.java",
+      "sha256": "93a1a75dac8ff228405cfa915f352f06304057f7feebd715c6ad799652486191",
+      "bytes": 8986
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationService.java",
+      "sha256": "90e2e90fa8e0ee7c4adb353476dfcf4667c0100c406cfab84756457994e958c9",
+      "bytes": 18455
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationWorker.java",
+      "sha256": "447f616c29716375e1e1c89e98eab8e8267644d9553df43488f733a93ed96c82",
+      "bytes": 1130
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeDriver.java",
+      "sha256": "1c9c7e2e681f4675f474603031d75ba187e5b6904ac199f490fac9a4cc32d98d",
+      "bytes": 342
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeManagement.java",
+      "sha256": "686cbec4e0bb354a8c6c08f0a75079aed4cecd74a69d3cb997ca657a954c2358",
+      "bytes": 12110
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeManagementController.java",
+      "sha256": "5c40026dfd8a92c70cfa25724659937078d22baf2828e7f88d7d6604844f14d8",
+      "bytes": 3553
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeMapper.java",
+      "sha256": "9f1eea2439df2cc34154d3ae3821e93cdbbae45ffc67e2cf3e6d0505929fb9b4",
+      "bytes": 5273
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeMcpClient.java",
+      "sha256": "b16190d74b784a76b158d456d36c5c5810a62a55bc63809ce09b7134c31d0511",
+      "bytes": 14140
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeNetworkPolicy.java",
+      "sha256": "0070f9f20783aa1c92278dd26f40215ddfecdffa75428dfed7dfbdfb06b02f35",
+      "bytes": 3683
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeOperations.java",
+      "sha256": "631a48b513e4936937633ed69d06a727343881b35fb6d32e0c72f689f64c3fa3",
+      "bytes": 2746
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeRestClient.java",
+      "sha256": "6b6e4fbc20364cb01ab02344cf425347ee38c3ba017128d56a5706f679975a00",
+      "bytes": 17522
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeSecretCipher.java",
+      "sha256": "a1e95808324dfcb69098ebff8851daefc72b9459a2099b6d23f27b9b2f11ea9b",
+      "bytes": 2648
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeService.java",
+      "sha256": "c765092d4c331832e6f98559bf5cd84d36ea71543e12c027fec988c3d3a4ea75",
+      "bytes": 27132
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeUpload.java",
+      "sha256": "c04668590a6059a622b0317ee4e6981df85877f8ee6061f4d634d8595715d43f",
+      "bytes": 1898
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeValues.java",
+      "sha256": "9a3251a2b61abadac8be9fa143cc40d27f521ac1939b541b5be7d3ad06f48c99",
+      "bytes": 2481
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeViews.java",
+      "sha256": "f3f6ac2599a73c96b0001438fdd0783d11196e11a552b0ef665af9dc174277f9",
+      "bytes": 10907
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/NebulaeV100RestDriver.java",
+      "sha256": "485d221610fe8eae58c424681c536c43db512bc6a3b13ac17c018b3f37063208",
+      "bytes": 21993
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/NebulaeV1HttpDriver.java",
+      "sha256": "c8c0b43ab56a050f4b997b36006e8cc6971ba16383547c549522a20df9c06e3c",
+      "bytes": 9933
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/HindsightClient.java",
+      "sha256": "37741a31e21518916bca787f40faab4bdd609b3434b3543ba922d69fe1527fbe",
+      "bytes": 4728
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryConfigurationController.java",
+      "sha256": "087b498bad2d38590a4e6c4127b3f18b801afc5eb08c7ae424363c5f2ea45330",
+      "bytes": 1098
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryConfigurationService.java",
+      "sha256": "c076501d43e3b02eb32611a7b3b58e803a0e14a6bfbc47ea1fb8345a5ed6ba7c",
+      "bytes": 7305
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryConfigurationStore.java",
+      "sha256": "b586a004ebe47baebd468eb9fa19a48c953fe9aa935960856203bdb5d468dbf1",
+      "bytes": 1301
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryController.java",
+      "sha256": "c5c005644d038bec9740c3c7e62a875d51b5c2bb84aa44c8af9cb41a460db5ad",
+      "bytes": 2973
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryEndpoint.java",
+      "sha256": "dbc9162c4bb05ad1c5b400831a0906680fd5616dfaa3e4103ebcfc64e8aa7886",
+      "bytes": 1822
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryRuntime.java",
+      "sha256": "9050771cc13151bd959f514c1afcc15cf31059a2294b96b13000b74a0c27e358",
+      "bytes": 1031
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryScopes.java",
+      "sha256": "69b220edfb177c3425e8c4ad4d2eccda886129ca9df41526638713336099f9a5",
+      "bytes": 4587
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryService.java",
+      "sha256": "4543ce235ca9f9e0b5eae2e8c7c3e867d4402f4c00098489d0f31d23652f52d3",
+      "bytes": 22849
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemorySettings.java",
+      "sha256": "baec8061025e3cd2f90ceec2ef3851e5b4800d5532836ad2172fe1a25c0fb9b1",
+      "bytes": 3381
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryStore.java",
+      "sha256": "3c412a4d94f7935f7e434720cbf722fb811c39f27b39e3c236a3021e51bb2894",
+      "bytes": 2199
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryWorker.java",
+      "sha256": "35e04e8698ef47c93220269cc53e5b66c750061ee185f2a71a6208d5dccada03",
+      "bytes": 8134
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelCatalogClient.java",
+      "sha256": "1ae8b5226f9e99758c823554769c43c7b7ca114f49383b836466239cc86f3c41",
+      "bytes": 10779
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelCredentials.java",
+      "sha256": "f615602ecde2a80f651f1e5a9d08e94ca30ca6e9c7df736e67b919b05f1c6569",
+      "bytes": 4765
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelDatabaseConfiguration.java",
+      "sha256": "b369dcebffe170ca516133b9741a568f69c289065fa9b8620bf44c524a894e49",
+      "bytes": 1509
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelNetworkPolicy.java",
+      "sha256": "867a87c0d552b14ba9c1fd58b6e4b8c85e74683699afa885a568008fdd8ea16d",
+      "bytes": 3743
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelProviderController.java",
+      "sha256": "26f52eaa2de1fd378faffd627bd0f09efc100c92d0dc6c9e01f4613e6110e198",
+      "bytes": 2078
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelProviderMapper.java",
+      "sha256": "8aa83a92c440472471167d7ef4daf24386fb5d3dc2f80feb0f5d22fd1ceeada1",
+      "bytes": 2647
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelProviderService.java",
+      "sha256": "4498294525353484516a986273b693ab233e777a97ffe5061c5866738099e5e0",
+      "bytes": 11171
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelSecretCipher.java",
+      "sha256": "49550e30cffdfc6fd8db64c1665bde16bcfa39e45c043d8302ddbe2112fd1d74",
+      "bytes": 2903
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelTextClient.java",
+      "sha256": "fe3d57e7ed4636ef4d2f7fc126791d6ec4d807c1a43900474ddec4999f867245",
+      "bytes": 8268
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpCatalog.java",
+      "sha256": "48d0d02e5102eca172884aaf6e846248696f71232f219b76a2958f4574f029ca",
+      "bytes": 14721
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpController.java",
+      "sha256": "2ced75a70d13eb62848e44758f7a930f3f19b8650ee5fcd1e48be9af73a9a00b",
+      "bytes": 2256
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpDispatch.java",
+      "sha256": "ac276f15f2db68dc4fe08849a9d2e3220b35edacc1cdfbd42fc302299bde51c7",
+      "bytes": 55943
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpFaqFiles.java",
+      "sha256": "eb130b2f9a7e653d057d8bddec9084675dbb57b0a7fe090708b4adacaa9220fc",
+      "bytes": 4639
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpInternalController.java",
+      "sha256": "2f2bd41ea730aed3b37d9eb4dbca581e8a30a758c8c1d8d1b8d7f11d9ac84640",
+      "bytes": 2328
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpSchemas.java",
+      "sha256": "756a6233bb6202eb79010f031b586916f6620ad94d4991030335c07c07d17481",
+      "bytes": 9584
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpService.java",
+      "sha256": "8e3d21e124a88ef89b05bc5f780b2c2088a253ed6be0e5d39f2d0d9c7b58d38e",
+      "bytes": 22426
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviewController.java",
+      "sha256": "f474f1ac8d21ca49cb89e1a44b27dd4cc81d533802a70fb25e883eff8a8362ff",
+      "bytes": 2893
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviews.java",
+      "sha256": "f3933aa4ddd864b484d2933ebc9df5c73c29e81ea8b4ded55c72041af9db00ae",
+      "bytes": 23353
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FileUploadController.java",
+      "sha256": "20c37c616e85d4b187db9ea83d27beb66a2890823205cecff3870528f65ca8e5",
+      "bytes": 3842
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/PreviewSources.java",
+      "sha256": "ced37accdea7c4eec141b47f6e358af7cb5bd615d5c5c6335cfd093477c3a287",
+      "bytes": 4221
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/PreviewWorkerController.java",
+      "sha256": "299a06490ff37948de34fa94a1945bda85a835ce0436546a12bbf963de35a2b7",
+      "bytes": 2290
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbench/WorkbenchController.java",
+      "sha256": "c3b959063db9a649687ec6a163f160f1c47ce07a6b76537f7554c56845e1081c",
+      "bytes": 5249
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbench/WorkbenchMapper.java",
+      "sha256": "3c84625b1c5132f47a77928bc1245a9cfcef57c4f73b5fcada17433f168da09d",
+      "bytes": 7513
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbench/WorkbenchService.java",
+      "sha256": "43f065f864f9237e09edd8e1c4ad179628b2490a0da253e4d35a5708c7b4fbe2",
+      "bytes": 24451
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceAccess.java",
+      "sha256": "24e7f68abb8cc135b417c158bbb3916fada4fabf19ae771a2d6565f4f22f1b2f",
+      "bytes": 16182
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceController.java",
+      "sha256": "172624dc570270680cce35a1ef8cecd46e383e0920819e1822f36de37b3db491",
+      "bytes": 13972
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceCorsFilter.java",
+      "sha256": "85fb9f478cf7157a303e70940b5217c6ebcb2169e4dec9a727353dee4433b2af",
+      "bytes": 3195
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceExecutions.java",
+      "sha256": "53bf299368c1d3db2832295ba824843ae1fc39ee5def48222a7b11615d64dd3c",
+      "bytes": 12783
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceOperations.java",
+      "sha256": "a953316e5103df6cfb4dd51aa6afd4fd94ddec2f15e7abe456176d3eda502dda",
+      "bytes": 22974
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServicePageHtml.java",
+      "sha256": "f40fa9ffdd016e8f93539f95bc6a01da6a039f500a967fb36d5f4db70bfd4418",
+      "bytes": 1481
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceProtocol.java",
+      "sha256": "cd983f2b37ae10cc50ef1725a257f09e347f5e133810488c55bc4df3cfa5f53a",
+      "bytes": 5401
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceProtocolController.java",
+      "sha256": "ea6502173afa2e3a3acee6bed8f31303b7110b960d2cccc72211f8ce651327e6",
+      "bytes": 637
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceSupport.java",
+      "sha256": "1051ae9a968ad2edfee42c0b3fe00b8a708803e55f31bbef58ce289d0be1ba0c",
+      "bytes": 3848
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/WorkbenchServices.java",
+      "sha256": "1cfd61cc807a3b58bbf999669f14fbb299c66319f82a3d97813d5cb573a6c7d1",
+      "bytes": 20411
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowClient.java",
+      "sha256": "5ad2f458d1d007ccc55f9576d2fa57a013b49354df7c458c3ae7fc898eb16d67",
+      "bytes": 5043
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowController.java",
+      "sha256": "11880a1e552f344f658dddc539efbb53e8d3c0e904d81e65b846d479902bc6b5",
+      "bytes": 6143
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowEndpoint.java",
+      "sha256": "22162d57d539d1b93b534622ded01d20742da77e5a380f5d15e3a673752be392",
+      "bytes": 1602
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowService.java",
+      "sha256": "4881e24f0da52bb00f9ddff412b15c823e48577b90d2287ea9e4954327939228",
+      "bytes": 12321
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowSettings.java",
+      "sha256": "4179016a037c63d4ecb9556b2b18302967e182171e550c62f206eb07abde1c65",
+      "bytes": 9359
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowStore.java",
+      "sha256": "c40f0e24e3ba3a9c73ebc401de7af541c0390bb2c7bb6715a5ffad617e22db56",
+      "bytes": 1783
+    },
+    {
+      "path": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowWorker.java",
+      "sha256": "b79ee47c7f97b7bffd99094244217b5ff3b76bd90e7fd5a6350362e6cb7dc442",
+      "bytes": 4983
+    },
+    {
+      "path": "src/main/resources/application.yml",
+      "sha256": "3ccea9f1b3d44d645b5c5a68612fb2cd746dbc14cf943216522db28ce9d5d61f",
+      "bytes": 855
+    },
+    {
+      "path": "src/main/resources/bootstrap-dev.yml",
+      "sha256": "491057953e221933c4b790ef09be87648062a42457879f3513f839e6f2eb1607",
+      "bytes": 505
+    },
+    {
+      "path": "src/main/resources/bootstrap-local.yml",
+      "sha256": "02d6a976e62b47423325a7d196235ab2148c231a194829aab977a12758e19e0e",
+      "bytes": 491
+    },
+    {
+      "path": "src/main/resources/bootstrap-nap.yml",
+      "sha256": "166c98419d2b6bb6f13c25e39d2dbe5eadb347a1622bbab5b0efac75bc4351cb",
+      "bytes": 485
+    },
+    {
+      "path": "src/main/resources/bootstrap-nebulae-prod.yml",
+      "sha256": "3cf300572fcee370d1d8b4136aa27b7964bb9388825f5183948fcd2eac05d5ab",
+      "bytes": 497
+    },
+    {
+      "path": "src/main/resources/bootstrap-pre.yml",
+      "sha256": "c3b0768153e5ee5e8cbb356b21ede70b818a0541ec7f4c180ad5d076750ff350",
+      "bytes": 307
+    },
+    {
+      "path": "src/main/resources/bootstrap-prod.yml",
+      "sha256": "3cf300572fcee370d1d8b4136aa27b7964bb9388825f5183948fcd2eac05d5ab",
+      "bytes": 497
+    },
+    {
+      "path": "src/main/resources/bootstrap-sit.yml",
+      "sha256": "a6046504ed125c41cbc8df41c8ace2ba2c53f73098427d07927234d3b89529e2",
+      "bytes": 318
+    },
+    {
+      "path": "src/main/resources/bootstrap-test.yml",
+      "sha256": "68fa11a766edc3c6aa1a61a27cc470445234cf49c0edd9f9cdf4c82ac7adfc72",
+      "bytes": 496
+    },
+    {
+      "path": "src/main/resources/bootstrap.yml",
+      "sha256": "729bbec1aedd333ce27fd59dc3319443bce94222d65fd9705d67cd59becdd7f5",
+      "bytes": 341
+    },
+    {
+      "path": "src/main/resources/db/migration/V1__expert_management.sql",
+      "sha256": "a9a2ed96164557763dae00c141a10d2997edfdd6b8209472b9a44248bd726dc5",
+      "bytes": 4267
+    },
+    {
+      "path": "src/main/resources/db/migration/V10__template_capabilities.sql",
+      "sha256": "7263e8f1f35f48c7e7d8e243711f908eeb0b32acecfefbc97dcf32281dd69628",
+      "bytes": 2322
+    },
+    {
+      "path": "src/main/resources/db/migration/V11__project_execution_preset.sql",
+      "sha256": "afb527a8928583e9b57cd8161fa1924557f6b37e3ef77d9984712951e79a7114",
+      "bytes": 511
+    },
+    {
+      "path": "src/main/resources/db/migration/V12__unified_memory.sql",
+      "sha256": "8a674e7e58a9c79ad139331bf917521b1954bd799f781b6998c10afb560c0e25",
+      "bytes": 2849
+    },
+    {
+      "path": "src/main/resources/db/migration/V13__memory_settings.sql",
+      "sha256": "bd3ba532094c8fa0da9b032ad679e75a8b1473e7fa0f6b1acfb77c6b8c1d773a",
+      "bytes": 935
+    },
+    {
+      "path": "src/main/resources/db/migration/V14__workflow_integration.sql",
+      "sha256": "d90111137b81dc16e39fd610c29a5707b15a31b6540f3b1e1e3d01d4389b4140",
+      "bytes": 2278
+    },
+    {
+      "path": "src/main/resources/db/migration/V15__knowledge_administration.sql",
+      "sha256": "44d6c6465c85f60fe01b787358ee611edd2d1ea85cb571b4a2d655183786ea67",
+      "bytes": 1517
+    },
+    {
+      "path": "src/main/resources/db/migration/V16__knowledge_creation_templates.sql",
+      "sha256": "10044fe1365e79bf3390a2fb9acd15fc9223825616692bbf850962d12d0327ad",
+      "bytes": 1695
+    },
+    {
+      "path": "src/main/resources/db/migration/V17__distributed_agent_engine.sql",
+      "sha256": "55d085c9c083548fd7a4731605a7c23e9c24b1a0e48e97bdef7a9502f612073a",
+      "bytes": 2261
+    },
+    {
+      "path": "src/main/resources/db/migration/V18__agent_command_idempotency.sql",
+      "sha256": "c864a20a6ad017106c2f64f6e197cb9d9df3cf59cc0eb843f13058c6291225cd",
+      "bytes": 302
+    },
+    {
+      "path": "src/main/resources/db/migration/V19__sop_shared_artifacts.sql",
+      "sha256": "3bc0f82c6e2c57764554dcbdffa31bb841ec5605ce02673636105453736afa4d",
+      "bytes": 385
+    },
+    {
+      "path": "src/main/resources/db/migration/V2__user_model_configuration.sql",
+      "sha256": "97db1012cd9cec9bcd3172b997e6437c3b5a3fd49d9446870d73ac60dc699582",
+      "bytes": 1264
+    },
+    {
+      "path": "src/main/resources/db/migration/V20__agent_engine_settings.sql",
+      "sha256": "a2608f8894780849b4e4ae7269512717e82b89d6659c834d959404e3899f6009",
+      "bytes": 925
+    },
+    {
+      "path": "src/main/resources/db/migration/V21__knowledge_evidence.sql",
+      "sha256": "cf4a050cd21dc32413fe841dffa8f443404d90346005ee54ee6c7c1ad54505a6",
+      "bytes": 459
+    },
+    {
+      "path": "src/main/resources/db/migration/V22__platform_mcp.sql",
+      "sha256": "41657f89d02590cd193fc10d19a2b908b34f6b3e6b86181beb0692aefa25f962",
+      "bytes": 1763
+    },
+    {
+      "path": "src/main/resources/db/migration/V23__workbench_services.sql",
+      "sha256": "82bd3c83b6017aea15e14622b7c32e8e8a455eb8742cf227f7967f571a388b89",
+      "bytes": 3604
+    },
+    {
+      "path": "src/main/resources/db/migration/V24__workbench_service_usage.sql",
+      "sha256": "c0269f0585ca4532ded7ab56e36918ea51258678ef417374cd07c3d78f9402e9",
+      "bytes": 237
+    },
+    {
+      "path": "src/main/resources/db/migration/V25__database_resources.sql",
+      "sha256": "b5eaf1b53561e4c8aa2173aaf749ee9fd97d66a1cd9fe9167c357581639d458c",
+      "bytes": 2829
+    },
+    {
+      "path": "src/main/resources/db/migration/V26__extension_market.sql",
+      "sha256": "e68e5a17f33bcbb1aa9f4fc19c1c10c168d384808b122d91e6e095dc8a6b922e",
+      "bytes": 2859
+    },
+    {
+      "path": "src/main/resources/db/migration/V27__file_previews.sql",
+      "sha256": "9021b1b2c634df4624279acf320b3a9795c51f05949045bd24ef49139610eff1",
+      "bytes": 999
+    },
+    {
+      "path": "src/main/resources/db/migration/V28__file_preview_account_lease.sql",
+      "sha256": "b057d22a286b07d996650c0762f6635d30c34ac3bf03d86fd86b29729dd84032",
+      "bytes": 216
+    },
+    {
+      "path": "src/main/resources/db/migration/V3__expert_model_provider.sql",
+      "sha256": "77e75b3013a35f05ebe9529d948c9acca47d27465cca282987c2f971cf5a32a7",
+      "bytes": 452
+    },
+    {
+      "path": "src/main/resources/db/migration/V4__workbench_configuration.sql",
+      "sha256": "302de859a8569d771e4e290f05a0f5e65ea5c72dfe9059d8d69bb49a5eb71a49",
+      "bytes": 2791
+    },
+    {
+      "path": "src/main/resources/db/migration/V5__workbench_core_integration.sql",
+      "sha256": "4eb4397e0f703ceb17c1d77591b62082c803ff216d39a1665ae50d256f9c951a",
+      "bytes": 2623
+    },
+    {
+      "path": "src/main/resources/db/migration/V6__optional_workbench_source_template.sql",
+      "sha256": "bca3b618e4c4194f916e13b989333fd333c51dca3a9a3d302d0852976d0a46ed",
+      "bytes": 343
+    },
+    {
+      "path": "src/main/resources/db/migration/V7__expert_membership_visibility.sql",
+      "sha256": "6b619082ab82509ec39f2356a43c7b523a265afb04c9fe48d53c3287a2473532",
+      "bytes": 459
+    },
+    {
+      "path": "src/main/resources/db/migration/V8__knowledge_mcp.sql",
+      "sha256": "e891875d83cb9764cee415da32ec4106fcd80b98c3340b19d1b98a95c3b75a84",
+      "bytes": 2197
+    },
+    {
+      "path": "src/main/resources/db/migration/V9__task_execution.sql",
+      "sha256": "5ef026d7f429bcb9172361a53c8493b3c828928528fe9e141d44f11daae60298",
+      "bytes": 4553
+    },
+    {
+      "path": "src/main/resources/workbench-service/host.js",
+      "sha256": "6ed48e8e8a8b742fa88318aa20964f5908fad2cc05883c0ad7b3a7e19a497d54",
+      "bytes": 14101
+    },
+    {
+      "path": "src/main/resources/workbench-service/page-host.html",
+      "sha256": "3f3a9f41adc4a98ecfad6e3979608820332c650469731ce51598164c7e1ec839",
+      "bytes": 3370
+    },
+    {
+      "path": "src/main/resources/workbench-service/page-sdk.js",
+      "sha256": "fdd78af3173bebbf14c3c2cac3d6ec58066a7fa30464b0ad3b105fc88916149b",
+      "bytes": 8853
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentAcceptanceHostTest.java",
+      "sha256": "774aeade572966f6451dffa3e4bedfe74ad3cb432e2e049f133b0e7005f3b7da",
+      "bytes": 2583
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentClientTest.java",
+      "sha256": "22981813b2f361ea18a486c620f08d5bf76238c99d2757f914b7be9618094833",
+      "bytes": 5632
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentEngineConfigurationTest.java",
+      "sha256": "d860cb0dd7a05def1e60949f98d1c242c0272bb3217569d8a14098e3dcff88c1",
+      "bytes": 8080
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentIntegrationTest.java",
+      "sha256": "9b5422a6c671899179ee44b934c622e17543a3f77be3dcef368c472aa52bd761",
+      "bytes": 26294
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentTestSettings.java",
+      "sha256": "672eb082fe04eb1aa1512b2cce9b4a887d80f9237f1a2b39df3fd6fd185936c4",
+      "bytes": 671
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentUsageTest.java",
+      "sha256": "890313a1c5a16fad39ff5efe9776d7bce092e026ba74174c5abf69596c69cc4a",
+      "bytes": 4048
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/FilePreviewBrowserHostTest.java",
+      "sha256": "3f8a42f3d3147bfa980ab14ab3de96aa57f120ab8ec6cbb6005d034fea117664",
+      "bytes": 4484
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/HtmlServicePublicationTest.java",
+      "sha256": "e8d26fd831841ed9affc428eade2121994aa997d57d25639e5303112c448d0d5",
+      "bytes": 7813
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/KnowledgeEvidenceTest.java",
+      "sha256": "01147f9836ddf436a6af8666bd9c5c938e09c5439d278342ef6e2fadbdd5cd82",
+      "bytes": 3618
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/PlatformMcpAcceptanceHostTest.java",
+      "sha256": "dddbfde33616fbfb0f7f3b50afe136d8d060da964b1ed2f08e8fe5ca541d3ca1",
+      "bytes": 2684
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/PlatformMcpIntegrationTest.java",
+      "sha256": "b3cab292c976c94a7cc599e7af3389bcb1b5c2ab17934e716c2d9a290246179e",
+      "bytes": 13625
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/WorkbenchServiceBrowserHostTest.java",
+      "sha256": "1b31a87262d96d718f2e1022c6135f61e1f15cb4523b028301cb2b72acb1b8e6",
+      "bytes": 6490
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/WorkbenchServiceExecutionHostTest.java",
+      "sha256": "ad50f0ea70d79c90e6b7f74e328f4862a0bfff79d006b6a15499f5aefb6f7431",
+      "bytes": 2807
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/WorkbenchServiceIntegrationTest.java",
+      "sha256": "ebc429fb3a55fe9e31d429fc31cab1bd57eb03a28170d4a5268b9c0904eddaf9",
+      "bytes": 24238
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseBrowserHostTest.java",
+      "sha256": "a4abb04e8c87884a3d1fb93c073e69d70d8bbd4c586165931f30c4e78343943f",
+      "bytes": 4897
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseIntegrationTest.java",
+      "sha256": "349819146e80e49f5822ed792ce13a999a2bb32ce9e6ea4865fbc4abaf698cb3",
+      "bytes": 28377
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSettingsTest.java",
+      "sha256": "d17560672211557b491c05ff2f7e272c050b02ba65ec5b415f172b0fcd8c4fdc",
+      "bytes": 2326
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/database/DatabaseSqlPolicyTest.java",
+      "sha256": "ada8debd4df277d46ff75450d706e30a18b31de37468d6582bc580ba7fb7592a",
+      "bytes": 2333
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertApiTest.java",
+      "sha256": "0e4b93b8c9a88833aa4ddaba1afcbec75b7b99bb14969ad6d6f7115a575f721d",
+      "bytes": 36527
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertSeed.java",
+      "sha256": "0d34b455a9bd9d90e79a1afc1d3a6cf0bcf95ecfc4ba4b71929baf6289292599",
+      "bytes": 3550
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/extensionmarket/ExtensionMarketTest.java",
+      "sha256": "d7b37031977d5bc2fae20ecb61b1ec0836d55849799021c4ededb892aa911924",
+      "bytes": 20356
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/identity/GatewayPathTest.java",
+      "sha256": "57c92fb1b0a1bcdd0f3e3071ac0f5793c289d28331da79f1be38da4ab7a82b28",
+      "bytes": 4419
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/identity/UnifiedSessionStoreTest.java",
+      "sha256": "3e1c3ad607606f8d594ec4cd42c46781abf1e1f9dec7d061398539e1027ed8be",
+      "bytes": 1145
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeApiTest.java",
+      "sha256": "46fca382a65a2763a4c03c303e5b3bd31ee30a8a60b797c17f598fee3b71a113",
+      "bytes": 40014
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationLiveTest.java",
+      "sha256": "95cbba986c85914bdf3723b30e948dacc1c86a153b52111954922da496e9815f",
+      "bytes": 6036
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationRemoteTest.java",
+      "sha256": "88b48cdd9c8c13c1a55d1f932acaf4ab78a7f6e7d11e77b3524e863d828d37de",
+      "bytes": 5824
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeCreationTest.java",
+      "sha256": "c7bc4e0a699a65989472d891f58b1f8569175ca0e0ce1ba60f179c9f3b44f3b4",
+      "bytes": 12641
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeLargeStreamTest.java",
+      "sha256": "4b8cfef0513eb978061a46c43e97e06f04cf43acfcf268b9cb1c412a4c5a8345",
+      "bytes": 2878
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeMcpClientTest.java",
+      "sha256": "013d5f2a989c93e39c530c377424985c4c4aab0055b015b6c26056a65c3d72d9",
+      "bytes": 15885
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeNetworkPolicyTest.java",
+      "sha256": "7bbfb70da8610adb6bb00a431b26cb07f4870fcf828c7dfeee4aa3c865b04563",
+      "bytes": 4852
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeRestClientTest.java",
+      "sha256": "10e16b9f75733b8a0254fe5199a530e26657c8ed4bbbd8d379755d841c3d113c",
+      "bytes": 8307
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeUploadTest.java",
+      "sha256": "ae7d4200f147f96397c0c4f689f35c44c4945d7d2de9405caff0e3ab4877a504",
+      "bytes": 2796
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeV100RestDriverTest.java",
+      "sha256": "975fe667c0e84d97a543f969c39cda1bc9e32d6eb8460055eefd515961eed870",
+      "bytes": 3606
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeViewsLiveTest.java",
+      "sha256": "8885084078210c18b8f2dffe213038536049e6241be96a965369dd54e04f593f",
+      "bytes": 6902
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeViewsTest.java",
+      "sha256": "4609a2fb7395e14a364175dd62072486f45b234c98aa52675dc870edde210310",
+      "bytes": 5852
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryConfigurationTest.java",
+      "sha256": "8204b793cd6de80e25db9b303ae160d7fab2a8427022045e372d720ae52f5d80",
+      "bytes": 9952
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryMigrationIdempotencyTest.java",
+      "sha256": "2cc984b290c8aeb0169d4831853ede37a65b2a6591c485b32f65daccd8f56308",
+      "bytes": 3142
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryRuntimeTest.java",
+      "sha256": "c5be962d50dc934f766482a57d69545e62eea556f183384c73c02faf725e9578",
+      "bytes": 1034
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryServiceTest.java",
+      "sha256": "e47a041ed5d2424aeb9407cbcc3bca0de11e9015ae8019d309717bba87a1115b",
+      "bytes": 9259
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryWorkerTest.java",
+      "sha256": "13251b46c98fa991ef37a1dcdc8f1297e58db75888ed8430f6c4212efe54dced",
+      "bytes": 3887
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelApiTest.java",
+      "sha256": "e12fee61c0ea42a9cb0e59f5175ae6b0896b5d91d44d8b29aac313fd28e8132d",
+      "bytes": 15618
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelCatalogClientTest.java",
+      "sha256": "1524494f24363a26198b84bf983e1176955f07187fb09be1cfffcc92338c750c",
+      "bytes": 7055
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelDatabaseConfigurationTest.java",
+      "sha256": "a3fbbc57ef3fed86c67b6928b6d90add269f804e532d8b8749e50785d3a113dc",
+      "bytes": 1523
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelSecurityTest.java",
+      "sha256": "250f6e3a58a78cd50d43a677953a300adcef70da91a7adf71372eb79e80bb8d4",
+      "bytes": 6552
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelTextClientTest.java",
+      "sha256": "974af326c09e5173fa31b2db3f3276c42ab8d063274a046eff5dd772aec3bf56",
+      "bytes": 6183
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpAdapterTest.java",
+      "sha256": "ae99b48141b6c149d89d2344e264db6c7d9506e880c329b9d0b32c68a949983a",
+      "bytes": 9593
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpFaqFilesTest.java",
+      "sha256": "af2606979031e8c98829c502dcd6ff8dfacb26877acf745ae4731f7324a76967",
+      "bytes": 1607
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/platformmcp/PlatformMcpResourceTest.java",
+      "sha256": "ff38aec15f3ad83a6c91812d216797caf5dd2a9b5670aba5dcff049ecff4e7d1",
+      "bytes": 1197
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviewMigrationsTest.java",
+      "sha256": "d149855db22d07d85d330a916a37491bae578b2d95a5b4938b0f6afe5ad55ee8",
+      "bytes": 4728
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/preview/FilePreviewsTest.java",
+      "sha256": "144e1cc8ef792620f2231daf86d88a3234984a2cbefd9b205bae3756a8260fd2",
+      "bytes": 6526
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/workbenchservice/ServiceCorsFilterTest.java",
+      "sha256": "e0c9ead8404464184fc492670298eecf5e8ea100bc380a62cd1408b04677946c",
+      "bytes": 3933
+    },
+    {
+      "path": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowIntegrationTest.java",
+      "sha256": "009ba917aca10d57c7b490a8b4de24af80d718380c1961fd2122cd7f5dc53396",
+      "bytes": 14373
+    },
+    {
+      "path": "src/test/js/workbench-service-page.test.cjs",
+      "sha256": "ddd7175fbfae0ef5281ff782e81a9518ef3142dafdbe4374553904be7896052d",
+      "bytes": 8019
+    },
+    {
+      "path": "src/test/resources/application-expert-local.yml",
+      "sha256": "2fba7e2cd263ab2127a183f0f0633735c39d6451e176c930679906838f333dee",
+      "bytes": 330
+    },
+    {
+      "path": "src/test/resources/bootstrap-expert-local.yml",
+      "sha256": "44d1b20a86175266169091b34da217bc90b6f866a44a6c84296dc35f4a396ca8",
+      "bytes": 181
+    },
+    {
+      "path": "src/test/resources/seed/expert-config-v1.json",
+      "sha256": "3f30b1f17101a0ea4a31ae953ca8c83ef2c21297dd0aad223fef44824e339ce9",
+      "bytes": 31415
+    }
+  ],
+  "copiedFileCount": 235,
+  "excludedFromImport": [
+    "src/main/resources/bootstrap*.yml",
+    "src/test/resources/bootstrap-expert-local.yml",
+    "scripts/Inspect-MemoryMigration.sql",
+    "scripts/Reset-FailedMemoryMigrations.sql"
+  ],
+  "sourcePreserved": true,
+  "omittedSourceFiles": [
+    "config/nacos/nebuwork-backend-api-dev.example.yml",
+    "scripts/Inspect-MemoryMigration.sql",
+    "scripts/Reset-FailedMemoryMigrations.sql",
+    "src/main/resources/bootstrap-dev.yml",
+    "src/main/resources/bootstrap-local.yml",
+    "src/main/resources/bootstrap-nap.yml",
+    "src/main/resources/bootstrap-nebulae-prod.yml",
+    "src/main/resources/bootstrap-pre.yml",
+    "src/main/resources/bootstrap-prod.yml",
+    "src/main/resources/bootstrap-sit.yml",
+    "src/main/resources/bootstrap-test.yml",
+    "src/main/resources/bootstrap.yml",
+    "src/test/resources/bootstrap-expert-local.yml"
+  ],
+  "relocatedFiles": {
+    "scripts/Run-ExpertLocal.ps1": "scripts/Run-Local.ps1",
+    "config/nacos/file-preview.example.yml": "config/examples/file-preview.example.yml",
+    "config/nacos/knowledge-mcp.example.yml": "config/examples/knowledge-mcp.example.yml"
+  },
+  "modifiedImportedFiles": [
+    {
+      "sourcePath": ".gitignore",
+      "destinationPath": ".gitignore",
+      "sourceSha256": "2c1c2c480475e36ae54ccf86e9f4cf3e0df6eed6fd564e70aae3efa82ac4e1f7",
+      "destinationSha256": "ccd385d7fc0b7e92369bbbb3846cf4a71cfc66ec761c733adb7ff344245ebdd2"
+    },
+    {
+      "sourcePath": "pom.xml",
+      "destinationPath": "pom.xml",
+      "sourceSha256": "2268a5f8d5c807fe237e16a79612dbddc34bdb5ef6e6f81355f72b1287a99009",
+      "destinationSha256": "cb2dd8ed35e98571cafd7cc0576ff995d724b820ce341c73be39dbfb5bb71d63"
+    },
+    {
+      "sourcePath": "README-agent-engine.md",
+      "destinationPath": "README-agent-engine.md",
+      "sourceSha256": "b1bd7979b659e03b63d25c59e3539c628e500a49ef2dc2c25e9fd65def2ba8de",
+      "destinationSha256": "3679f4b0562cf1ad6fde542784af59176b2035385e4238992402b36f20e90a2f"
+    },
+    {
+      "sourcePath": "README-expert-management.md",
+      "destinationPath": "README-expert-management.md",
+      "sourceSha256": "ccb3cc4dd2c6f9bc2f405aa82b6b5274d2af7427ceec7534a49b4c6f794b35e7",
+      "destinationSha256": "71a3680a8ad421905542c6449a0b277e13cdfb1dbcc53987173680670364f401"
+    },
+    {
+      "sourcePath": "README-knowledge-creation.md",
+      "destinationPath": "README-knowledge-creation.md",
+      "sourceSha256": "4ad6ff067e14fcdbb8161c6a5d33879d85fed01e50a74ef2759346e146adce5b",
+      "destinationSha256": "cf44089ac1513888ae9814ed1c6499f6f7949132fca20b8400ba18f063ab9bff"
+    },
+    {
+      "sourcePath": "README-knowledge-mcp.md",
+      "destinationPath": "README-knowledge-mcp.md",
+      "sourceSha256": "f109ea8bb40775f45f40b91acaef3ec09d39d4aab167444693ca11fa322ef4a5",
+      "destinationSha256": "a8ab47bb7828b2f6a057178316a31702c39bf9292dad19eceae6311aedad95d9"
+    },
+    {
+      "sourcePath": "README-memory.md",
+      "destinationPath": "README-memory.md",
+      "sourceSha256": "5b8f67b13c37091608eb811056615cfc32498ae89578109902e6e2676855bfcd",
+      "destinationSha256": "2f0ff29ff381b4a4bd12484a8801b4c852e0c5a011e927aa5e921416dd844421"
+    },
+    {
+      "sourcePath": "README-model-configuration.md",
+      "destinationPath": "README-model-configuration.md",
+      "sourceSha256": "8a7ce67d769c555cdba4e97c94c9312512a055409e2e8dd35b07fc168cc59937",
+      "destinationSha256": "c49bc55cb1015a8cc70c1b3a414da694d4667b726f91e927386fcb52aa7bfb8e"
+    },
+    {
+      "sourcePath": "README-workbench-management.md",
+      "destinationPath": "README-workbench-management.md",
+      "sourceSha256": "bbf6db32c9bd439b5d53f7e7be4a04867eec9e09ec2396844e89ee5eb0bd5398",
+      "destinationSha256": "f69a50cee37fe1c9911dcb970709c279b5d9d3f1f9cc2ed6c80cd00f349b7e03"
+    },
+    {
+      "sourcePath": "README-workflow-integration.md",
+      "destinationPath": "README-workflow-integration.md",
+      "sourceSha256": "a45b683d8e69388e07b50524f2d04036b58476ff62f6ac2eecb5481bbfb45729",
+      "destinationSha256": "e7b9440698874dcea996cb94252ed696d381d2a0d342bd5368d97ad75bbf8b34"
+    },
+    {
+      "sourcePath": "config/nacos/file-preview.example.yml",
+      "destinationPath": "config/examples/file-preview.example.yml",
+      "sourceSha256": "437697ed374d9f8a77bbc183d0cea9545ca3b81679de22ce20c185e3d78d5b89",
+      "destinationSha256": "d80d0bb4791f041ed9959d9136f99887fbb57c9b4bf5818ed5cadd960d6fc910"
+    },
+    {
+      "sourcePath": "config/nacos/knowledge-mcp.example.yml",
+      "destinationPath": "config/examples/knowledge-mcp.example.yml",
+      "sourceSha256": "34c495af27d25dfbfbba39ea0ad62aca540a4f8a361711943b873915ad5507ed",
+      "destinationSha256": "5a144aaae7f147c72cd1f1327166da4b1e632a5cd3dcb96ec6a64bebb86ce988"
+    },
+    {
+      "sourcePath": "scripts/Run-ExpertLocal.ps1",
+      "destinationPath": "scripts/Run-Local.ps1",
+      "sourceSha256": "7847e52f01079acf4740f1249614190a83cd23d5859d36ff9db97f0ace2bdb5a",
+      "destinationSha256": "ca345435525b9d9311f055a408cc72f0c04410e15bd66d9295dc5ef9a0a758eb"
+    },
+    {
+      "sourcePath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/NebuworkBackendApiApplication.java",
+      "destinationPath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/NebuworkBackendApiApplication.java",
+      "sourceSha256": "d7a457e2650387475665bd8b0ff2514e661e32e476fcbfca2cba8f6afde003d6",
+      "destinationSha256": "99cf062e1c44bc06b7ed9aa45500cfed939ff89d9fee4f4f816bdc9534d5c993"
+    },
+    {
+      "sourcePath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeNetworkPolicy.java",
+      "destinationPath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeNetworkPolicy.java",
+      "sourceSha256": "0070f9f20783aa1c92278dd26f40215ddfecdffa75428dfed7dfbdfb06b02f35",
+      "destinationSha256": "2822388b4af771bd307155a5070c43f0440c5dbee508f91396f71efe7bff04b9"
+    },
+    {
+      "sourcePath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeSecretCipher.java",
+      "destinationPath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/knowledge/KnowledgeSecretCipher.java",
+      "sourceSha256": "a1e95808324dfcb69098ebff8851daefc72b9459a2099b6d23f27b9b2f11ea9b",
+      "destinationSha256": "b19672791c6fd8271ab998e19684243ba647ee01c7a01ae2c7c2d848b1360030"
+    },
+    {
+      "sourcePath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelNetworkPolicy.java",
+      "destinationPath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelNetworkPolicy.java",
+      "sourceSha256": "867a87c0d552b14ba9c1fd58b6e4b8c85e74683699afa885a568008fdd8ea16d",
+      "destinationSha256": "f36f72de4cc26eb77304f78ec2124b8f25ab4449692df60f0f25536305f0e0a6"
+    },
+    {
+      "sourcePath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelSecretCipher.java",
+      "destinationPath": "src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/model/ModelSecretCipher.java",
+      "sourceSha256": "49550e30cffdfc6fd8db64c1665bde16bcfa39e45c043d8302ddbe2112fd1d74",
+      "destinationSha256": "4b4860acb74e837b80419cb9ff43b5011cb333847be9f9b8702d3db2b6b303ba"
+    },
+    {
+      "sourcePath": "src/main/resources/application.yml",
+      "destinationPath": "src/main/resources/application.yml",
+      "sourceSha256": "3ccea9f1b3d44d645b5c5a68612fb2cd746dbc14cf943216522db28ce9d5d61f",
+      "destinationSha256": "96c156ddea6f51665c2e772daed4a1fabb717d7959d90a998c180273cc790fd4"
+    },
+    {
+      "sourcePath": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertApiTest.java",
+      "destinationPath": "src/test/java/cn/nebulaedata/cccs/nebuwork/backend/api/expert/ExpertApiTest.java",
+      "sourceSha256": "0e4b93b8c9a88833aa4ddaba1afcbec75b7b99bb14969ad6d6f7115a575f721d",
+      "destinationSha256": "29a5e185e7b2bda148fad352be7348d9745c659a14486443252cc3a7aaf60f2d"
+    },
+    {
+      "sourcePath": "src/test/resources/application-expert-local.yml",
+      "destinationPath": "src/test/resources/application-expert-local.yml",
+      "sourceSha256": "2fba7e2cd263ab2127a183f0f0633735c39d6451e176c930679906838f333dee",
+      "destinationSha256": "d9930fc933a503ac015a71b0b4f513ce3679bf190c8db5e7cde2886ede2ad608"
+    }
+  ],
+  "finalVerification": {
+    "sourceFilesUnchanged": 247,
+    "sourceGitStatusUnchanged": true,
+    "finalVersionableBackendFiles": 241,
+    "unchangedImportedFiles": 213,
+    "originalMigrationFilesIdentical": 28,
+    "javaBuild": "mvn verify dependency:tree passed under Java 8",
+    "javaTests": {
+      "total": 495,
+      "passed": 478,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 17,
+      "suites": 50
+    },
+    "htmlHostTestsPassed": 3,
+    "legacyDependenciesAbsent": true,
+    "executableJar": "backend/java/target/nebuwork-backend-api.jar",
+    "dockerBuild": "passed",
+    "startup": {
+      "apiHealth": "passed",
+      "datasourceAndRedisHealth": "UP",
+      "anonymousProtectedApi": 401,
+      "unknownRedisSession": 401,
+      "mysqlMigrationSummary": [
+        "28\t28\t28",
+        "0"
+      ],
+      "composeProject": "nebuwork-java-import-check",
+      "isolatedPort": 42120,
+      "sourceInfrastructureTouched": false
+    },
+    "temporaryTestContainersCleaned": true,
+    "temporaryTestVolumesCleaned": true,
+    "userModuleImported": false,
+    "localConfigurationGitIgnored": true
+  }
+}

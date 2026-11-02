@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "baef94d9-5f5f-4f42-9306-58f219382936",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-layered-20261019-125100\\candidate.json",
+  "output": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-layered-20261019-125100\\nebuwork-layered.html",
+  "specification": {
+    "sha256": "37133a87537fb674be2826c907248d95114d38fcc4c5c89da8d7ecbdc63dbdd0",
+    "bytes": 18386
+  },
+  "artifact": {
+    "sha256": "f48df5265e811600591eaf7e5f039b400b73e9f24ee2d5ea8dbe76536678c73b",
+    "bytes": 871717
+  }
+}

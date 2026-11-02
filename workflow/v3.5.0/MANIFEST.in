@@ -1,0 +1,14 @@
+include README.md uv.lock
+include start_mcp.py mcp-config.example.json
+include start_workflow.py .python-version .env.example README-upstream.md
+recursive-include scripts *.ps1
+recursive-include docs *.md *.png
+recursive-include workflows *.py *.json
+recursive-include tests *.py
+include tests/Dockerfile.agent
+include nebulae/agent_runtime/package.json nebulae/agent_runtime/package-lock.json nebulae/agent_runtime/worker.mjs
+include frontend/package.json frontend/package-lock.json frontend/index.html
+include frontend/tsconfig.json frontend/vite.config.ts frontend/playwright.config.ts
+recursive-include frontend/src *.ts *.tsx *.css
+recursive-include frontend/tests *.ts
+recursive-include .github/workflows *.yml

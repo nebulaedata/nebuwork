@@ -1,0 +1,100 @@
+.runtime-extensions { min-width: 0; color: var(--text); font: 13px/1.6 var(--font-body); }
+.runtime-editor .runtime-extensions { margin-top: 20px; }
+.runtime-editor .runtime-extension-heading { border: 0; padding-bottom: 0; }
+.runtime-extension-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.runtime-extension-heading h3 { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 14px; font-weight: 600; }
+.runtime-extension-heading p { margin: 5px 0 0; color: var(--text-dim); font-size: 12px; }
+.runtime-extension-heading > .btn { flex-shrink: 0; }
+.runtime-extensions .btn, .runtime-extension-dialog .btn { min-height: 40px; }
+.runtime-extension-list { overflow: hidden; }
+.runtime-extension-scroll { overflow-x: auto; }
+.runtime-extension-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.runtime-extension-table { table-layout: fixed; min-width: 850px; }
+.runtime-extension-table th { padding: 12px 18px; background: var(--surface-2); letter-spacing: 0; font-size: 12px; }
+.runtime-extension-table th:nth-child(1) { width: 30%; }
+.runtime-extension-table th:nth-child(2) { width: 9%; }
+.runtime-extension-table th:nth-child(3) { width: 12%; }
+.runtime-extension-table th:nth-child(4) { width: 12%; }
+.runtime-extension-table th:nth-child(5) { width: 22%; }
+.runtime-extension-table th:nth-child(6) { width: 15%; }
+.runtime-extension-table td { padding: 16px 18px; vertical-align: middle; }
+.runtime-extension-name { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.runtime-extension-icon { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px; }
+.runtime-extension-icon.is-skill { color: var(--accent); background: var(--accent-dim); }
+.runtime-extension-icon.is-mcp { color: var(--info); background: color-mix(in srgb, var(--info) 10%, transparent); }
+.runtime-extension-name > div { min-width: 0; }
+.runtime-extension-name strong { display: block; font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.runtime-extension-name p { margin: 4px 0 0; color: var(--text-dim); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.runtime-extension-source { color: var(--text-sub); font-size: 12px; }
+.runtime-extension-call { color: var(--text-sub); font-size: 12px; }
+.runtime-extension-call small { display: block; margin-top: 3px; color: var(--text-dim); font-size: 11px; }
+.runtime-extension-actions { display: flex; align-items: center; gap: 12px; }
+.runtime-extension-action { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 2px; border: 0; border-radius: 4px; background: transparent; color: var(--text-sub); font: 12px var(--font-body); white-space: nowrap; cursor: pointer; }
+.runtime-extension-action:hover { color: var(--accent); }
+.runtime-extension-action.is-danger { color: var(--danger); }
+.runtime-extension-action.is-danger:hover { color: var(--danger); text-decoration: underline; }
+.runtime-extension-action:disabled { opacity: .5; cursor: default; }
+.runtime-extensions button:focus-visible, .runtime-extension-dialog button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.runtime-extension-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 52px 20px; text-align: center; color: var(--text-dim); }
+.runtime-extension-empty > svg { margin-bottom: 4px; opacity: .6; }
+.runtime-extension-empty strong { color: var(--text-sub); font-size: 13px; font-weight: 500; }
+.runtime-extension-empty p { margin: 0; font-size: 12px; }
+.runtime-extension-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; }
+.runtime-extension-footer > div:first-child { font-size: 12px; color: var(--text-sub); }
+.runtime-extension-footer p { margin: 4px 0 0; color: var(--text-dim); font-size: 12px; }
+.runtime-extension-footer .runtime-extension-unsaved { color: var(--warning); }
+.runtime-extension-footer-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.runtime-extension-banner { padding: 12px 16px; margin: 0 0 16px; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); }
+.runtime-extension-error { color: var(--danger); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.runtime-extension-notice { color: var(--accent); }
+.runtime-extension-dialog.ant-modal { top: 24px; padding-bottom: 24px; }
+.runtime-extension-dialog .ant-modal-content { background: var(--surface); color: var(--text); max-height: calc(100dvh - 48px); overflow-y: auto; }
+.runtime-extension-dialog .ant-modal-header { background: transparent; }
+.runtime-extension-dialog .ant-modal-title { color: var(--text); font-size: 15px; font-weight: 600; }
+.runtime-extension-dialog .ant-modal-body { padding-top: 12px; }
+.runtime-extension-form { display: flex; flex-direction: column; gap: 16px; color: var(--text); font: 13px/1.6 var(--font-body); }
+.runtime-extension-form label:not(.ant-checkbox-wrapper) { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.runtime-extension-form .ant-input, .runtime-extension-form .ant-input-affix-wrapper { background: var(--surface-2); color: var(--text); }
+.runtime-extension-form .ant-input:not(textarea) { min-height: 40px; }
+.runtime-extension-form textarea.ant-input { resize: vertical; }
+.runtime-extension-form .ant-select { width: 100%; }
+.runtime-extension-form .ant-checkbox-wrapper { color: var(--text); font-size: 13px; }
+.runtime-extension-form > footer { display: flex; justify-content: flex-end; gap: 8px; border-top: 1px solid var(--border); padding-top: 16px; margin-top: 4px; }
+.runtime-extension-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.runtime-extension-help { margin: 0; color: var(--text-sub); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.runtime-extension-files { padding-top: 16px; border-top: 1px solid var(--border); }
+.runtime-extension-files h4 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 13px; font-weight: 500; }
+.runtime-extension-files h4 span { color: var(--text-dim); font-size: 12px; font-weight: 400; }
+.runtime-extension-file { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.runtime-extension-file > svg { flex-shrink: 0; color: var(--text-dim); }
+.runtime-extension-file code { flex: 1; min-width: 0; font: 12px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+.runtime-extension-file small { flex-shrink: 0; color: var(--text-dim); font-size: 11px; }
+.runtime-extension-upload { display: flex; flex-direction: column; align-items: center; gap: 10px; border: 1px dashed var(--border-strong); border-radius: var(--r-md); padding: 28px 16px; background: var(--surface-2); color: var(--text-sub); }
+.runtime-extension-upload > svg { color: var(--accent); }
+.runtime-extension-upload strong { font-size: 13px; font-weight: 500; }
+.runtime-extension-upload p { margin: 0; color: var(--text-dim); font-size: 12px; }
+.runtime-extension-upload input[hidden] { display: none; }
+.runtime-extension-upload-files { max-height: 220px; overflow-y: auto; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--r-sm); }
+.runtime-extension-upload-files > div { display: flex; align-items: center; gap: 10px; padding: 6px 0; color: var(--text-sub); }
+.runtime-extension-upload-files svg { flex-shrink: 0; color: var(--text-dim); }
+.runtime-extension-upload-files code { flex: 1; min-width: 0; overflow-wrap: anywhere; font: 11px/1.6 var(--font-mono); }
+.runtime-extension-upload-files small { flex-shrink: 0; font-size: 11px; color: var(--text-dim); }
+@media (max-width: 760px) {
+  .runtime-extension-heading { align-items: flex-start; }
+  .runtime-extension-footer { align-items: flex-start; flex-direction: column; }
+  .runtime-extension-footer-actions { width: 100%; justify-content: flex-end; flex-wrap: wrap; }
+  .runtime-extension-table { display: block; min-width: 0; }
+  .runtime-extension-table thead { display: none; }
+  .runtime-extension-table tbody { display: block; }
+  .runtime-extension-table tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 12px; gap: 8px 16px; border-bottom: 1px solid var(--border); }
+  .runtime-extension-table tr:last-child { border-bottom: 0; }
+  .runtime-extension-table td { display: flex; align-items: center; gap: 8px; padding: 0; border: 0; }
+  .runtime-extension-table td::before { content: attr(data-label); flex-shrink: 0; color: var(--text-dim); font-size: 11px; }
+  .runtime-extension-table td:first-child { grid-column: 1 / -1; padding-bottom: 4px; }
+  .runtime-extension-table td:first-child::before { display: none; }
+  .runtime-extension-table td:last-child { grid-column: 1 / -1; justify-content: flex-end; }
+  .runtime-extension-table td:last-child::before { display: none; }
+  .runtime-extension-grid { grid-template-columns: 1fr; }
+  .runtime-extension-file { flex-wrap: wrap; gap: 6px; }
+  .runtime-extension-file code { flex-basis: 70%; }
+}

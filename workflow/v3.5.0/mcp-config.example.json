@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "nebulae-workflow": {
+      "command": "D:/Work/Code/nebuwork/workflow/v3.5.0/.venv/Scripts/python.exe",
+      "args": [
+        "D:/Work/Code/nebuwork/workflow/v3.5.0/start_mcp.py",
+        "--transport",
+        "stdio"
+      ]
+    }
+  }
+}

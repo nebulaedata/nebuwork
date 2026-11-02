@@ -1,0 +1,16 @@
+.memory-settings { padding: 24px; }
+.memory-settings h2 { font-size: 16px; margin: 0 0 16px; }
+.memory-settings p { line-height: 1.7; margin: 10px 0; }
+.memory-settings-status { padding: 12px 0; color: var(--text-secondary, #666); font-size: 12px; }
+.memory-settings fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.memory-settings-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; margin: 24px 0; }
+.memory-settings .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.memory-settings .field input { width: 100%; min-width: 0; box-sizing: border-box; height: 40px; }
+.memory-settings .field .dim { font-size: 12px; line-height: 1.6; }
+.memory-settings-toggle { display: inline-flex; align-items: center; gap: 8px; }
+.memory-settings-toggle input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); }
+.memory-settings-actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border); }
+.memory-settings [data-result]:not(:empty), .memory-settings-error:not(:empty) { margin-top: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+.memory-settings-error { color: var(--danger); }
+.memory-settings code { overflow-wrap: anywhere; }
+@media (max-width: 720px) { .memory-settings { padding: 16px; } .memory-settings-grid { grid-template-columns: minmax(0, 1fr); } }

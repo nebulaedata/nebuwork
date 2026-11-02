@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "a65f39de-5ab4-4c61-a3c6-eaa8de7b8f32",
+  "status": "failed",
+  "command": "deliver",
+  "stage": "render",
+  "input": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\candidate.json",
+  "output": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\nebuwork-system.html",
+  "artifact": {
+    "sha256": "ba0edf9e25856bf19235259afc08645bf3c1c1b0dccd8d6786d3681ccfbbffeb",
+    "bytes": 866963
+  },
+  "error": "Architecture layout validation failed:\n- [composition/proper-crossing] showcase architecture connections[6] id \"persist-run\" \"engine-api\" -> \"engine-db\" crosses connections[21] id \"worker-mcp\" \"worker\" -> \"platform-mcp\" at [1350, 380] (segments 0 and 1) — if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors."
+}

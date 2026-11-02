@@ -1,0 +1,136 @@
+name: nebuwork-dev-component
+services:
+  knowledge-postgres:
+    image: pgvector/pgvector:0.8.2-pg17-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nebulaekno
+      POSTGRES_PASSWORD: ${KNOWLEDGE_DB_PASSWORD:?run init.mjs}
+      POSTGRES_DB: postgres
+    volumes: ["knowledge-postgres:/var/lib/postgresql/data"]
+    networks: [dev]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U nebulaekno -d postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 40
+  knowledge-graph:
+    image: nebuwork-dev-knowledge-graph:5.26.13
+    build: {context: ../../knowledge/V101/dev, dockerfile: Neo4j.Dockerfile}
+    restart: unless-stopped
+    environment:
+      NEO4J_AUTH: neo4j/${KNOWLEDGE_GRAPH_PASSWORD:?required}
+      NEO4J_server_memory_heap_initial__size: 256m
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 128m
+      NEO4J_dbms_security_procedures_unrestricted: apoc.*
+      NEO4J_server_http_advertised__address: "${DEV_NEO4J_ADVERTISED_HOST:-localhost}:${DEV_NEO4J_HTTP_PORT:-27474}"
+      NEO4J_server_bolt_advertised__address: "${DEV_NEO4J_ADVERTISED_HOST:-localhost}:${DEV_NEO4J_BOLT_PORT:-27687}"
+    ports: ["${DEV_BIND:-0.0.0.0}:${DEV_NEO4J_HTTP_PORT:-27474}:7474", "${DEV_BIND:-0.0.0.0}:${DEV_NEO4J_BOLT_PORT:-27687}:7687"]
+    volumes: ["knowledge-graph:/data"]
+    networks: [dev]
+    healthcheck:
+      test: [CMD-SHELL, 'cypher-shell -u neo4j -p "${KNOWLEDGE_GRAPH_PASSWORD:?required}" "RETURN 1" >/dev/null']
+      interval: 10s
+      timeout: 10s
+      start_period: 30s
+      retries: 40
+  mysql:
+    image: mysql:8.0.32
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?run init.mjs}
+      TZ: Asia/Shanghai
+    command: [--character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --max-allowed-packet=128M]
+    ports: ["127.0.0.1:${DEV_MYSQL_PORT:-13316}:3306"]
+    volumes: ["mysql:/var/lib/mysql"]
+    networks: [dev]
+    healthcheck:
+      test: [CMD-SHELL, 'MYSQL_PWD="$$MYSQL_ROOT_PASSWORD" mysql -h 127.0.0.1 -uroot -e "SELECT 1" >/dev/null 2>&1']
+      interval: 5s
+      timeout: 5s
+      retries: 60
+  database-init:
+    image: mysql:8.0.32
+    restart: 'no'
+    environment: {MYSQL_PWD: "${MYSQL_ROOT_PASSWORD:?required}"}
+    entrypoint: [sh, /init/database-init.sh]
+    volumes: ["./generated/01-databases.sql:/init/databases.sql:ro", "./nacos/mysql-schema.sql:/init/nacos.sql:ro", "./database-init.sh:/init/database-init.sh:ro"]
+    networks: [dev]
+    depends_on:
+      mysql: {condition: service_healthy}
+  redis:
+    image: redis:7.4-bookworm
+    restart: unless-stopped
+    environment: {REDIS_PASSWORD: "${REDIS_PASSWORD:?required}"}
+    command: [sh, -c, 'exec redis-server --appendonly yes --requirepass "$$REDIS_PASSWORD"']
+    ports: ["127.0.0.1:${DEV_REDIS_PORT:-16389}:6379"]
+    volumes: ["redis:/data"]
+    networks: [dev]
+    healthcheck:
+      test: [CMD-SHELL, 'REDISCLI_AUTH="$$REDIS_PASSWORD" redis-cli ping | grep -q PONG']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  minio:
+    image: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+    restart: unless-stopped
+    environment: {MINIO_ROOT_USER: "${MINIO_ROOT_USER:?required}", MINIO_ROOT_PASSWORD: "${MINIO_ROOT_PASSWORD:?required}"}
+    command: server /data --console-address :9001
+    ports: ["${DEV_BIND:-0.0.0.0}:${DEV_MINIO_PORT:-29000}:9000", "${DEV_BIND:-0.0.0.0}:${DEV_MINIO_CONSOLE_PORT:-29001}:9001"]
+    volumes: ["minio:/data"]
+    networks: [dev]
+  nacos:
+    image: nacos/nacos-server:v2.4.2
+    restart: unless-stopped
+    environment:
+      MODE: standalone
+      PREFER_HOST_MODE: hostname
+      SPRING_DATASOURCE_PLATFORM: mysql
+      MYSQL_SERVICE_HOST: mysql
+      MYSQL_SERVICE_PORT: '3306'
+      MYSQL_SERVICE_DB_NAME: nacos_dev
+      MYSQL_SERVICE_USER: nacosdev
+      MYSQL_SERVICE_PASSWORD: ${NACOS_DB_PASSWORD:?required}
+      MYSQL_SERVICE_DB_PARAM: characterEncoding=utf8&connectTimeout=3000&socketTimeout=10000&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+      NACOS_AUTH_ENABLE: 'true'
+      NACOS_AUTH_TOKEN: ${NACOS_AUTH_TOKEN:?required}
+      NACOS_AUTH_IDENTITY_KEY: ${NACOS_IDENTITY_KEY:?required}
+      NACOS_AUTH_IDENTITY_VALUE: ${NACOS_IDENTITY_VALUE:?required}
+      JVM_XMS: 256m
+      JVM_XMX: 512m
+      JVM_XMN: 128m
+    ports: ["${DEV_BIND:-0.0.0.0}:${DEV_NACOS_PORT:-28848}:8848", "127.0.0.1:${DEV_NACOS_GRPC_PORT:-29848}:9848"]
+    volumes: ["nacos:/home/nacos/data", "nacos-logs:/home/nacos/logs"]
+    networks: [dev]
+    depends_on:
+      database-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD-SHELL, 'curl -fsS http://localhost:8848/nacos/v1/console/health/readiness >/dev/null']
+      interval: 5s
+      timeout: 5s
+      retries: 60
+  init:
+    image: node:22.19.0-slim
+    restart: 'no'
+    env_file: [.env]
+    command: node /scripts/component-init.mjs
+    volumes: ["./component-init.mjs:/scripts/component-init.mjs:ro", "backend:/data/backend", "workflow-project:/data/project", "workflow-runtime:/data/runtime"]
+    depends_on:
+      mysql: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      nacos: {condition: service_healthy}
+    networks: [dev]
+networks:
+  dev: {name: nebuwork-dev}
+volumes:
+  knowledge-postgres: {name: nebuwork-dev-knowledge-postgres}
+  knowledge-graph: {name: nebuwork-dev-knowledge-graph}
+  mysql: {name: nebuwork-dev-mysql}
+  redis: {name: nebuwork-dev-redis}
+  minio: {name: nebuwork-dev-minio}
+  nacos: {name: nebuwork-dev-nacos}
+  nacos-logs: {name: nebuwork-dev-nacos-logs}
+  backend: {name: nebuwork-dev-backend}
+  workflow-project: {name: nebuwork-dev-workflow-project}
+  workflow-runtime: {name: nebuwork-dev-workflow-runtime}

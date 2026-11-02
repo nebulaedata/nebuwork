@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\candidate.json",
+    "sha256": "37ecf4d1680c1a677327aa0471b3610e916109965c07e01daf5926de4f553346",
+    "bytes": 19910
+  },
+  "artifact": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\nebuwork-system.html",
+    "sha256": "ba0edf9e25856bf19235259afc08645bf3c1c1b0dccd8d6786d3681ccfbbffeb",
+    "bytes": 866963
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "composition/proper-crossing",
+      "severity": "error",
+      "message": "[composition/proper-crossing] showcase architecture connections[6] id \"persist-run\" \"engine-api\" -> \"engine-db\" crosses connections[21] id \"worker-mcp\" \"worker\" -> \"platform-mcp\" at [1350, 380] (segments 0 and 1) — if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors.",
+      "subject": {
+        "diagramType": "architecture",
+        "collection": "connections",
+        "index": 6,
+        "id": "persist-run",
+        "from": "engine-api",
+        "to": "engine-db"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "architecture",
+          "collection": "connections",
+          "index": 21,
+          "id": "worker-mcp",
+          "from": "worker",
+          "to": "platform-mcp"
+        },
+        "point": [
+          1350,
+          380
+        ],
+        "segmentIndex": 0,
+        "otherSegmentIndex": 1
+      },
+      "supportedFixes": [
+        "if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\review-3\\nebuwork-system.finalize.json",
+    "summaryReceipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\review-3\\nebuwork-system.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-19T04:38:01.281Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 803,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\candidate.json",
+    "constraint": "Preserve all semantics and user-fixed geometry. Use references/architecture-layout-repair.md to choose a local repair or connected-scene reflow; edit the existing candidate.",
+    "then": "finalize-once"
+  }
+}

@@ -1,0 +1,1 @@
+CREATE TABLE media_subtitles(id uuid PRIMARY KEY,file_version_id uuid NOT NULL REFERENCES file_versions(id) ON DELETE CASCADE,path text NOT NULL,format text NOT NULL,offset_ms bigint NOT NULL DEFAULT 0,segment_count integer NOT NULL,created_at timestamptz NOT NULL DEFAULT now());

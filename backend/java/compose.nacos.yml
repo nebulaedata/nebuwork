@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:${NEBU_API_PORT:-42020}:42020"
+    environment:
+      NEBU_NACOS_ENABLED: "true"
+    volumes:
+      - ./config/nacos.properties:/app/config/nacos.properties:ro
+      - runtime:/app/nebu-data
+    restart: unless-stopped
+volumes:
+  runtime:

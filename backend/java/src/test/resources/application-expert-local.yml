@@ -1,0 +1,15 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 21MB
+  flyway:
+    enabled: true
+    clean-disabled: true
+nebu:
+  seed-enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

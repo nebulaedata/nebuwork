@@ -1,0 +1,37 @@
+name: Verify workflow core and UI
+on: [push, pull_request]
+jobs:
+  verify:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.19.0'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: python -m venv .venv
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: nebulae/agent_runtime
+      - run: .venv/Scripts/python.exe -m pip install -e ".[server,dev,mcp]"
+        if: runner.os == 'Windows'
+      - run: .venv/bin/python -m pip install -e '.[server,dev,mcp]'
+        if: runner.os != 'Windows'
+      - run: .venv/Scripts/python.exe -m pytest -q
+        if: runner.os == 'Windows'
+      - run: .venv/bin/python -m pytest -q
+        if: runner.os != 'Windows'
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: npm run test:e2e
+        working-directory: frontend

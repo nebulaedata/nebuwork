@@ -1,0 +1,25 @@
+name: nebu-file-preview
+services:
+  worker:
+    build: .
+    image: nebu-file-preview-worker:1
+    restart: unless-stopped
+    environment:
+      PREVIEW_API_URL: ${PREVIEW_API_URL:?internal Java base URL required}
+      PREVIEW_WORKER_KEY: ${PREVIEW_WORKER_KEY:?at least 32 characters required}
+      PREVIEW_TIMEOUT_MS: ${PREVIEW_TIMEOUT_MS:-3600000}
+      PREVIEW_SCRATCH_BYTES: ${PREVIEW_SCRATCH_BYTES:-68719476736}
+      PREVIEW_TEMP_DIR: /work
+      PREVIEW_CONVERTER_ISOLATED: 'true'
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    cpus: 4
+    mem_limit: 16g
+    pids_limit: 256
+    read_only: true
+    cap_drop: [ALL]
+    cap_add: [NET_ADMIN, SETUID, SETGID, CHOWN, DAC_OVERRIDE, FOWNER]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs: ["/tmp:size=512m,mode=1777", "/run:size=16m"]
+    volumes: ["preview_scratch:/work"]
+volumes:
+  preview_scratch:

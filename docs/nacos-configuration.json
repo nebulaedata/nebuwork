@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-26",
+  "server": "192.168.204.128:8848",
+  "sourceNamespace": "cccs-jyz-1",
+  "targetNamespace": "nebuwork-dev",
+  "configs": [
+    {
+      "dataId": "cccs-database-base-dev.yml",
+      "group": "DEFAULT_GROUP",
+      "contentIdentical": true,
+      "sourceUnchanged": true,
+      "sha256": "20567fce822b233272b3bd8f6e00b4537be520806bc5d9b167ec6c82ce9b9f7f"
+    },
+    {
+      "dataId": "cccs-config-base-dev.yml",
+      "group": "DEFAULT_GROUP",
+      "contentIdentical": true,
+      "sourceUnchanged": true,
+      "sha256": "a8e218dad043ecf441acaf6e7e003650deba3c6bb001bfda44fc52ba1dcde4ed"
+    },
+    {
+      "dataId": "nebuwork-backend-api-dev.yml",
+      "group": "DEFAULT_GROUP",
+      "contentIdentical": true,
+      "sourceUnchanged": true,
+      "sha256": "941ebbdf963fb5a069d99fda682910fd59e46c2c4eb8ad9cfb7bbb924fb166a9"
+    }
+  ],
+  "databaseAndComponentValuesUnchanged": true,
+  "userModuleConfigurationChanged": false,
+  "liveConfigurationVerification": {
+    "namespace": "nebuwork-dev",
+    "verifiedPropertyCount": 46,
+    "databaseAndComponentValuesUnchanged": true,
+    "businessDatabaseConnected": false,
+    "businessWorkersStarted": false
+  },
+  "regressionVerification": {
+    "javaBuild": "passed",
+    "selectedTestsPassed": 40,
+    "optInNacosTestSkippedDuringOfflineRegression": 1,
+    "liveNacosAcceptancePassed": 1,
+    "passwordGitIgnored": true,
+    "privateConfigExcludedFromDockerBuild": true,
+    "businessDatabaseOrComponentsChanged": false
+  },
+  "dockerVerification": {
+    "imageBuild": "passed",
+    "privateConfigurationAbsentFromImage": true,
+    "normalModeServices": [
+      "api"
+    ],
+    "normalModeUsesNacos": true,
+    "isolatedModeDisablesNacos": true,
+    "businessServiceStarted": false
+  }
+}

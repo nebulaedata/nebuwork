@@ -1,0 +1,10 @@
+pdfplumber==0.11.7
+pypdf==5.9.0
+python-docx==1.2.0
+openpyxl==3.1.5
+xlrd==2.0.2
+olefile==0.47
+python-pptx==1.0.2
+beautifulsoup4==4.13.4
+Pillow==11.3.0
+firecrawl-anydoc==0.2.4

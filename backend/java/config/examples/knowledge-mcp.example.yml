@@ -1,0 +1,20 @@
+# Merge into config/application-local.yml as needed. No MCP is contacted at startup.
+nebu:
+  knowledge:
+    # Verified unified-user IDs; comma-separated. Empty means nobody can administer connections.
+    # This applies to both Nebulae V1 HTTP and Nebulae V100 REST.
+    admin-ids: ""
+    # Both destination restrictions default off (2026-10-26).
+    # Set either switch true only when explicitly requiring that restriction.
+    internal-allowlist-enabled: false
+    block-special-addresses: false
+    # Comma-separated exact origins; no paths. Checked only when the switch above is true.
+    allowed-internal-origins: "http://192.168.1.100:3001"
+    # Default total deadline across DNS, initialize, discovery and calls, including retries.
+    request-timeout-ms: 60000
+    # V16 durable AI creation queue. Generation alone has a 910-second HTTP budget;
+    # keep the upstream proxy read timeout >= 930 seconds, without POST retries.
+    creation-worker-enabled: true
+    # A base64 encoded random 32-byte AES key; required only for bearer/header authentication.
+    # Keep stable after saving credentials. Do not use the illustrative test key in production.
+    encryption-key: ""

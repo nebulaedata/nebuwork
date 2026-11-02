@@ -1,0 +1,10 @@
+import { Store } from '../src/store.js';
+import { Objects } from '../src/objects.js';
+import { createApi } from '../src/api.js';
+import { testConfig } from '../tests/fixture.js';
+process.env.FILE_TRANSFERS_ENABLED='true';
+const store=new Store(testConfig.DATABASE_URL),objects=new Objects(testConfig);
+await store.migrate();await objects.initialize();
+const api=await createApi(testConfig,store,objects);await api.listen({host:'0.0.0.0',port:42151});
+console.log('Isolated file-preview engine: 42151');
+let closing=false;const close=async()=>{if(closing)return;closing=true;await api.close();await store.close();objects.client.destroy();};process.on('SIGINT',()=>void close());process.on('SIGTERM',()=>void close());

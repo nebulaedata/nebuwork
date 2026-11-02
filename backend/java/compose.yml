@@ -1,0 +1,62 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:${NEBU_API_PORT:-42020}:42020"
+    environment:
+      NEBU_NACOS_ENABLED: "false"
+      NEBU_API_PORT: 42020
+      NEBU_DB_URL: jdbc:mysql://mysql:3306/nebuwork_1?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      NEBU_DB_USERNAME: nebuwork
+      NEBU_DB_PASSWORD: ${NEBU_DB_PASSWORD:?Use scripts/Start-Local.ps1 to initialize .env}
+      NEBU_REDIS_HOST: ${NEBU_REDIS_HOST:-redis}
+      NEBU_REDIS_PORT: ${NEBU_REDIS_PORT:-6379}
+      NEBU_REDIS_DATABASE: ${NEBU_REDIS_DATABASE:-0}
+      NEBU_REDIS_PASSWORD: ${NEBU_REDIS_PASSWORD:-}
+      NEBU_MODELS_ENCRYPTION_KEY: ${NEBU_MODELS_ENCRYPTION_KEY:?Set a stable Base64 32-byte encryption key}
+      NEBU_KNOWLEDGE_ENCRYPTION_KEY: ${NEBU_KNOWLEDGE_ENCRYPTION_KEY:-${NEBU_MODELS_ENCRYPTION_KEY}}
+      NEBU_ALLOWED_ORIGINS: ${NEBU_ALLOWED_ORIGINS:-*}
+    volumes:
+      - runtime:/app/nebu-data
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+  mysql:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_DATABASE: nebuwork_1
+      MYSQL_USER: nebuwork
+      MYSQL_PASSWORD: ${NEBU_DB_PASSWORD:?Set NEBU_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${NEBU_MYSQL_ROOT_PASSWORD:?Set NEBU_MYSQL_ROOT_PASSWORD}
+    ports:
+      - "127.0.0.1:${NEBU_MYSQL_PORT:-43316}:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  redis:
+    image: redis:7.4-bookworm
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${NEBU_REDIS_PASSWORD:-}"]
+    environment:
+      REDISCLI_AUTH: ${NEBU_REDIS_PASSWORD:-}
+    ports:
+      - "127.0.0.1:${NEBU_REDIS_LOCAL_PORT:-46389}:6379"
+    volumes:
+      - redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  mysql:
+  redis:
+  runtime:

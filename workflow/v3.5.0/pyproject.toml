@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nebulae-workflow"
+version = "3.5.0"
+description = "A local, code-first workflow runtime without external services"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+server = ["fastapi==0.143.0", "uvicorn==0.54.0"]
+mcp = ["mcp==2.3.0"]
+dev = ["pytest==9.1.1", "httpx==0.28.1"]
+
+[project.scripts]
+nebulae = "nebulae.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["nebulae*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+nebulae = ["web/index.html", "web/assets/*", "agent_runtime/*.mjs", "agent_runtime/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

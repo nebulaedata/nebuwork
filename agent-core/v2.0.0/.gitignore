@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+!.env.*.example
+.env.*.local
+.runtime/
+coverage/
+*.log
+.ops/
+.qa/
+.qa-*
+.acceptance-*.json
+.acceptance-*.log

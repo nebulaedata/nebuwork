@@ -1,0 +1,439 @@
+[
+  {"key":"wps","name":"WPS 文字","extensions":["wps"],"default":"anydoc","choices":["anydoc","native"]},
+  {"key":"wpt","name":"WPS 文字模板","extensions":["wpt"],"default":"anydoc","choices":["anydoc","native"]},
+  {"key":"et","name":"WPS 表格","extensions":["et"],"default":"excel","choices":["excel","anydoc"]},
+  {"key":"ett","name":"WPS 表格模板","extensions":["ett"],"default":"excel","choices":["excel","anydoc"]},
+  {"key":"dps","name":"WPS 演示","extensions":["dps"],"default":"anydoc","choices":["anydoc","native"]},
+  {"key":"dpt","name":"WPS 演示模板","extensions":["dpt"],"default":"anydoc","choices":["anydoc","native"]},
+  {
+    "key": "pdf",
+    "name": "PDF 文档",
+    "extensions": [
+      "pdf"
+    ],
+    "default": "paddleocr_vl",
+    "choices": [
+      "paddleocr_vl",
+      "native",
+      "tesseract"
+    ]
+  },
+  {
+    "key": "word",
+    "name": "Word 文档",
+    "extensions": [
+      "docx",
+      "doc"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "native",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "presentation",
+    "name": "演示文稿",
+    "extensions": [
+      "pptx",
+      "ppt"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "native",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "spreadsheet",
+    "name": "Excel 表格",
+    "extensions": [
+      "xlsx",
+      "xls"
+    ],
+    "default": "excel",
+    "choices": [
+      "excel",
+      "anydoc",
+      "native",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "epub",
+    "name": "电子书",
+    "extensions": [
+      "epub"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "native"
+    ]
+  },
+  {
+    "key": "ofd",
+    "name": "OFD",
+    "extensions": [
+      "ofd"
+    ],
+    "default": "paddleocr_vl",
+    "choices": [
+      "paddleocr_vl",
+      "native"
+    ]
+  },
+  {
+    "key": "mhtml",
+    "name": "网页归档",
+    "extensions": [
+      "mhtml",
+      "mht"
+    ],
+    "default": "native",
+    "choices": [
+      "native"
+    ]
+  },
+  {
+    "key": "csv",
+    "name": "CSV 文件",
+    "extensions": [
+      "csv"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple",
+      "anydoc"
+    ]
+  },
+  {
+    "key": "markdown",
+    "name": "Markdown",
+    "extensions": [
+      "md",
+      "markdown"
+    ],
+    "default": "native",
+    "choices": [
+      "native"
+    ]
+  },
+  {
+    "key": "txt",
+    "name": "纯文本",
+    "extensions": [
+      "txt"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple",
+      "native"
+    ]
+  },
+  {
+    "key": "json",
+    "name": "JSON 文件",
+    "extensions": [
+      "json"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple",
+      "native"
+    ]
+  },
+  {
+    "key": "image",
+    "name": "图片",
+    "extensions": [
+      "jpg",
+      "jpeg",
+      "png",
+      "gif",
+      "bmp",
+      "tiff",
+      "tif",
+      "webp"
+    ],
+    "default": "paddleocr_vl",
+    "choices": [
+      "paddleocr_vl",
+      "tesseract"
+    ]
+  },
+  {
+    "key": "audio",
+    "name": "音频",
+    "extensions": [
+      "mp3",
+      "wav",
+      "m4a",
+      "flac",
+      "ogg",
+      "aac"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple",
+      "ffmpeg"
+    ]
+  },
+  {
+    "key": "video",
+    "name": "视频",
+    "extensions": [
+      "mp4",
+      "mkv",
+      "mov",
+      "webm",
+      "avi",
+      "m4v"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple",
+      "ffmpeg"
+    ]
+  },
+  {
+    "key": "docm",
+    "name": "DOCM",
+    "extensions": [
+      "docm"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "htm",
+    "name": "HTM",
+    "extensions": [
+      "htm"
+    ],
+    "default": "native",
+    "choices": [
+      "native"
+    ]
+  },
+  {
+    "key": "html",
+    "name": "HTML",
+    "extensions": [
+      "html"
+    ],
+    "default": "native",
+    "choices": [
+      "native"
+    ]
+  },
+  {
+    "key": "odp",
+    "name": "ODP",
+    "extensions": [
+      "odp"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "ods",
+    "name": "ODS",
+    "extensions": [
+      "ods"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "odt",
+    "name": "ODT",
+    "extensions": [
+      "odt"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "pptm",
+    "name": "PPTM",
+    "extensions": [
+      "pptm"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "rtf",
+    "name": "RTF",
+    "extensions": [
+      "rtf"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "xlsm",
+    "name": "XLSM",
+    "extensions": [
+      "xlsm"
+    ],
+    "default": "anydoc",
+    "choices": [
+      "anydoc",
+      "libreoffice"
+    ]
+  },
+  {
+    "key": "xmind",
+    "name": "XMIND",
+    "extensions": [
+      "xmind"
+    ],
+    "default": "native",
+    "choices": [
+      "native"
+    ]
+  },
+  {
+    "key": "tsv",
+    "name": "TSV",
+    "extensions": [
+      "tsv"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "xml",
+    "name": "XML",
+    "extensions": [
+      "xml"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "yaml",
+    "name": "YAML",
+    "extensions": [
+      "yaml"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "yml",
+    "name": "YML",
+    "extensions": [
+      "yml"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "log",
+    "name": "LOG",
+    "extensions": [
+      "log"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "py",
+    "name": "PY",
+    "extensions": [
+      "py"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "js",
+    "name": "JS",
+    "extensions": [
+      "js"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "ts",
+    "name": "TS",
+    "extensions": [
+      "ts"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "java",
+    "name": "JAVA",
+    "extensions": [
+      "java"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "go",
+    "name": "GO",
+    "extensions": [
+      "go"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  },
+  {
+    "key": "sql",
+    "name": "SQL",
+    "extensions": [
+      "sql"
+    ],
+    "default": "simple",
+    "choices": [
+      "simple"
+    ]
+  }
+]

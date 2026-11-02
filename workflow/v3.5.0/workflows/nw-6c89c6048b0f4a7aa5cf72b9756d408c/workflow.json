@@ -1,0 +1,92 @@
+{
+  "name": "法律法规原文件增量采集",
+  "steps": {
+    "collect": {
+      "code": "all_categories.py:run",
+      "needs": [],
+      "retries": 0,
+      "retry_delay": 1,
+      "timeout": 3600
+    }
+  },
+  "layout": {
+    "collect": {
+      "x": 463.59999084472656,
+      "y": 144
+    }
+  },
+  "environment": {
+    "mode": "shared"
+  },
+  "input_presets": [
+    {
+      "id": "all_categories_incremental",
+      "name": "一键全分类续采10份（真实运行）",
+      "description": "默认场景，无需修改参数。自动轮转官方全部一级分类及其子分类，沿用历史索引，目标每次新增10份不同内容原文件；失败、附件不足或80次请求预算用尽时可能不足10份。",
+      "input": {},
+      "fields": {
+        "": "空对象即真实联网、全部分类、每次目标新增10份；不需要分类或参数。已成功条目跳过，不复查其静默变化；重复内容不计入10份。每批提供中文命名ZIP。禁止并发任务。"
+      }
+    },
+    {
+      "id": "dry_run",
+      "name": "不联网演练",
+      "description": "保留原有宪法演练配置，不联网、不修改共享索引。",
+      "input": {
+        "dry_run": true,
+        "categories": [
+          "宪法"
+        ],
+        "max_documents": 1,
+        "recheck_files": false
+      },
+      "fields": {
+        "/dry_run": "true 表示仅演练，不联网。",
+        "/categories": "显式填写时使用原有指定分类模式，1～5个唯一名称，每次一个分类的一页。",
+        "/categories/0": "分类名称：宪法。",
+        "/max_documents": "指定分类旧模式最多处理条目数，1～3。",
+        "/recheck_files": "false 跳过列表未变化的成功条目，true 重新传输比较哈希；不重置页码。"
+      }
+    },
+    {
+      "id": "constitution_incremental",
+      "name": "宪法小批量增量采集",
+      "description": "保留原有配置：真实联网，仅宪法，最多处理3条。",
+      "input": {
+        "dry_run": false,
+        "categories": [
+          "宪法"
+        ],
+        "max_documents": 3,
+        "recheck_files": false
+      },
+      "fields": {
+        "/dry_run": "false 表示真实联网。",
+        "/categories": "指定分类旧模式，1～5个唯一名称，每次一个分类的一页；并非全分类模式。",
+        "/categories/0": "分类名称：宪法。",
+        "/max_documents": "指定分类旧模式最多处理条目数，1～3。",
+        "/recheck_files": "false 跳过列表未变化的成功条目，true 重新传输比较哈希；不重置页码。"
+      }
+    },
+    {
+      "id": "recheck_attachments",
+      "name": "已下载附件复查",
+      "description": "保留原有配置：当前宪法分页位置最多复查1条，不重置页码。",
+      "input": {
+        "dry_run": false,
+        "categories": [
+          "宪法"
+        ],
+        "max_documents": 1,
+        "recheck_files": true
+      },
+      "fields": {
+        "/dry_run": "false 表示真实联网。",
+        "/categories": "指定分类旧模式，1～5个唯一名称，每次一个分类的一页。",
+        "/categories/0": "分类名称：宪法。",
+        "/max_documents": "指定分类旧模式最多处理条目数，1～3。",
+        "/recheck_files": "true 重新传输并比较SHA256，不重置页码；不是全站更新扫描。"
+      }
+    }
+  ]
+}

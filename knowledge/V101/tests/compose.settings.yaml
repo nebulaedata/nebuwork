@@ -1,0 +1,14 @@
+# Overlay for settings/parser acceptance; isolated from the development data.
+name: nebulaekno-config-test
+services:
+  app:
+    image: nebulaekno:dev
+    ports: !override ["127.0.0.1:19081:8080"]
+  model-fixture:
+    image: nebulaekno:dev
+    healthcheck:
+      disable: false
+      test: [CMD, python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:9000/health', timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 20

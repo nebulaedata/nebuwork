@@ -1,0 +1,15 @@
+{
+  "name": "招标文件信息获取",
+  "steps": {
+    "main": {
+      "code": "main.py:run",
+      "needs": []
+    }
+  },
+  "layout": {
+    "main": {
+      "x": 100,
+      "y": 100
+    }
+  }
+}

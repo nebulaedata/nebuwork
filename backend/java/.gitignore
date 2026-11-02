@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+!.env.*.example
+target/
+.qa/
+config/application-local.yml
+config/nacos.properties
+logs/
+nebu-data/
+*.log

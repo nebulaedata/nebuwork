@@ -1,0 +1,1152 @@
+{
+  "importDate": "2026-10-26",
+  "source": "D:\\Work\\Code\\AiCode\\nebulae-ai-platform-v3.5",
+  "destination": "workflow/v3.5.0",
+  "sourceCommit": "4faadfa1d6d86789a16351252cb3d16ce7a2195a",
+  "sourceStatus": [
+    "?? .idea/.gitignore",
+    "?? .idea/deployment.xml",
+    "?? .idea/inspectionProfiles/Project_Default.xml",
+    "?? .idea/inspectionProfiles/profiles_settings.xml",
+    "?? .idea/modules.xml",
+    "?? .idea/nebulae-workflow.iml",
+    "?? .idea/vcs.xml",
+    "?? docs/AGENT.md",
+    "?? docs/INPUT_PRESETS.md",
+    "?? docs/MCP.md",
+    "?? docs/NEBUWORK_INTEGRATION.md",
+    "?? docs/ui/agent-mobile.png",
+    "?? docs/ui/agent-settings.png",
+    "?? docs/ui/agent-tools-compact-mobile.png",
+    "?? docs/ui/agent-tools-compact.png",
+    "?? docs/ui/agent-workbench.png",
+    "?? docs/ui/artifacts-list.png",
+    "?? docs/ui/artifacts-scroll-mobile.png",
+    "?? docs/ui/artifacts-scroll.png",
+    "?? docs/ui/artifacts-tree.png",
+    "?? docs/ui/events-mobile.png",
+    "?? docs/ui/events-readable.png",
+    "?? docs/ui/mcp-http.png",
+    "?? docs/ui/mcp-running.png",
+    "?? docs/ui/mcp-stdio.png",
+    "?? docs/ui/shared-environment.png",
+    "?? docs/ui/task-environment.png",
+    "?? docs/ui/workflow-environment.png",
+    "?? frontend/src/AgentAssistant.tsx",
+    "?? frontend/src/AgentSettings.tsx",
+    "?? frontend/src/AgentTools.tsx",
+    "?? frontend/src/Environments.tsx",
+    "?? frontend/src/InputPresetControls.tsx",
+    "?? frontend/src/MCPSettings.tsx",
+    "?? frontend/src/RunWorkflow.tsx",
+    "?? frontend/src/TaskEvents.tsx",
+    "?? frontend/src/artifactTree.ts",
+    "?? frontend/src/eventPresentation.ts",
+    "?? frontend/src/inputPresets.css",
+    "?? frontend/src/inputPresets.ts",
+    "?? frontend/tests/agent.spec.ts",
+    "?? frontend/tests/artifacts-layout.spec.ts",
+    "?? frontend/tests/artifacts.spec.ts",
+    "?? frontend/tests/environments.spec.ts",
+    "?? frontend/tests/events.spec.ts",
+    "?? frontend/tests/input-presets.spec.ts",
+    "?? frontend/tests/mcp.spec.ts",
+    "?? mcp-config.example.json",
+    "?? nebulae/_bootstrap.py",
+    "?? nebulae/_environment_probe.py",
+    "?? nebulae/_environment_worker.py",
+    "?? nebulae/_mcp_http_worker.py",
+    "?? nebulae/agent_api.py",
+    "?? nebulae/agent_runtime.py",
+    "?? nebulae/agent_runtime/package-lock.json",
+    "?? nebulae/agent_runtime/package.json",
+    "?? nebulae/agent_runtime/worker.mjs",
+    "?? nebulae/agent_service.py",
+    "?? nebulae/agent_tools.py",
+    "?? nebulae/environments.py",
+    "?? nebulae/input_presets.py",
+    "?? nebulae/mcp_guide.py",
+    "?? nebulae/mcp_server.py",
+    "?? nebulae/mcp_service.py",
+    "?? nebulae/mcp_settings.py",
+    "?? nebulae/tool_catalog.py",
+    "?? nebulae/web/assets/CodeEditor-BTRDuHVb.js",
+    "?? nebulae/web/assets/index-CfBScc4F.js",
+    "?? nebulae/web/assets/index-DEN8cKfG.css",
+    "?? nebulae/web/assets/javascript-CuNs-7fC.js",
+    "?? nebulae/web/assets/python-DVcOF04j.js",
+    "?? nebulae/workflow_tools.py",
+    "?? start_mcp.py",
+    "?? tests/Dockerfile.agent",
+    "?? tests/agent_model.py",
+    "?? tests/run_linux_agent.py",
+    "?? tests/smoke_wheel.py",
+    "?? tests/test_agent.py",
+    "?? tests/test_agent_lifecycle.py",
+    "?? tests/test_environments.py",
+    "?? tests/test_input_presets.py",
+    "?? tests/test_mcp.py",
+    "?? tests/test_mcp_service.py",
+    "?? tests/test_remote_integration.py",
+    "?? tests/wheels.py",
+    "?? workflows/1111/main.py",
+    "?? workflows/1111/workflow.json",
+    "?? workflows/asdasdasd/main.py",
+    "?? workflows/asdasdasd/workflow.json",
+    "?? workflows/gh-1/fetch_trending.py",
+    "?? workflows/gh-1/main.py",
+    "?? workflows/gh-1/summarize.py",
+    "?? workflows/gh-1/workflow.json",
+    "?? workflows/laws-update/law_pipeline.py",
+    "?? workflows/laws-update/main.py",
+    "?? workflows/laws-update/settings.json",
+    "?? workflows/laws-update/workflow.json",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/README.md",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/all_categories.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/incremental.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/inspect_local.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/law_http.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/listing.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/main.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/npc_incremental.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/probe.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/public_probe.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/site_adapter.py",
+    "?? workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/workflow.json",
+    "?? workflows/nw-e1171fbe2eaa42908f03b3ee8f4850cc/main.py",
+    "?? workflows/nw-e1171fbe2eaa42908f03b3ee8f4850cc/workflow.json",
+    "?? workflows/wbrs/main.py",
+    "?? workflows/wbrs/workflow.json"
+  ],
+  "sourceFiles": [
+    {
+      "path": ".github/workflows/verify.yml",
+      "bytes": 1269,
+      "sha256": "61e40f6112292b2df587d3d3c397291448ffe8a04e5c50719097be6e1448bf35"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 188,
+      "sha256": "21bbcafe3a95f69a0ce94b2776fe7400ecf5a4943b0e0c4d9e1f3e0febf38cda"
+    },
+    {
+      "path": ".idea/.gitignore",
+      "bytes": 250,
+      "sha256": "6964f0665d3290c845f8973ab067b4b59fdf1d83324cbdf34563424c650cefac"
+    },
+    {
+      "path": ".idea/deployment.xml",
+      "bytes": 3886,
+      "sha256": "2c8ea6a73d1e83e967cc90d8590035577a06bad9c7fc59db6254bed8895ebb49"
+    },
+    {
+      "path": ".idea/inspectionProfiles/profiles_settings.xml",
+      "bytes": 174,
+      "sha256": "6172c5997eeb3cd19c9ca2b5b97d6e2983cdd1fa60b2460d7bbb74055edcaa46"
+    },
+    {
+      "path": ".idea/inspectionProfiles/Project_Default.xml",
+      "bytes": 506,
+      "sha256": "39bcabbbf1439708becf18beb62fec25e79ebdb9e4bb67e5e72f0e4921eb4965"
+    },
+    {
+      "path": ".idea/modules.xml",
+      "bytes": 291,
+      "sha256": "60c7ed103f36e8ba3ce025879988c02943edd394011d4ab0cb4bccbb01b72c22"
+    },
+    {
+      "path": ".idea/nebulae-workflow.iml",
+      "bytes": 747,
+      "sha256": "8f77bff6874557c58d21809c05d1bc7e2835456699fdf006143897e2e4982541"
+    },
+    {
+      "path": ".idea/vcs.xml",
+      "bytes": 172,
+      "sha256": "62be7e0a7f84ab3c35b4d4bafb890a4951d061eadafde1a10aa3f5d0406db5df"
+    },
+    {
+      "path": "design-qa.md",
+      "bytes": 5631,
+      "sha256": "f88993859f3cacd1dc0bf003e9cbed07edad6341b729f5a512f4a39a6dc65916"
+    },
+    {
+      "path": "docs/ACCEPTANCE.md",
+      "bytes": 19337,
+      "sha256": "671a385ad6cc57172fb25a8591d0f51e9f44826b2a426f5749eacdb7f34336d4"
+    },
+    {
+      "path": "docs/acceptance.png",
+      "bytes": 83579,
+      "sha256": "002d6ae49208bb467c22c6d63e0f9e8df3ee74394ee7d853e0d7d99bfd102525"
+    },
+    {
+      "path": "docs/AGENT.md",
+      "bytes": 7657,
+      "sha256": "d554ee32466b8bc9b75ff1be5ec4bb02122fb27ce6fc1b72f23d0be3111da550"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 15208,
+      "sha256": "1bfe5662d7cea3df6bc2248e6886f64babbbf7afb96acb8a86f905d67f30e8a3"
+    },
+    {
+      "path": "docs/INPUT_PRESETS.md",
+      "bytes": 2316,
+      "sha256": "b904d6de2c222e583c3b3447ca13351415c61a7820583f4620ae35d73d552795"
+    },
+    {
+      "path": "docs/MCP.md",
+      "bytes": 10767,
+      "sha256": "65fd68cc04cc26b33f57c12ae42570d7fcaa45904e97306202fbcd7e54cb0d9b"
+    },
+    {
+      "path": "docs/NEBUWORK_INTEGRATION.md",
+      "bytes": 1561,
+      "sha256": "07d1f97585eb4b5c7e8ed82724cba1391237c65f00e6490971b88b7a8341ce79"
+    },
+    {
+      "path": "docs/ui/agent-mobile.png",
+      "bytes": 32587,
+      "sha256": "ed23c3d9180d62a6a0adebcb18379ca8a211252ed1fa5021a608557854688abf"
+    },
+    {
+      "path": "docs/ui/agent-settings.png",
+      "bytes": 54513,
+      "sha256": "a682ad009b7d3241b86225d477f468e4063d4a133aa9dce760cb4a92be2f2875"
+    },
+    {
+      "path": "docs/ui/agent-tools-compact-mobile.png",
+      "bytes": 39093,
+      "sha256": "83733f1bfe51e6c72bc1aa7c50ea4a942bec0479aca5a8775d9c6549f7e644c9"
+    },
+    {
+      "path": "docs/ui/agent-tools-compact.png",
+      "bytes": 109725,
+      "sha256": "da8540758526f561edd5ba0a0af324bfc102639cdcfec46a24818a0a1e18cd59"
+    },
+    {
+      "path": "docs/ui/agent-workbench.png",
+      "bytes": 105186,
+      "sha256": "76e256e656870d6ae752d93fbe0789b9a9af6a3c987744ef6ac381414d7db558"
+    },
+    {
+      "path": "docs/ui/artifacts-list.png",
+      "bytes": 112990,
+      "sha256": "47f95f8f0bf4755cedb1563c2c82825f56bc171ab51548bd51b4e0058eaf2d86"
+    },
+    {
+      "path": "docs/ui/artifacts-scroll-mobile.png",
+      "bytes": 46406,
+      "sha256": "7018951c3350596077109c5cd34facabe9c23d2ec4b1864d8bad422e3428ab57"
+    },
+    {
+      "path": "docs/ui/artifacts-scroll.png",
+      "bytes": 133890,
+      "sha256": "06bb4637d6586bfa6e52a5c3194f73a1d6baeb2a5674713e5abfc98809f75353"
+    },
+    {
+      "path": "docs/ui/artifacts-tree.png",
+      "bytes": 125967,
+      "sha256": "e31c64416e374bf8f3d26b950093c5686710ce831711388390ec11b016a6e028"
+    },
+    {
+      "path": "docs/ui/code-before-qa.png",
+      "bytes": 65568,
+      "sha256": "79de8bc77a79a57e314c377589d79973ae6d62953956f3d921259281f8385604"
+    },
+    {
+      "path": "docs/ui/code-desktop.png",
+      "bytes": 68024,
+      "sha256": "c9de2f854568af98938c53f788cd6905623f675864ebdf92f0027a40d5593c3d"
+    },
+    {
+      "path": "docs/ui/code-detail.png",
+      "bytes": 18267,
+      "sha256": "754ded07a882f64f8f633a8dd56d1c7f1ea8d727f2eec9f67ba41238fe4c0a7f"
+    },
+    {
+      "path": "docs/ui/code-mobile.png",
+      "bytes": 40594,
+      "sha256": "ca6f3d5a7841884d1049a1a3e5666198ef3d22d407ed51ef6875e9354d08d880"
+    },
+    {
+      "path": "docs/ui/events-mobile.png",
+      "bytes": 32167,
+      "sha256": "86ce56cfdd0e27504328acc46d2c7540bf8fe049dd985715728a2688df721357"
+    },
+    {
+      "path": "docs/ui/events-readable.png",
+      "bytes": 67473,
+      "sha256": "20d5e827e567771ecc0f9c68847b1443437c671ecde9afe5e077b0463bf6c9a9"
+    },
+    {
+      "path": "docs/ui/graph-desktop.png",
+      "bytes": 73623,
+      "sha256": "9fc8c10fd7649c34a94e1357678668b3966a19194ded04bd044f8332f5c41e1b"
+    },
+    {
+      "path": "docs/ui/history.png",
+      "bytes": 73701,
+      "sha256": "a943280cdd64817fdcc4c2a52281b9d9b5057f08efe377809985ad6a3f2ca11b"
+    },
+    {
+      "path": "docs/ui/mcp-http.png",
+      "bytes": 126771,
+      "sha256": "13afd15e51f3b88b6d8d683e03199692b58923954a241c9fd1032232bca69754"
+    },
+    {
+      "path": "docs/ui/mcp-running.png",
+      "bytes": 133271,
+      "sha256": "afc05a192eefef2dbc892d1a1940041f4ae7209e2400bbc3d7997e2a5c1c5906"
+    },
+    {
+      "path": "docs/ui/mcp-stdio.png",
+      "bytes": 123039,
+      "sha256": "150355bf612fb98e17fc1ff4a16d4cbac893585702dcb66e0d8167badbe60def"
+    },
+    {
+      "path": "docs/ui/shared-environment.png",
+      "bytes": 41743,
+      "sha256": "063f82ea7c8239ac5a357a135fcb33c69348f5a89bbd92ca2ea945c2864e2356"
+    },
+    {
+      "path": "docs/ui/task-acceptance.png",
+      "bytes": 70038,
+      "sha256": "b01ced9b5c4796f774fad530e5e51c52f7c60e9a052e3b13cdea6adfbef3efea"
+    },
+    {
+      "path": "docs/ui/task-environment.png",
+      "bytes": 75896,
+      "sha256": "0bf2e4d1cf386a3f780b2b848e6d2e562bec7b5abbf2bd8cf362785b01122ca0"
+    },
+    {
+      "path": "docs/ui/workbench.png",
+      "bytes": 92511,
+      "sha256": "931ac9b1797b92ce7461670a4bbc7c9deb6ee8a0fe3ca0ea2eec04feaf07694b"
+    },
+    {
+      "path": "docs/ui/workflow-environment.png",
+      "bytes": 88172,
+      "sha256": "8712e5b355b05ecf22191d817b692d9af802e7309d9ea309b9c895abb3f1f0d9"
+    },
+    {
+      "path": "frontend/index.html",
+      "bytes": 566,
+      "sha256": "4f83bcfeb37f426c4d5d0ea21e1713142e5a45167b48154250d98f1b527dc67d"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "bytes": 138375,
+      "sha256": "c4e415afa86b2e009c6863f0e247493ed1f0f5125cf59c5febf6ebc6022a4d26"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 793,
+      "sha256": "a51bd843917bded27d8d5676d32af1231f73227f77161a1bc5c3264fc5756c47"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "bytes": 1083,
+      "sha256": "40bea5975ea16c1a87dfe48eea4d6a0abebdbc637ff42f036cef0ba57266efae"
+    },
+    {
+      "path": "frontend/src/AgentAssistant.tsx",
+      "bytes": 19169,
+      "sha256": "8042832a3741ef253b7f416c8430ab6a2366e848861c827f47f4b351c51dd47c"
+    },
+    {
+      "path": "frontend/src/AgentSettings.tsx",
+      "bytes": 8048,
+      "sha256": "dc6361ae15878e3fcb1700259ae973d144cb86962e20cb8fc9ea4d441605869e"
+    },
+    {
+      "path": "frontend/src/AgentTools.tsx",
+      "bytes": 12520,
+      "sha256": "47311b01e6b3928a94c00508da69e4097467bdaba4e673df508d74cc83587f7a"
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "bytes": 933,
+      "sha256": "63c7c49b99de498c0ff3982d681824bf44dfdb745fca19aa2a4c2a37baf7d38f"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "bytes": 19007,
+      "sha256": "047ef5a338bc5e745beaf8e4ae9d85efe9e0a357ac5c3e1d2ba03854d32d2af6"
+    },
+    {
+      "path": "frontend/src/Artifacts.tsx",
+      "bytes": 17005,
+      "sha256": "7c62f2469ff1f4c6aedef4dc7d82ae1579857a84723a49b26116383fa570800b"
+    },
+    {
+      "path": "frontend/src/artifactTree.ts",
+      "bytes": 2277,
+      "sha256": "f2b41195e085bee4aca0981fdea8e3d9d4e2d668c420a38396edaaadf34a5430"
+    },
+    {
+      "path": "frontend/src/CodeEditor.tsx",
+      "bytes": 11858,
+      "sha256": "52bcf016b907a981b0df8ae27703490b6a00e64f298c4e3192a3ae31493085b5"
+    },
+    {
+      "path": "frontend/src/Environments.tsx",
+      "bytes": 17237,
+      "sha256": "1b41394e2ef6edbb59376c4bc76bd3798d9d10ed9bd6ac4bc7cc2a425334fa0b"
+    },
+    {
+      "path": "frontend/src/eventPresentation.ts",
+      "bytes": 11491,
+      "sha256": "af1b71f7e674995574306feeb0158963c35a60b16349b30153a3f5c70116e488"
+    },
+    {
+      "path": "frontend/src/Graph.tsx",
+      "bytes": 5026,
+      "sha256": "4834bc181700ca5a05bee07f744aba8d9d10dcc632d2d4ec816ed20438e91eba"
+    },
+    {
+      "path": "frontend/src/InputPresetControls.tsx",
+      "bytes": 9336,
+      "sha256": "3f91f5a76688a60a4b52d6a9a1d5bcaeeabd822cee1db48cc7f2bede44434ceb"
+    },
+    {
+      "path": "frontend/src/inputPresets.css",
+      "bytes": 2791,
+      "sha256": "0b3c3dbd91594ec4edd5a8dcbdb78a70aeda6b696c4493cd86b8e7fe9422fb7e"
+    },
+    {
+      "path": "frontend/src/inputPresets.ts",
+      "bytes": 3788,
+      "sha256": "5d5b1848a2452caab9bc0857296dc332c5f5b318fa452c10354eff3baca9814a"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "bytes": 1602,
+      "sha256": "520746aed300ce7b5c5b802b45fdb6bf0cf09d800881c5216974e0c6936fc2e9"
+    },
+    {
+      "path": "frontend/src/MCPSettings.tsx",
+      "bytes": 19467,
+      "sha256": "23ff84a99ecb4e8add7653f29792e66a8de088373f05e60a72f860bc501f3036"
+    },
+    {
+      "path": "frontend/src/RunWorkflow.tsx",
+      "bytes": 2957,
+      "sha256": "eda64e555cb5648947b6c7ce00d043b05c4fa6335b6d4b23df772fd900e685e5"
+    },
+    {
+      "path": "frontend/src/style.css",
+      "bytes": 39214,
+      "sha256": "a0a4401e46dc4fc3be5cdb35e6ec3923e230c7b0ef4a832302a227ab5d235ae6"
+    },
+    {
+      "path": "frontend/src/TaskEvents.tsx",
+      "bytes": 11155,
+      "sha256": "702b1fb9e72da9309d219ee75598241a3aed914a5bace51af6120431a5c73333"
+    },
+    {
+      "path": "frontend/src/TaskView.tsx",
+      "bytes": 13743,
+      "sha256": "5f691b4ec0181cf67593b2c17bf6aa847e9da5660ee4c50fb9c0774f9f3b4b02"
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "bytes": 3433,
+      "sha256": "04765844a749f3c90d1e10ff8c54fae3db6e1094f40fd1fdbfd8bf4213d7add6"
+    },
+    {
+      "path": "frontend/src/ui.tsx",
+      "bytes": 2442,
+      "sha256": "39de796535e097a1f26bc076dd3dcec1e6e1d059023ec6ce903a10b40393640e"
+    },
+    {
+      "path": "frontend/src/WorkflowTasks.tsx",
+      "bytes": 1875,
+      "sha256": "4b3b06aae79b0f407613d43f4ffad5bcdf70dcc892bbf6baf8fd7490e9d166d8"
+    },
+    {
+      "path": "frontend/src/WorkflowView.tsx",
+      "bytes": 20894,
+      "sha256": "1144d9a2244c6dcf196cc9d296c4ecbf09b448cab0f5d78f3ffe6eb6c55706d8"
+    },
+    {
+      "path": "frontend/tests/agent.spec.ts",
+      "bytes": 14133,
+      "sha256": "4b30757cf154fa3ab55dae78791ff9b77c188a220a62f0cd40d8092003a18654"
+    },
+    {
+      "path": "frontend/tests/artifacts-layout.spec.ts",
+      "bytes": 8147,
+      "sha256": "7eff5dadae5162c539cfd78546aeaaa13488aca81d183274882dce907e788095"
+    },
+    {
+      "path": "frontend/tests/artifacts.spec.ts",
+      "bytes": 10302,
+      "sha256": "be21edba660afabb510fc75e0f4c9c2d21df73be159062ef16181d5c320a0a2b"
+    },
+    {
+      "path": "frontend/tests/environments.spec.ts",
+      "bytes": 3504,
+      "sha256": "d2e30294ea867fc58dfc3bcc03b19a3b7f766caf03cea6f065a7f923e5cc1c73"
+    },
+    {
+      "path": "frontend/tests/events.spec.ts",
+      "bytes": 10742,
+      "sha256": "1caf26a63124f59ac41bbd8baf7129a3f8233236609078e2f723c55ba0ceb853"
+    },
+    {
+      "path": "frontend/tests/input-presets.spec.ts",
+      "bytes": 7204,
+      "sha256": "05a4a266c21590614176021aecf3f88cac34a6768b241b8742ffd596cd9694ec"
+    },
+    {
+      "path": "frontend/tests/mcp.spec.ts",
+      "bytes": 7651,
+      "sha256": "1b85caafbe23bde641d2b2912c916a69c34fc1c2cca6ecebdb2f2f861b8fea8d"
+    },
+    {
+      "path": "frontend/tests/workflow.spec.ts",
+      "bytes": 6746,
+      "sha256": "5f1b60898dcf27ece816a1fa2320b9c752871aa8476a81550611dca8790ee630"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "bytes": 379,
+      "sha256": "f9d528a36b8195b4bd39adc98ab822b367969bd5d5cc2da638e7aace199056c7"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "bytes": 295,
+      "sha256": "9c579811d3befdcb5447e6d7dee20f0dbf3c8961a851d780895e79635c7d46e5"
+    },
+    {
+      "path": "MANIFEST.in",
+      "bytes": 611,
+      "sha256": "654fb1ebde9493f053375bfcc98f3608053ac9f77a9abdc7390605cbe0439412"
+    },
+    {
+      "path": "mcp-config.example.json",
+      "bytes": 280,
+      "sha256": "c977a624095f771c1184918510881fb3e4ab6291546502f5cedc8c70e75a4813"
+    },
+    {
+      "path": "nebulae/__init__.py",
+      "bytes": 160,
+      "sha256": "8b2c0eb712e8d6de7339a37a825fb429e4eed586d44845a01b20704388481010"
+    },
+    {
+      "path": "nebulae/__main__.py",
+      "bytes": 11071,
+      "sha256": "156a6b50fa27ca1c13fa372d8b5582296aa2a5eebdb2bd5a22c2c17df064be37"
+    },
+    {
+      "path": "nebulae/_bootstrap.py",
+      "bytes": 794,
+      "sha256": "d9d3efbed99ad10ce98c9c88820bebeec78c7f31b3a23b5fe9673178b540cb0f"
+    },
+    {
+      "path": "nebulae/_environment_probe.py",
+      "bytes": 1074,
+      "sha256": "9f99625e8b86d6f5cafb0921d90cf70dce5ebfab9b55e3888ff146a7bd3376f4"
+    },
+    {
+      "path": "nebulae/_environment_worker.py",
+      "bytes": 2318,
+      "sha256": "8885c84092e85e97885e249cab966fcdbeeffd34fabd53a23c3b09d449faadcd"
+    },
+    {
+      "path": "nebulae/_mcp_http_worker.py",
+      "bytes": 1777,
+      "sha256": "639ab9132f8f050aec934ad9ba5d9abe5ffba090666ccf88613237a7a602dd29"
+    },
+    {
+      "path": "nebulae/_worker.py",
+      "bytes": 1858,
+      "sha256": "fab7f9dd8fe0bbe649e7742bd6f957425ba7c48891558b3b3ed9aebc5fbf4c67"
+    },
+    {
+      "path": "nebulae/agent_api.py",
+      "bytes": 4341,
+      "sha256": "c771beb0bae994b0858efd1722465900ff29f6292648b7c88145daec752b5712"
+    },
+    {
+      "path": "nebulae/agent_runtime.py",
+      "bytes": 5509,
+      "sha256": "1b3dee0991de50613d1e6ec8b9a5dd10be01a470ec5e5d45dec92e3fc4170a9c"
+    },
+    {
+      "path": "nebulae/agent_runtime/package-lock.json",
+      "bytes": 70147,
+      "sha256": "a0dc9e71827fc6318a619fe4719035a590aad6ac3bc89aeee4cc93a1c0a7f84c"
+    },
+    {
+      "path": "nebulae/agent_runtime/package.json",
+      "bytes": 200,
+      "sha256": "43a1d63a083bc9ebf123fa7ba7f040e937576828b771eec153cc2e44aa991ba8"
+    },
+    {
+      "path": "nebulae/agent_runtime/worker.mjs",
+      "bytes": 5256,
+      "sha256": "cb95a95d9a9c472ba271d6010e81421c39fed71e8f90d24131d6251a2d40cc87"
+    },
+    {
+      "path": "nebulae/agent_service.py",
+      "bytes": 28914,
+      "sha256": "ec82dae4738121b3241d6c1b93f5e42a1f89b48dd650df962c36337484d0f413"
+    },
+    {
+      "path": "nebulae/agent_tools.py",
+      "bytes": 3556,
+      "sha256": "af1ff2286213be693067008f46583a5e365c1118e3af13f81be3e3bbc9fe8d62"
+    },
+    {
+      "path": "nebulae/api.py",
+      "bytes": 14796,
+      "sha256": "a0d357383d04c78475d27ffab90ef645af69f7fc1c42d5c3831c8efceb1d205c"
+    },
+    {
+      "path": "nebulae/catalog.py",
+      "bytes": 8452,
+      "sha256": "b68724721e7d5be203ef443f4dc1be0440ba846a4a19dcf4f5fb1d3d9337c86b"
+    },
+    {
+      "path": "nebulae/client.py",
+      "bytes": 4211,
+      "sha256": "de8c9e34e5b25cfbc21dba62a6ff2dc1c773da40250976620fbc942e7c852ae1"
+    },
+    {
+      "path": "nebulae/context.py",
+      "bytes": 5869,
+      "sha256": "730ce1749f4a5d8c59bfd14a64b6594f415be882a9f5faaa5e2afc25c8608859"
+    },
+    {
+      "path": "nebulae/definition.py",
+      "bytes": 6799,
+      "sha256": "9841cde0e314f23a5985e1106be52f80ae1f80a02098cfdf6c2fca50f241b72c"
+    },
+    {
+      "path": "nebulae/engine.py",
+      "bytes": 26461,
+      "sha256": "c51998ca6f7af5109ef4f69dc35ffb6f6128f1ce672339cd65217b248c167b0a"
+    },
+    {
+      "path": "nebulae/environments.py",
+      "bytes": 17232,
+      "sha256": "653602cb4d5fc9e6b2c9070b633a441569dab0d1a339260117c902786f728eb9"
+    },
+    {
+      "path": "nebulae/input_presets.py",
+      "bytes": 2781,
+      "sha256": "a7c69abc8af1804a79972222e9b04acce5a15d4bd5afdef1434dbd08ea73ff11"
+    },
+    {
+      "path": "nebulae/mcp_guide.py",
+      "bytes": 7352,
+      "sha256": "18f650ecd3be87ae9cdcc254c95fbc2c154a0c28078f62137dd4ffe3aa624f09"
+    },
+    {
+      "path": "nebulae/mcp_server.py",
+      "bytes": 2226,
+      "sha256": "5d1edc3c042e7fe2c5fd37ee1c227274181db7e86f7b5f35cbfaffd2d3a8f6ea"
+    },
+    {
+      "path": "nebulae/mcp_service.py",
+      "bytes": 10340,
+      "sha256": "82a358a7a64074f3f04a1ad848da86ef4114fe20307bf7a666eaaad784330483"
+    },
+    {
+      "path": "nebulae/mcp_settings.py",
+      "bytes": 3584,
+      "sha256": "14444650ea70fdf51d9c63829648bb2f73a77a011589404e2caa9f7440b12862"
+    },
+    {
+      "path": "nebulae/process.py",
+      "bytes": 5222,
+      "sha256": "b70e72f809d4d838fb097bdfe514f9728bc9549424a72ccf4b38a2d9e16b3a28"
+    },
+    {
+      "path": "nebulae/store.py",
+      "bytes": 9716,
+      "sha256": "19744fd75304fb02c31e5b091380efe76a22cee9fcdd95bc84475940bbe238e4"
+    },
+    {
+      "path": "nebulae/tool_catalog.py",
+      "bytes": 1454,
+      "sha256": "57ca0b617c39949f0f53ac42225add077eab601893f4d5dffef10610ecc4ac93"
+    },
+    {
+      "path": "nebulae/web/assets/CodeEditor-BTRDuHVb.js",
+      "bytes": 2723954,
+      "sha256": "77a05be395ebcfa8b2510747c78ad8311456ab033aa543947aae7a76b5d21da8"
+    },
+    {
+      "path": "nebulae/web/assets/CodeEditor-DjpsE8to.css",
+      "bytes": 99095,
+      "sha256": "797aa85d5570a0ebbb047093f58e9adc13945078495425b27133073e5b15a9da"
+    },
+    {
+      "path": "nebulae/web/assets/editor.worker-BmdWdrHZ.js",
+      "bytes": 303777,
+      "sha256": "221daf275ee5802e4627528ff65b44d54c8bada9f7786ee6e752bd99f91fa1f1"
+    },
+    {
+      "path": "nebulae/web/assets/index-CfBScc4F.js",
+      "bytes": 1489824,
+      "sha256": "0f00ee463948a1f5c98839e88cdabb5c8e5f2424e5dc7e647ba2184d4063e524"
+    },
+    {
+      "path": "nebulae/web/assets/index-DEN8cKfG.css",
+      "bytes": 49777,
+      "sha256": "1883d9e0618e6f353fd27b3c59e9161fbed66069c0d9df153c8ff4e04df455d8"
+    },
+    {
+      "path": "nebulae/web/assets/javascript-CuNs-7fC.js",
+      "bytes": 5265,
+      "sha256": "9da6734e071e264c359e10c3ac62ca335ddaac37c829c83824882e3d1ba09a81"
+    },
+    {
+      "path": "nebulae/web/assets/python-DVcOF04j.js",
+      "bytes": 3455,
+      "sha256": "61d5e66de31448c71a2b2d353f600e208be4a754584bd86827db8260d9b23417"
+    },
+    {
+      "path": "nebulae/web/index.html",
+      "bytes": 665,
+      "sha256": "d1a637e0f1e0fba50b67a4f08ac12737d024d52e8566fc13cfc904db57b0ec0e"
+    },
+    {
+      "path": "nebulae/workflow_tools.py",
+      "bytes": 16516,
+      "sha256": "b4da951aac8e12232941db4ef5db7bd960e45c483e9f9d66e7ae713f1dc12479"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 709,
+      "sha256": "03830380eda02c889b5ec6a7251ae710c3fc4d3357d92d2582bcd094c9714756"
+    },
+    {
+      "path": "README.md",
+      "bytes": 16469,
+      "sha256": "ed73fc297c5c7bbc3d629639b1a695289b8e3b6143a4055fa37e6f1ce29eb561"
+    },
+    {
+      "path": "start_mcp.py",
+      "bytes": 435,
+      "sha256": "7ef8060e5aa5d570aec6e44e3c52fadbad5df1856275ceabf83a5bb0944d6f88"
+    },
+    {
+      "path": "tests/agent_model.py",
+      "bytes": 8296,
+      "sha256": "fee320a2e57d5c2f8496aaf845069d1ec37361e679bc1322fb15ae1a77e47aea"
+    },
+    {
+      "path": "tests/Dockerfile.agent",
+      "bytes": 594,
+      "sha256": "d7bb69ebdf81a2d339401890f2c8649e0ef51308d67493e50f85dd5bc634d191"
+    },
+    {
+      "path": "tests/run_linux_agent.py",
+      "bytes": 779,
+      "sha256": "836a5af8433e94576d8a6db8631b55c1579a1b71d025de8716f76bfd7ed9142f"
+    },
+    {
+      "path": "tests/serve_e2e.py",
+      "bytes": 1504,
+      "sha256": "f17968a3b983db72d964fcadf58a678db9738f9ad62445b71aac57705ad03e42"
+    },
+    {
+      "path": "tests/smoke_wheel.py",
+      "bytes": 2850,
+      "sha256": "735f82369a69e0ac1b8850b58b7b3ec00cd092e43dd5a668edfb756955a3d39d"
+    },
+    {
+      "path": "tests/test_agent_lifecycle.py",
+      "bytes": 10907,
+      "sha256": "69dab697861936e1c6f13f51c860c3ba870bc0c714cfcdfb40cdbae81f8ace6e"
+    },
+    {
+      "path": "tests/test_agent.py",
+      "bytes": 10276,
+      "sha256": "686dbc9b1d30128efdc2ee3f0d42fbeda0b58571c21fd0129795d3e21a58205b"
+    },
+    {
+      "path": "tests/test_api.py",
+      "bytes": 9958,
+      "sha256": "2ced91d75c102a83d19112bc6376949b8bae0a11ec1fb1bcbe6e05e00814b689"
+    },
+    {
+      "path": "tests/test_core.py",
+      "bytes": 13881,
+      "sha256": "fa36fba1e3344ee63552ec2cd1bca9036e8bfa85c75a76e5a8dace55595f2293"
+    },
+    {
+      "path": "tests/test_environments.py",
+      "bytes": 18340,
+      "sha256": "042290d59b7a13d7fb1d33c1cddba8cf169b12d7cda0cba9ad4ca2a9ca512698"
+    },
+    {
+      "path": "tests/test_input_presets.py",
+      "bytes": 4433,
+      "sha256": "a9f018d58d8c35a14757a39fe770f7191ec5f0ac493a6d4a86ef9c6c031bbb00"
+    },
+    {
+      "path": "tests/test_mcp_service.py",
+      "bytes": 10720,
+      "sha256": "4497e323678860ce8fc750e46d7a3e1e09c790e10aed4636a0fa40d00db89dce"
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "bytes": 21450,
+      "sha256": "0f4968b85329c2d3b86613287ea4df3cc73cc9ecaed7bde8a05554485ab498ed"
+    },
+    {
+      "path": "tests/test_processes.py",
+      "bytes": 4552,
+      "sha256": "3aeebf2d6171da0dd7b76aaa1c7c691a38401d85b9c53e0b909c31fac9b095dd"
+    },
+    {
+      "path": "tests/test_remote_integration.py",
+      "bytes": 3468,
+      "sha256": "f22448248ff3a6fb5f02b84d7e19b44b97eaa5babdc6581a4aa65554a60d4129"
+    },
+    {
+      "path": "tests/wheels.py",
+      "bytes": 877,
+      "sha256": "3856c0c3a5cec52eb82a3d1193ed65f3ea9a33e294eea3242e925917f3d799c6"
+    },
+    {
+      "path": "uv.lock",
+      "bytes": 138467,
+      "sha256": "b040682389251707ee06b95f18e58a0cee96044244e007bf7de9d81d2857a2d7"
+    },
+    {
+      "path": "workflows/1/main.py",
+      "bytes": 58,
+      "sha256": "aebf8147ab6d7e67b3df37585131fdb39a290bcc84295457b9445910b2591c86"
+    },
+    {
+      "path": "workflows/1/workflow.json",
+      "bytes": 192,
+      "sha256": "37e57d0e5716b749a33d2ac8cd7cbe3f946761cdbd5078646e01b037453b8f9b"
+    },
+    {
+      "path": "workflows/1111/main.py",
+      "bytes": 58,
+      "sha256": "aebf8147ab6d7e67b3df37585131fdb39a290bcc84295457b9445910b2591c86"
+    },
+    {
+      "path": "workflows/1111/workflow.json",
+      "bytes": 209,
+      "sha256": "7d80f6ad069653ad22747cadaf863ef913c0820ae76bd7910770e00c0fc3ec76"
+    },
+    {
+      "path": "workflows/asdasdasd/main.py",
+      "bytes": 58,
+      "sha256": "aebf8147ab6d7e67b3df37585131fdb39a290bcc84295457b9445910b2591c86"
+    },
+    {
+      "path": "workflows/asdasdasd/workflow.json",
+      "bytes": 195,
+      "sha256": "cbe0a4dc73ca40811cc5d3e11482dae743e309d741cba7dc917f063f3056b73e"
+    },
+    {
+      "path": "workflows/demo/steps/count.py",
+      "bytes": 146,
+      "sha256": "4d0a9fefeb6d8350c9966a88356a6c05a7966574f37f727cfba24d47da01a2e5"
+    },
+    {
+      "path": "workflows/demo/steps/prepare.py",
+      "bytes": 132,
+      "sha256": "fa7636bd55adf7ead1e4c9837b20fd386817d5d856a37a3a3d6ada422f01f5fb"
+    },
+    {
+      "path": "workflows/demo/steps/report.py",
+      "bytes": 529,
+      "sha256": "d0593a88241a2e308909e018f54877b20217a4cf643eee54758fc9f2eaf705bb"
+    },
+    {
+      "path": "workflows/demo/steps/uppercase.py",
+      "bytes": 130,
+      "sha256": "96f91fcefe11c7cba83f9911f8673dfabad17e56344acac07c880fb170f16513"
+    },
+    {
+      "path": "workflows/demo/workflow.json",
+      "bytes": 356,
+      "sha256": "9e4a629f61555678aee30dbc4a52b0cc6b0c924621648c87ba4e95aeca2cf838"
+    },
+    {
+      "path": "workflows/gh-1/fetch_trending.py",
+      "bytes": 4423,
+      "sha256": "2c7702818e0b2c9e6ef823d5f0ea07341651ffb44b116583a15b2427b19df166"
+    },
+    {
+      "path": "workflows/gh-1/main.py",
+      "bytes": 58,
+      "sha256": "aebf8147ab6d7e67b3df37585131fdb39a290bcc84295457b9445910b2591c86"
+    },
+    {
+      "path": "workflows/gh-1/summarize.py",
+      "bytes": 4131,
+      "sha256": "5976e5b86816648530ab27b242ccd6468e1d1257d732ea353cadbc7fb2692625"
+    },
+    {
+      "path": "workflows/gh-1/workflow.json",
+      "bytes": 562,
+      "sha256": "efa6ce7130630d1fbb1580fde4a21f86c2e94c0a11985b0d8c63b5454eb63275"
+    },
+    {
+      "path": "workflows/laws-update/law_pipeline.py",
+      "bytes": 42806,
+      "sha256": "71582bf26cb7c50ff0e888db83160c9aa472262a224df487e48b6f5166163b0b"
+    },
+    {
+      "path": "workflows/laws-update/main.py",
+      "bytes": 58,
+      "sha256": "aebf8147ab6d7e67b3df37585131fdb39a290bcc84295457b9445910b2591c86"
+    },
+    {
+      "path": "workflows/laws-update/settings.json",
+      "bytes": 638,
+      "sha256": "d47f48c26c643a8b2d30f9049003c6f9e9f843e9ee0e2d4f8860f589a4006c15"
+    },
+    {
+      "path": "workflows/laws-update/workflow.json",
+      "bytes": 1837,
+      "sha256": "8528366338b2b3f306d918fafa7860c9174b332f870470755c900cf29ca7db94"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/all_categories.py",
+      "bytes": 7611,
+      "sha256": "f9e5313e7e0f412e2d0d0787c69021ea4e98e5f7a6b8a49d1edaee45788ce9d7"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/incremental.py",
+      "bytes": 10841,
+      "sha256": "5e198e2ff9337a8e450637d47bf06666e2d79df7b410b05008a40e862e9b5991"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/inspect_local.py",
+      "bytes": 549,
+      "sha256": "2589685452d8c8750fe7b5b5670d89f09ae96c34c4a98bcef90bacb020a970c1"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/law_http.py",
+      "bytes": 4368,
+      "sha256": "eec1712e26448c3d50a0dd24c1a707bad5da77621518bf0da2a83c3609e70a25"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/listing.py",
+      "bytes": 3850,
+      "sha256": "af10775b7b03ced3bfaed3f365b64aa52695857966e99ced61a1e28004917660"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/main.py",
+      "bytes": 10705,
+      "sha256": "c297f37054251a802b2d2fcfa97c5e5ffa12e164354ca8bf7ed29864c8fda0c8"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/npc_incremental.py",
+      "bytes": 8654,
+      "sha256": "716dc042a5a335bb5b30c6145b8466ba7e8429e7065830a77ab0fb26444ae303"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/probe.py",
+      "bytes": 4393,
+      "sha256": "952a2c9617b8184e6ba8d6a04c073912f2c897a6e342166a6a42496bfb9c7f66"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/public_probe.py",
+      "bytes": 2889,
+      "sha256": "49360b12aaee6269533b62e701de4f5d6ccfa1e8e3c1bd9ada3c1480ccf66a45"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/README.md",
+      "bytes": 3366,
+      "sha256": "5eb312ea8321246d5095131c1115553287fe92932bb4a3c542e09fb251823202"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/site_adapter.py",
+      "bytes": 1397,
+      "sha256": "09e80ca8a30df0e24cbc25c8d2197f823e44806855c465df186826f51b9b89bd"
+    },
+    {
+      "path": "workflows/nw-6c89c6048b0f4a7aa5cf72b9756d408c/workflow.json",
+      "bytes": 3432,
+      "sha256": "247eb995349f8988be4198da170959bb6d84267be470bcc2a21fbbb68486ce02"
+    },
+    {
+      "path": "workflows/nw-e1171fbe2eaa42908f03b3ee8f4850cc/main.py",
+      "bytes": 58,
+      "sha256": "aebf8147ab6d7e67b3df37585131fdb39a290bcc84295457b9445910b2591c86"
+    },
+    {
+      "path": "workflows/nw-e1171fbe2eaa42908f03b3ee8f4850cc/workflow.json",
+      "bytes": 216,
+      "sha256": "0342133c6a3fff0d01ab7bb117b2f0e8d72b70610a68768d843bc231a4cfb813"
+    },
+    {
+      "path": "workflows/wbrs/main.py",
+      "bytes": 4174,
+      "sha256": "db1a35686e44e3424ca7b7a7c37de6424381d8f96eb37ad0e1140f086d5cc19f"
+    },
+    {
+      "path": "workflows/wbrs/workflow.json",
+      "bytes": 186,
+      "sha256": "95feb9bdd475d2848f8d4179364464e08fa9983353a50408989dc77d251f42a4"
+    }
+  ],
+  "copiedFileCount": 168,
+  "omittedSourceFiles": [
+    ".idea/.gitignore",
+    ".idea/deployment.xml",
+    ".idea/inspectionProfiles/profiles_settings.xml",
+    ".idea/inspectionProfiles/Project_Default.xml",
+    ".idea/modules.xml",
+    ".idea/nebulae-workflow.iml",
+    ".idea/vcs.xml"
+  ],
+  "runtimeDirectory": "D:\\Work\\Code\\AiCode\\nebulae-ai-platform-v3.5\\.runtime\\v1",
+  "runtimeFiles": [
+    {
+      "path": "state.sqlite3",
+      "bytes": 7905280,
+      "sha256": "6d842c35aeeba70bd8d83ea92f3e8a7fbd538fff55ce95a605cd736dfc15e23e"
+    },
+    {
+      "path": "state.sqlite3-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "state.sqlite3-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "agent/credentials.json",
+      "bytes": 54,
+      "sha256": "d86b355c648961bf1c299b6118ece086498ba76c776d4736976ae8c099c9918a"
+    },
+    {
+      "path": "mcp/settings.json",
+      "bytes": 410,
+      "sha256": "fa5e81b6c072e37c62867a7c2c20599739f4619831e0672415c9fb1c0caf74b0"
+    }
+  ],
+  "databaseMode": "reuse the original SQLite and artifact paths without copying or rewriting runtime data",
+  "copyHashVerification": "passed",
+  "sourcePreserved": true,
+  "modifiedImportedFiles": [
+    {
+      "path": ".gitignore",
+      "sourceSha256": "21bbcafe3a95f69a0ce94b2776fe7400ecf5a4943b0e0c4d9e1f3e0febf38cda",
+      "destinationSha256": "93cfe4a160d3b14c0f2a166c725bcec188ade9269b02e28096fdf3bb5d03951a"
+    },
+    {
+      "path": "docs/AGENT.md",
+      "sourceSha256": "d554ee32466b8bc9b75ff1be5ec4bb02122fb27ce6fc1b72f23d0be3111da550",
+      "destinationSha256": "d9ae2495ace6f53f15b72253cb58bbafd402ec0cf83a42948a8119130750eb70"
+    },
+    {
+      "path": "docs/MCP.md",
+      "sourceSha256": "65fd68cc04cc26b33f57c12ae42570d7fcaa45904e97306202fbcd7e54cb0d9b",
+      "destinationSha256": "0f7a812af1cb865ea53bbfa629ec3f4a372dde26ceeb024f1c9161463c4026b2"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sourceSha256": "c4e415afa86b2e009c6863f0e247493ed1f0f5125cf59c5febf6ebc6022a4d26",
+      "destinationSha256": "202546eb0fcfed345e9c596faacd01ffb16e46636a4a7a5d0edb083d20799c82"
+    },
+    {
+      "path": "frontend/package.json",
+      "sourceSha256": "a51bd843917bded27d8d5676d32af1231f73227f77161a1bc5c3264fc5756c47",
+      "destinationSha256": "59277179ea9625e191901306ad87da34bed058a2715e28d1053a7ac1ef0eae65"
+    },
+    {
+      "path": "frontend/tests/input-presets.spec.ts",
+      "sourceSha256": "05a4a266c21590614176021aecf3f88cac34a6768b241b8742ffd596cd9694ec",
+      "destinationSha256": "ed1164358d020f2f478b4b62f155b15640e9ad8402ece7dfe57ed0e52de43f03"
+    },
+    {
+      "path": "MANIFEST.in",
+      "sourceSha256": "654fb1ebde9493f053375bfcc98f3608053ac9f77a9abdc7390605cbe0439412",
+      "destinationSha256": "8596f68b88effb859b192dbb5ac45f17d84c2fe7e5340d4d9354b96ec1691e7e"
+    },
+    {
+      "path": "mcp-config.example.json",
+      "sourceSha256": "c977a624095f771c1184918510881fb3e4ab6291546502f5cedc8c70e75a4813",
+      "destinationSha256": "a865c5785dbd264edb792dae17e0f88d4a9a83cabca7734475e3074456d4af85"
+    },
+    {
+      "path": "pyproject.toml",
+      "sourceSha256": "03830380eda02c889b5ec6a7251ae710c3fc4d3357d92d2582bcd094c9714756",
+      "destinationSha256": "1b3822872402167823c02d5d6a5673acfa5658771d5b6860d6ecf7fe39511b20"
+    },
+    {
+      "path": "README.md",
+      "sourceSha256": "ed73fc297c5c7bbc3d629639b1a695289b8e3b6143a4055fa37e6f1ce29eb561",
+      "destinationSha256": "1d4f1a4e6dab90c210f2145c119a4c64279918554c955efa2d35fd85d96e761e"
+    },
+    {
+      "path": "start_mcp.py",
+      "sourceSha256": "7ef8060e5aa5d570aec6e44e3c52fadbad5df1856275ceabf83a5bb0944d6f88",
+      "destinationSha256": "94f8ed75d6164a22d33f1a087aa613b5fd6c952363877b0268fa99d116deb5c5"
+    },
+    {
+      "path": "uv.lock",
+      "sourceSha256": "b040682389251707ee06b95f18e58a0cee96044244e007bf7de9d81d2857a2d7",
+      "destinationSha256": "5846e0f6a0ffc79b5e997eea4e0088208ea92bb4f4c2133a461557ad0591c1b9"
+    }
+  ],
+  "unchangedImportedFiles": 156,
+  "obsoleteStaticAssetsRemovedByBuild": [],
+  "initialReadOnlyRuntimeInventory": {
+    "tasks": 29,
+    "attempts": 104,
+    "artifacts": 2058,
+    "environmentRevisions": 1,
+    "agentSessions": 4,
+    "agentRounds": 32
+  },
+  "finalVerification": {
+    "pythonVersion": "3.12.12",
+    "pythonDependencyLockUnchanged": true,
+    "frontendDependencyGraphUnchanged": true,
+    "piDependencyGraphUnchanged": true,
+    "moduleImportsFromNewDirectory": true,
+    "pythonTestsPassed": 97,
+    "pythonTestFailures": 0,
+    "browserScenariosVerified": 20,
+    "initialBrowserRunPassed": 19,
+    "correctedInputPresetsFilePassed": 4,
+    "wheelBuild": "passed",
+    "sourceDistributionBuild": "passed",
+    "wheelIsolatedInstallAndExecution": "passed",
+    "distributionContainsStartupHelpers": true,
+    "distributionExcludesPrivateData": true,
+    "startup": {
+      "powershellLauncher": "passed",
+      "health": {
+        "service": "nebulae-workflow",
+        "integration_version": 1,
+        "status": "ok",
+        "scheduler": true,
+        "error": null,
+        "runtime": "D:\\Work\\Code\\nebuwork\\workflow\\v3.5.0\\.qa\\isolated-5klnbi37\\.runtime\\v1"
+      },
+      "demoTaskState": "succeeded",
+      "artifactCount": 6,
+      "staticAssetsChecked": 2,
+      "isolatedRuntime": "D:\\Work\\Code\\nebuwork\\workflow\\v3.5.0\\.qa\\isolated-5klnbi37\\.runtime\\v1",
+      "originalRuntimeOpened": false
+    },
+    "thirdPartyPythonPackagesSame": 40,
+    "originalSourceFilesVerified": 175,
+    "originalGitStatusUnchanged": true,
+    "originalRuntimeFilesByteIdentical": 5,
+    "privateConfigurationAndRuntimeGitIgnored": true,
+    "temporaryServiceProcessesStopped": true,
+    "originalRuntimeSchedulerStarted": false,
+    "versionableProjectFiles": 174
+  }
+}

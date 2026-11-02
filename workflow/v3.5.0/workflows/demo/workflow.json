@@ -1,0 +1,9 @@
+{
+  "name": "文本处理示例：并行、汇合、两级存储",
+  "steps": {
+    "prepare": {"code": "steps/prepare.py:run"},
+    "uppercase": {"code": "steps/uppercase.py:run", "needs": ["prepare"]},
+    "count": {"code": "steps/count.py:run", "needs": ["prepare"]},
+    "report": {"code": "steps/report.py:run", "needs": ["uppercase", "count"]}
+  }
+}

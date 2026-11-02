@@ -1,0 +1,85 @@
+name: nebulaekno-test
+services:
+  model-fixture:
+    image: nebulaekno:0.1.0
+    profiles: [functional]
+    entrypoint: [python3, /fixtures/model_fixture.py]
+    healthcheck:
+      disable: true
+    volumes: ["./model_fixture.py:/fixtures/model_fixture.py:ro"]
+  postgres:
+    image: pgvector/pgvector:0.8.2-pg17-bookworm
+    environment:
+      POSTGRES_USER: nebulaekno
+      POSTGRES_PASSWORD: integration-only
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U nebulaekno -d postgres"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  graph:
+    build:
+      context: .
+      dockerfile: Neo4j.Dockerfile
+    environment:
+      NEO4J_AUTH: neo4j/integration-only
+      NEO4J_server_memory_heap_initial__size: 256m
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 128m
+      NEO4J_dbms_security_procedures_unrestricted: apoc.*
+    healthcheck:
+      test: [CMD-SHELL, "cypher-shell -u neo4j -p integration-only 'RETURN 1' >/dev/null"]
+      interval: 5s
+      timeout: 10s
+      retries: 30
+  redis:
+    image: redis:7.4-bookworm
+    command: [redis-server, --appendonly, "yes", --maxmemory-policy, noeviction, --requirepass, integration-only]
+    healthcheck:
+      test: [CMD, redis-cli, -a, integration-only, ping]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  graph-noapoc:
+    image: neo4j:5.26.13
+    profiles: [faults]
+    environment:
+      NEO4J_AUTH: neo4j/integration-only
+      NEO4J_server_memory_heap_initial__size: 128m
+      NEO4J_server_memory_heap_max__size: 256m
+      NEO4J_server_memory_pagecache_size: 64m
+    healthcheck:
+      test: [CMD-SHELL, "cypher-shell -u neo4j -p integration-only 'RETURN 1' >/dev/null"]
+      interval: 5s
+      timeout: 10s
+      retries: 30
+  app:
+    image: nebulaekno:0.1.0
+    environment:
+      NEBULAEKNO_DATABASE_URL: postgresql://nebulaekno:integration-only@postgres:5432/nebulaekno
+      NEBULAEKNO_NEO4J_URL: bolt://neo4j:integration-only@graph:7687
+      NEBULAEKNO_REDIS_URL: redis://default:integration-only@redis:6379/0
+      NEBULAEKNO_CONNECT_RETRY_WINDOW_SECONDS: 5
+      NEBULAEKNO_DEPENDENCY_RECOVERY_SECONDS: 15
+      NEBULAEKNO_EXTRACTION_URL: http://extraction:8082
+    ports: ["127.0.0.1:18080:8080"]
+    volumes: ["data:/data"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      graph: {condition: service_healthy}
+      redis: {condition: service_healthy}
+  extraction:
+    image: nebulaekno-extraction:0.1.0
+    environment:
+      NEBULAEKNO_DATABASE_URL: postgresql://nebulaekno:integration-only@postgres:5432/nebulaekno
+      NEBULAEKNO_REDIS_URL: redis://default:integration-only@redis:6379/0
+      NEBULAEKNO_MAIN_API_URL: http://app:8080
+      NEBULAEKNO_CONNECT_RETRY_WINDOW_SECONDS: 5
+      NEBULAEKNO_PORT: 8082
+    ports: ["127.0.0.1:18082:8082"]
+    volumes: ["data:/data"]
+    depends_on:
+      app: {condition: service_healthy}
+volumes:
+  data:

@@ -1,0 +1,720 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "NebuWorkAgent · 系统架构、部署与数据流",
+    "locale": "zh-CN",
+    "output": ".archify/architecture-nebuwork-system-20261019-123627/nebuwork-system.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "http://221.226.59.66:22244/agent/nebuworkagent.git",
+      "revision": "3b9293c9869fa345731199407027ab1b5631e3e0",
+      "link_mode": "local-only"
+    }
+  },
+  "components": [
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "① 浏览器 · React 工作台",
+      "sublabel": "任务 / 专家 / 项目 / 成果",
+      "tag": "Vite :5173 · 生产静态资源",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        220,
+        90
+      ],
+      "sources": [
+        {
+          "path": "apps/web/vite.config.mjs",
+          "line": 14,
+          "end_line": 32
+        },
+        {
+          "path": "apps/web/src/services/agentApi.js",
+          "line": 34,
+          "end_line": 72
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "type": "cloud",
+      "label": "② 既有业务网关",
+      "sublabel": "/nebulaedev → /nwaa",
+      "tag": ":42000 · REST + SSE",
+      "pos": [
+        410,
+        40
+      ],
+      "size": [
+        220,
+        90
+      ],
+      "sources": [
+        {
+          "path": "apps/web/vite.config.mjs",
+          "line": 5,
+          "end_line": 12
+        },
+        {
+          "path": "apps/web/src/services/apiEndpoint.js",
+          "line": 1,
+          "end_line": 6
+        }
+      ]
+    },
+    {
+      "id": "identity",
+      "type": "security",
+      "label": "统一账号与会话",
+      "sublabel": "用户服务 + 共享 Redis token",
+      "tag": "沿用现有认证",
+      "pos": [
+        730,
+        40
+      ],
+      "size": [
+        230,
+        90
+      ],
+      "sources": [
+        {
+          "path": "apps/web/src/services/authApi.js",
+          "line": 16,
+          "end_line": 26
+        },
+        {
+          "path": "docs/unified-auth-migration.md",
+          "line": 9,
+          "end_line": 22
+        }
+      ]
+    },
+    {
+      "id": "java",
+      "type": "backend",
+      "label": "③ Java 业务控制层",
+      "sublabel": "nebuwork-backend-api /nwaa",
+      "tag": ":42020 · 权限 / 配置 / 业务关联",
+      "pos": [
+        410,
+        330
+      ],
+      "size": [
+        250,
+        110
+      ],
+      "sources": [
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 3,
+          "end_line": 15
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 3,
+          "end_line": 29
+        },
+        {
+          "path": "apps/web/src/services/agentApi.js",
+          "line": 37,
+          "end_line": 72
+        }
+      ]
+    },
+    {
+      "id": "business-db",
+      "type": "database",
+      "label": "业务 MySQL",
+      "sublabel": "nebuwork_1 · nw_*",
+      "tag": "配置 / 发布 / 授权 / 审计",
+      "pos": [
+        40,
+        330
+      ],
+      "size": [
+        220,
+        90
+      ],
+      "sources": [
+        {
+          "path": "docs/workbench-delivery.md",
+          "line": 87,
+          "end_line": 92
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 39,
+          "end_line": 41
+        },
+        {
+          "path": "docs/knowledge-full-delivery.md",
+          "line": 25,
+          "end_line": 29
+        }
+      ]
+    },
+    {
+      "id": "engine-api",
+      "type": "backend",
+      "label": "④ New2 API × 2",
+      "sublabel": "Node.js / Fastify · /v1",
+      "tag": "宿主 :42110 / :42111",
+      "pos": [
+        1000,
+        330
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 13,
+          "end_line": 26
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 83,
+          "end_line": 85
+        }
+      ]
+    },
+    {
+      "id": "worker",
+      "type": "backend",
+      "label": "⑤ New2 Worker × 3",
+      "sublabel": "pi SDK · 主任务 / 独立专家会话",
+      "tag": "Linux Docker · 每实例并发 2",
+      "pos": [
+        1400,
+        330
+      ],
+      "size": [
+        250,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 15,
+          "end_line": 26
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 3,
+          "end_line": 29
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "type": "external",
+      "label": "模型供应商 / 模型网关",
+      "sublabel": "Worker 直接请求模型",
+      "tag": "按已保存模型配置选择",
+      "pos": [
+        1400,
+        40
+      ],
+      "size": [
+        250,
+        90
+      ],
+      "sources": [
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 13,
+          "end_line": 15
+        },
+        {
+          "path": "docs/model-configuration-delivery.md",
+          "line": 1,
+          "end_line": 19
+        }
+      ]
+    },
+    {
+      "id": "engine-db",
+      "type": "database",
+      "label": "⑥ 引擎 MySQL 8",
+      "sublabel": "nebu_agent_engine · ae_*",
+      "tag": "Run / 事件 / 检查点 / 计量",
+      "pos": [
+        1000,
+        640
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 13,
+          "end_line": 26
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 83,
+          "end_line": 85
+        }
+      ]
+    },
+    {
+      "id": "sandbox",
+      "type": "backend",
+      "label": "独立任务容器",
+      "sublabel": "每个 Run / 专家独立工作区",
+      "tag": "脚本 / 文件工具 / stdio MCP",
+      "pos": [
+        1400,
+        640
+      ],
+      "size": [
+        250,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 24,
+          "end_line": 26
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 23,
+          "end_line": 29
+        }
+      ]
+    },
+    {
+      "id": "engine-redis",
+      "type": "messagebus",
+      "label": "Redis 通知通道",
+      "sublabel": "唤醒 Worker / 通知事件变化",
+      "tag": "SQL 扫描兜底 · 非任务真相源",
+      "pos": [
+        1000,
+        940
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 13,
+          "end_line": 13
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 83,
+          "end_line": 85
+        }
+      ]
+    },
+    {
+      "id": "objects",
+      "type": "cloud",
+      "label": "⑦ S3 / MinIO 对象存储",
+      "sublabel": "资源包 / 工作区 / 不可变成果版本",
+      "tag": "正文对象 · 元数据在引擎库",
+      "pos": [
+        1400,
+        940
+      ],
+      "size": [
+        250,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 23,
+          "end_line": 25
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 83,
+          "end_line": 85
+        },
+        {
+          "path": "apps/web/src/services/agentApi.js",
+          "line": 47,
+          "end_line": 55
+        }
+      ]
+    },
+    {
+      "id": "knowledge",
+      "type": "backend",
+      "label": "知识库 · WeKnora / V100",
+      "sublabel": "原文 / FAQ / Wiki / 图谱 / 图片",
+      "tag": "独立 Go 服务 · 按连接启用",
+      "pos": [
+        40,
+        640
+      ],
+      "size": [
+        240,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/knowledge-v100-delivery.md",
+          "line": 7,
+          "end_line": 17
+        },
+        {
+          "path": "docs/knowledge-full-delivery.md",
+          "line": 15,
+          "end_line": 29
+        }
+      ]
+    },
+    {
+      "id": "workflow",
+      "type": "backend",
+      "label": "Workflow 3.5",
+      "sublabel": "Python :8765 · DAG 步骤执行",
+      "tag": "SQLite + 本地源码 / 日志 / 产物",
+      "pos": [
+        410,
+        640
+      ],
+      "size": [
+        240,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/workflow-integration-delivery.md",
+          "line": 15,
+          "end_line": 19
+        },
+        {
+          "path": "docs/workflow-integration-delivery.md",
+          "line": 27,
+          "end_line": 34
+        },
+        {
+          "path": "docs/workflow-integration-delivery.md",
+          "line": 48,
+          "end_line": 50
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "type": "backend",
+      "label": "记忆 · Hindsight",
+      "sublabel": "五类范围 Bank · 召回 / 提取",
+      "tag": "独立 REST 服务 · 按设置启用",
+      "pos": [
+        730,
+        640
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/unified-memory-delivery.md",
+          "line": 9,
+          "end_line": 18
+        },
+        {
+          "path": "docs/unified-memory-delivery.md",
+          "line": 22,
+          "end_line": 30
+        },
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "line": 13,
+          "end_line": 15
+        }
+      ]
+    },
+    {
+      "id": "platform-mcp",
+      "type": "backend",
+      "label": "系统 MCP 协议适配进程",
+      "sublabel": "Streamable HTTP :42120/mcp",
+      "tag": "授权启用 · 独立可选 profile",
+      "pos": [
+        1000,
+        40
+      ],
+      "size": [
+        260,
+        100
+      ],
+      "sources": [
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 3,
+          "end_line": 29
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "line": 43,
+          "end_line": 65
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "New2 逻辑运行域 · API / Worker 容器与独立数据服务可跨主机部署",
+      "wraps": [
+        "engine-api",
+        "worker",
+        "engine-db",
+        "sandbox",
+        "engine-redis",
+        "objects"
+      ],
+      "pad": 26
+    },
+    {
+      "kind": "security-group",
+      "label": "可信 Linux Worker 主机 · 仅 Worker 挂载 Docker socket",
+      "wraps": [
+        "worker",
+        "sandbox"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "web-request",
+      "from": "web",
+      "to": "gateway",
+      "label": "① REST + Cookie",
+      "variant": "emphasis"
+    },
+    {
+      "id": "gateway-business",
+      "from": "gateway",
+      "to": "java",
+      "label": "② /nwaa/api",
+      "variant": "emphasis"
+    },
+    {
+      "id": "gateway-auth",
+      "from": "gateway",
+      "to": "identity",
+      "label": "登录 / 用户资料",
+      "variant": "security"
+    },
+    {
+      "id": "java-session",
+      "from": "java",
+      "to": "identity",
+      "label": "校验 Redis token",
+      "variant": "security"
+    },
+    {
+      "id": "business-state",
+      "from": "java",
+      "to": "business-db",
+      "label": "配置 / 关联 / 审计"
+    },
+    {
+      "id": "create-run",
+      "from": "java",
+      "to": "engine-api",
+      "label": "③ JWT + 幂等请求",
+      "variant": "emphasis"
+    },
+    {
+      "id": "persist-run",
+      "from": "engine-api",
+      "to": "engine-db",
+      "label": "④ 提交 Run / 事件",
+      "variant": "emphasis"
+    },
+    {
+      "id": "claim-run",
+      "from": "worker",
+      "to": "engine-db",
+      "label": "⑤ SQL 领取 / 持久化",
+      "variant": "emphasis"
+    },
+    {
+      "id": "model-call",
+      "from": "worker",
+      "to": "model",
+      "label": "模型请求 / 流式结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sandbox-tools",
+      "from": "worker",
+      "to": "sandbox",
+      "label": "⑥ 执行工具 / 恢复文件",
+      "variant": "emphasis"
+    },
+    {
+      "id": "worker-files",
+      "from": "worker",
+      "to": "objects",
+      "label": "⑦ 工作区 / 成果读写",
+      "variant": "emphasis"
+    },
+    {
+      "id": "api-files",
+      "from": "engine-api",
+      "to": "objects",
+      "label": "上传 / 下载正文"
+    },
+    {
+      "id": "redis-notify",
+      "from": "engine-api",
+      "to": "engine-redis",
+      "label": "提交后通知",
+      "variant": "dashed"
+    },
+    {
+      "id": "redis-wakeup",
+      "from": "engine-redis",
+      "to": "worker",
+      "label": "异步唤醒",
+      "variant": "dashed"
+    },
+    {
+      "id": "worker-business",
+      "from": "worker",
+      "to": "java",
+      "label": "上下文 / 鉴权 / 业务工具",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "right"
+    },
+    {
+      "id": "sse-api-java",
+      "from": "engine-api",
+      "to": "java",
+      "label": "⑧ 事件 / 文件代理",
+      "labelAt": [
+        900,
+        395
+      ]
+    },
+    {
+      "id": "sse-java-gateway",
+      "from": "java",
+      "to": "gateway",
+      "label": "SSE 已提交事件"
+    },
+    {
+      "id": "sse-gateway-web",
+      "from": "gateway",
+      "to": "web",
+      "label": "⑨ 游标重放 / 展示"
+    },
+    {
+      "id": "knowledge-call",
+      "from": "java",
+      "to": "knowledge",
+      "label": "启用后 REST / API Key"
+    },
+    {
+      "id": "workflow-call",
+      "from": "java",
+      "to": "workflow",
+      "label": "启用后运行 / 查状态"
+    },
+    {
+      "id": "memory-call",
+      "from": "java",
+      "to": "memory",
+      "label": "启用后召回 / 同步"
+    },
+    {
+      "id": "worker-mcp",
+      "from": "worker",
+      "to": "platform-mcp",
+      "label": "授权后 tools/call",
+      "variant": "security"
+    },
+    {
+      "id": "mcp-java",
+      "from": "platform-mcp",
+      "to": "java",
+      "label": "凭据 + Run 授权复核",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "一条任务怎么走 · 跟随 ①—⑨",
+      "items": [
+        "①② 浏览器经既有网关访问 Java；③ Java 校验账号和项目，解析已发布运行资源并提交稳定幂等 Run。",
+        "④⑤ API 将 Run 写入引擎 MySQL；Worker 用 SQL 租约领取，pi SDK 执行模型循环，专家有独立 Session、Run 和工作区。",
+        "⑥⑦ Worker 调用独立容器中的工具，工作区和成果正文保存到 S3；⑧⑨ 已提交事件经 API → Java → 网关 → 浏览器，按 sequence / Last-Event-ID 补取。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "部署怎么拆 · 端口与容器",
+      "items": [
+        "前端开发使用 :5173；生产交付为静态资源。网关 :42000，Java :42020/nwaa，分别沿用现有部署。",
+        "New2 deploy/compose.yml 定义 API ×2（宿主 :42110/:42111）、Worker ×3（每实例并发2），以及一次性 migrate。API 与 Worker 共用镜像。",
+        "MySQL、Redis、S3 由既有独立基础设施提供；标准 Compose 不负责启动这些数据服务。外框表达运行域，不代表同一台服务器。",
+        "只有可信 Worker 访问 Docker socket；任务容器不持有 socket、模型密钥或引擎服务凭据。模型密钥在 Worker 内存中使用。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "三种数据放哪里 · 谁是真相源",
+      "items": [
+        "业务 MySQL nw_*：工作台、专家、项目、业务任务关联、发布配置、加密连接、知识证据、记忆审核与调用审计。",
+        "引擎 MySQL ae_*：Session / Run、连续事件、工具意图与结果、租约、检查点、成果版本元数据和 Token 计量。它是执行事实的权威存储。",
+        "Redis 是通知通道；Worker 还有 500ms SQL 扫描兜底。S3 / MinIO 保存内容哈希对象，项目成果使用 artifactId + version，旧版本保持可读。",
+        "按真实生产配置决定数据库和存储物理位置；图中未把共享实例推断为共享 schema，也未执行在线基础设施盘点。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "业务能力怎么接 · 启用条件决定路径",
+      "items": [
+        "知识：Java 按当前账号、项目和专家引用调用 WeKnora REST，转发原文、检索、Wiki、图谱和图片。部署可包含 Postgres/向量引擎、Redis、docreader，Neo4j/对象存储按配置选择；此图将知识子系统内部合并。",
+        "Workflow：Java 调用 Python :8765 的 /api/v1；3.5 自己运行 DAG 并保存 SQLite、日志与产物。其步骤运行使用服务进程权限，不能当作 New2 任务容器沙箱。",
+        "记忆：Java 负责召回、来源、版本、待审核草稿和同步队列；Hindsight 按用户/任务/项目/工作台/专家分 Bank。Java 保存发布审核事实。",
+        "系统 MCP：仅授权启用后，Worker → 独立 :42120 协议进程 → Java；有效权限是冻结授权与当前授权的交集。未启用时沿用原业务工具回调；外部 MCP 与 stdio 工具仍可按 Manifest 配置。"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "权限、恢复与接入边界",
+      "items": [
+        "浏览器访问业务网关，模型密钥和服务访问密钥留在服务端。Java → New2 使用短期 JWT；Worker → Java 使用独立业务回调凭据。",
+        "新 Run 固定 RuntimeManifest；同一 Run 恢复沿用快照。每次模型/工具调用复核当前权限，撤权立即限制旧快照。",
+        "SQL 提交后才公开事件；已完成工具复用结果。未知外部写入进入结果待核对状态，不保证任意外部副作用 exactly-once。",
+        "Nacos 保留既有数据库/Redis、基础服务及部分管理员默认配置；智能体引擎连接由 Java 管理页面加密保存到业务库，不应画成从 Nacos 读取引擎地址。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "依据与阅读范围 · 2026-10-19",
+      "items": [
+        "主仓库：NebuWorkAgent @ 3b9293c。SRC 节点引用此提交中未修改的源码与交付文档；当前未提交界面改动集中在 apps/web/src/features/workbench/commander/、intelligence/、AgentTask.jsx、markdown.js 等，未冒充提交证据。",
+        "跨仓库核对：NebuAgentCoreNew2/README.md、docs/architecture.md、deploy/compose.yml、src/store.ts、src/runtime.ts、src/sandbox.ts；Java agent/AgentBridge.java、AgentClient.java、workflow/WorkflowClient.java、memory/HindsightClient.java。",
+        "同时读取 nebulae-ai-platform-v3.5/nebulae/{api,engine,store}.py 和 nebulae-weknora/docker-compose.yml、internal/router/routes_knowledge.go。相关工作区包含未提交文件；当前字节摘要与行号记录在同目录 evidence.json。",
+        "这是当前工作区与仓库部署配置的综合图；地址、实例数量和启用状态需以目标环境配置为准。系统 MCP 及独立业务接入的代码存在，不等于目标环境已经启用。"
+      ]
+    }
+  ]
+}

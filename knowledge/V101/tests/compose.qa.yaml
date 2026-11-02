@@ -1,0 +1,8 @@
+# Isolated QA acceptance; never points at the development database or volume.
+name: nebulaekno-qa-test
+services:
+  app:
+    image: nebulaekno:qa-test
+    ports: !override ["127.0.0.1:19083:8080"]
+  graph:
+    image: nebulaekno-config-test-graph:latest

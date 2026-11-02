@@ -1,0 +1,105 @@
+{
+  "name": "采集更新法律法规（参考 LawRefBook/Laws）",
+  "environment": {
+    "mode": "shared"
+  },
+  "steps": {
+    "prepare": {
+      "code": "law_pipeline.py:prepare",
+      "timeout": 60
+    },
+    "list_npc": {
+      "code": "law_pipeline.py:list_npc",
+      "needs": [
+        "prepare"
+      ],
+      "timeout": 1800,
+      "retries": 1,
+      "retry_delay": 10
+    },
+    "import_repo": {
+      "code": "law_pipeline.py:import_repo",
+      "needs": [
+        "prepare"
+      ],
+      "timeout": 1800,
+      "retries": 1,
+      "retry_delay": 10
+    },
+    "fetch_parse": {
+      "code": "law_pipeline.py:fetch_parse",
+      "needs": [
+        "prepare",
+        "list_npc",
+        "import_repo"
+      ],
+      "timeout": 21600
+    },
+    "diff": {
+      "code": "law_pipeline.py:diff",
+      "needs": [
+        "prepare",
+        "fetch_parse"
+      ],
+      "timeout": 300
+    },
+    "persist": {
+      "code": "law_pipeline.py:persist",
+      "needs": [
+        "prepare",
+        "diff"
+      ],
+      "timeout": 1800
+    },
+    "publish_storage": {
+      "code": "law_pipeline.py:publish_storage",
+      "needs": [
+        "prepare",
+        "persist",
+        "list_npc"
+      ],
+      "timeout": 3600
+    },
+    "report": {
+      "code": "law_pipeline.py:report",
+      "needs": [
+        "publish_storage"
+      ],
+      "timeout": 120
+    }
+  },
+  "layout": {
+    "prepare": {
+      "x": 0,
+      "y": 0
+    },
+    "list_npc": {
+      "x": 260,
+      "y": -100
+    },
+    "import_repo": {
+      "x": 260,
+      "y": 100
+    },
+    "fetch_parse": {
+      "x": 520,
+      "y": 0
+    },
+    "diff": {
+      "x": 780,
+      "y": 0
+    },
+    "persist": {
+      "x": 1040,
+      "y": 0
+    },
+    "publish_storage": {
+      "x": 1300,
+      "y": 0
+    },
+    "report": {
+      "x": 1560,
+      "y": 0
+    }
+  }
+}

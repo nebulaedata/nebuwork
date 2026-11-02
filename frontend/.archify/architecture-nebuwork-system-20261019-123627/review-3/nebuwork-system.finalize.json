@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-19T04:40:56.740Z",
+  "specification": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\candidate.json",
+    "sha256": "37ecf4d1680c1a677327aa0471b3610e916109965c07e01daf5926de4f553346",
+    "bytes": 19910
+  },
+  "artifact": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\nebuwork-system.html",
+    "sha256": "ba0edf9e25856bf19235259afc08645bf3c1c1b0dccd8d6786d3681ccfbbffeb",
+    "bytes": 866963
+  },
+  "stages": {
+    "validate": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": null,
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:\\Users\\JYZ-SUPER-PC\\.codex\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\candidate.json",
+        "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\nebuwork-system.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "D:\\Work\\Code\\AiCode\\NebuWorkAgent",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "deliver",
+        "receiptId": "a65f39de-5ab4-4c61-a3c6-eaa8de7b8f32",
+        "stage": "render",
+        "type": "architecture",
+        "input": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\candidate.json",
+        "output": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\nebuwork-system.html",
+        "error": "Architecture layout validation failed:\n- [composition/proper-crossing] showcase architecture connections[6] id \"persist-run\" \"engine-api\" -> \"engine-db\" crosses connections[21] id \"worker-mcp\" \"worker\" -> \"platform-mcp\" at [1350, 380] (segments 0 and 1) — if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors.",
+        "diagnostics": [
+          {
+            "code": "composition/proper-crossing",
+            "severity": "error",
+            "message": "[composition/proper-crossing] showcase architecture connections[6] id \"persist-run\" \"engine-api\" -> \"engine-db\" crosses connections[21] id \"worker-mcp\" \"worker\" -> \"platform-mcp\" at [1350, 380] (segments 0 and 1) — if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors.",
+            "subject": {
+              "diagramType": "architecture",
+              "collection": "connections",
+              "index": 6,
+              "id": "persist-run",
+              "from": "engine-api",
+              "to": "engine-db"
+            },
+            "evidence": {
+              "otherRelationship": {
+                "diagramType": "architecture",
+                "collection": "connections",
+                "index": 21,
+                "id": "worker-mcp",
+                "from": "worker",
+                "to": "platform-mcp"
+              },
+              "point": [
+                1350,
+                380
+              ],
+              "segmentIndex": 0,
+              "otherSegmentIndex": 1
+            },
+            "supportedFixes": [
+              "if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors"
+            ]
+          }
+        ],
+        "provenance": "failed",
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      },
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "not-run",
+      "execution": "blocked-by-validate"
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "composition/proper-crossing",
+      "severity": "error",
+      "message": "[composition/proper-crossing] showcase architecture connections[6] id \"persist-run\" \"engine-api\" -> \"engine-db\" crosses connections[21] id \"worker-mcp\" \"worker\" -> \"platform-mcp\" at [1350, 380] (segments 0 and 1) — if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors.",
+      "subject": {
+        "diagramType": "architecture",
+        "collection": "connections",
+        "index": 6,
+        "id": "persist-run",
+        "from": "engine-api",
+        "to": "engine-db"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "architecture",
+          "collection": "connections",
+          "index": 21,
+          "id": "worker-mcp",
+          "from": "worker",
+          "to": "platform-mcp"
+        },
+        "point": [
+          1350,
+          380
+        ],
+        "segmentIndex": 0,
+        "otherSegmentIndex": 1
+      },
+      "supportedFixes": [
+        "if the authored labelAt/via/fromSide/toSide are not required by the user, remove them so the renderer can re-plan; otherwise preserve that intent and adjust route/via or fromSide/toSide so the connections use separate corridors"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\review-3\\nebuwork-system.finalize.json",
+    "summaryReceipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\review-3\\nebuwork-system.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "validate",
+  "finishedAt": "2026-10-19T04:40:57.543Z",
+  "durationMs": 803,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-19T04:38:01.281Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

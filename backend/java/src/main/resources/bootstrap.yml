@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: nebuwork-backend-api
+  profiles:
+    active: ${NEBU_PROFILE:dev}
+  config:
+    import: optional:file:./config/nacos.properties
+  cloud:
+    nacos:
+      config:
+        enabled: ${NEBU_NACOS_ENABLED:true}
+        server-addr: ${NEBU_NACOS_SERVER_ADDR:192.168.204.128:8848}
+        namespace: ${NEBU_NACOS_NAMESPACE:nebuwork-dev}
+        username: ${NEBU_NACOS_USERNAME:nacos}
+        password: ${NEBU_NACOS_PASSWORD:}
+        group: DEFAULT_GROUP
+        file-extension: yml
+        refresh-enabled: true
+        shared-configs:
+          - data-id: cccs-database-base-${NEBU_PROFILE:dev}.yml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: cccs-config-base-${NEBU_PROFILE:dev}.yml
+            group: DEFAULT_GROUP
+            refresh: true

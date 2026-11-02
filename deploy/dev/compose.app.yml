@@ -1,0 +1,208 @@
+name: nebuwork-dev-app
+x-engine-environment: &engine-environment
+  DATABASE_URL: mysql://nebuengine:${ENGINE_DB_PASSWORD:?required}@mysql:3306/nebu_agent_engine
+  REDIS_URL: redis://:${REDIS_PASSWORD:?required}@redis:6379/1
+  REDIS_CHANNEL_PREFIX: nebuwork-dev
+  S3_ENDPOINT: http://minio:9000
+  S3_REGION: us-east-1
+  S3_BUCKET: nebuwork-dev
+  S3_PREFIX: engine
+  S3_ACCESS_KEY: ${MINIO_ROOT_USER:?required}
+  S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:?required}
+  ENGINE_SIGNING_KEY: ${ENGINE_SIGNING_KEY:?required}
+  BUSINESS_API_URL: http://backend:42020/nwaa
+  BUSINESS_API_KEY: ${BUSINESS_API_KEY:?required}
+  SANDBOX_IMAGE: nebuwork-dev-sandbox:2.0.0
+  FILE_TRANSFERS_ENABLED: 'true'
+x-engine: &engine
+  image: nebuwork-dev-engine:2.0.0
+  build: {context: ../../agent-core/v2.0.0}
+  restart: unless-stopped
+  networks: [dev]
+  depends_on:
+    engine-migrate: {condition: service_completed_successfully}
+x-engine-health: &engine-health
+  test: [CMD, node, -e, "fetch('http://localhost:42110/health/ready').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+  interval: 5s
+  timeout: 5s
+  retries: 40
+services:
+  knowledge-v101:
+    image: nebuwork-dev-knowledge-v101:local
+    build: {context: ../../knowledge/V101}
+    restart: unless-stopped
+    environment:
+      NEBULAEKNO_DATABASE_URL: postgresql://nebulaekno:${KNOWLEDGE_DB_PASSWORD:?required}@knowledge-postgres:5432/nebulaekno
+      NEBULAEKNO_NEO4J_URL: bolt://neo4j:${KNOWLEDGE_GRAPH_PASSWORD:?required}@knowledge-graph:7687
+      NEBULAEKNO_REDIS_URL: redis://default:${REDIS_PASSWORD:?required}@redis:6379/0
+      NEBULAEKNO_EXTRACTION_URL: http://knowledge-v101-extraction:8082
+      NEBULAEKNO_MAX_UPLOAD_MIB: '2048'
+      NEBULAEKNO_DOCUMENT_WORKERS: '2'
+      NEBULAEKNO_IMAGE_WORKERS: '1'
+      NEBULAEKNO_MEDIA_WORKERS: '1'
+      NEBULAEKNO_MODEL_MAX_CONCURRENCY: '4'
+    ports: ["${DEV_BIND:-0.0.0.0}:${DEV_KNOWLEDGE_HTTP_PORT:-18081}:8080"]
+    volumes: ["knowledge-v101:/data"]
+    networks: [dev]
+    mem_limit: 4g
+    cpus: 2
+  knowledge-v101-extraction:
+    image: nebuwork-dev-knowledge-v101-extraction:local
+    build: {context: ../../knowledge/V101, dockerfile: Dockerfile.extraction}
+    restart: unless-stopped
+    environment:
+      NEBULAEKNO_DATABASE_URL: postgresql://nebulaekno:${KNOWLEDGE_DB_PASSWORD:?required}@knowledge-postgres:5432/nebulaekno
+      NEBULAEKNO_REDIS_URL: redis://default:${REDIS_PASSWORD:?required}@redis:6379/0
+      NEBULAEKNO_PORT: '8082'
+      NEBULAEKNO_MAIN_API_URL: http://knowledge-v101:8080
+    volumes: ["knowledge-v101:/data"]
+    networks: [dev]
+    depends_on:
+      knowledge-v101: {condition: service_healthy}
+    mem_limit: 2g
+    cpus: 1
+  frontend:
+    image: nebuwork-dev-frontend:local
+    build: {context: ../../frontend}
+    restart: unless-stopped
+    ports: ["${DEV_BIND:-0.0.0.0}:${DEV_HTTP_PORT:-18080}:80"]
+    depends_on:
+      backend: {condition: service_healthy}
+    networks: [dev]
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost/healthz]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  backend:
+    image: nebuwork-dev-java:local
+    build: {context: ../../backend/java}
+    restart: unless-stopped
+    environment:
+      NEBU_NACOS_ENABLED: 'true'
+      NEBU_NACOS_SERVER_ADDR: nacos:8848
+      NEBU_NACOS_NAMESPACE: nebuwork-dev
+      NEBU_NACOS_USERNAME: nacos
+      NEBU_NACOS_PASSWORD: ${NACOS_PASSWORD:?required}
+      NEBU_PROFILE: dev
+      NEBU_HTTP_MAX_FILE_SIZE: 2048MB
+      NEBU_HTTP_MAX_REQUEST_SIZE: 2100MB
+      NEBU_ALLOWED_ORIGINS: ''
+      NEBU_MODELS_BLOCK_SPECIAL_ADDRESSES: 'false'
+      NEBU_MODELS_INTERNAL_ALLOWLIST_ENABLED: 'false'
+      NEBU_KNOWLEDGE_BLOCK_SPECIAL_ADDRESSES: 'false'
+      NEBU_KNOWLEDGE_INTERNAL_ALLOWLIST_ENABLED: 'false'
+      NEBU_DATABASES_BLOCK_SPECIAL_ADDRESSES: 'false'
+      NEBU_DATABASES_TARGET_ALLOWLIST_ENABLED: 'false'
+      NEBU_KNOWLEDGE_ALLOWED_INTERNAL_ORIGINS: http://knowledge-v101:8080
+      NEBU_AUTH_BOOTSTRAP_ENABLED: 'true'
+      NEBU_AUTH_ADMIN_ID: ${DEV_ADMIN_ID:?required}
+      NEBU_AUTH_ADMIN_ACCOUNT: ${DEV_ADMIN_ACCOUNT:?required}
+      NEBU_AUTH_ADMIN_PASSWORD: ${DEV_ADMIN_PASSWORD:?required}
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx1536m
+    volumes: ["backend:/app/nebu-data"]
+    networks: [dev]
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost:42020/nwaa/actuator/health]
+      interval: 5s
+      timeout: 5s
+      start_period: 30s
+      retries: 60
+  engine-migrate:
+    image: nebuwork-dev-engine:2.0.0
+    build: {context: ../../agent-core/v2.0.0}
+    command: node dist/migrate.js
+    environment: *engine-environment
+    networks: [dev]
+  engine-api1:
+    <<: *engine
+    environment: {<<: *engine-environment, ENGINE_ROLE: api}
+    healthcheck: *engine-health
+  engine-api2:
+    <<: *engine
+    environment: {<<: *engine-environment, ENGINE_ROLE: api}
+    healthcheck: *engine-health
+  engine-worker:
+    <<: *engine
+    environment: {<<: *engine-environment, ENGINE_ROLE: worker, WORKER_CONCURRENCY: '2'}
+    volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+    deploy: {replicas: 3}
+  platform-mcp:
+    image: nebuwork-dev-engine:2.0.0
+    build: {context: ../../agent-core/v2.0.0}
+    command: node dist/platform-mcp-main.js
+    restart: unless-stopped
+    environment:
+      BUSINESS_API_URL: http://backend:42020/nwaa
+      PLATFORM_MCP_SERVICE_KEY: ${PLATFORM_MCP_SERVICE_KEY:?required}
+      PLATFORM_MCP_HOST: 0.0.0.0
+      PLATFORM_MCP_PORT: '42120'
+    networks: [dev]
+  workflow:
+    image: nebuwork-dev-workflow:3.5.0
+    build: {context: ../../workflow/v3.5.0}
+    restart: unless-stopped
+    environment: {NEBULAE_SERVICE_API_KEY: "${WORKFLOW_API_KEY:?required}"}
+    volumes: ["workflow-project:/data/project", "workflow-runtime:/data/runtime"]
+    networks: [dev]
+    healthcheck:
+      test: [CMD, python, -c, "import os,urllib.request; urllib.request.urlopen(urllib.request.Request('http://localhost:8765/api/v1/health',headers={'Authorization':'Bearer '+os.environ['NEBULAE_SERVICE_API_KEY']}),timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+  workflow-ui:
+    image: nginx:1.29.2
+    restart: unless-stopped
+    environment:
+      WORKFLOW_API_KEY: ${WORKFLOW_API_KEY:?required}
+      NGINX_ENVSUBST_FILTER: ^WORKFLOW_API_KEY$
+    ports: ["${DEV_BIND:-0.0.0.0}:${DEV_WORKFLOW_HTTP_PORT:-18082}:80"]
+    volumes:
+      - "./workflow-ui.conf.template:/etc/nginx/templates/default.conf.template:ro"
+      - "./generated/workflow-ui.htpasswd:/etc/nginx/workflow-ui.htpasswd:ro"
+    networks: [dev]
+    depends_on:
+      workflow: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost/healthz]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  init:
+    image: nebuwork-dev-engine:2.0.0
+    restart: 'no'
+    environment:
+      DEV_ADMIN_ACCOUNT: ${DEV_ADMIN_ACCOUNT:?required}
+      DEV_ADMIN_PASSWORD: ${DEV_ADMIN_PASSWORD:?required}
+      JAVA_DB_PASSWORD: ${JAVA_DB_PASSWORD:?required}
+      ENGINE_SIGNING_KEY: ${ENGINE_SIGNING_KEY:?required}
+      BUSINESS_API_KEY: ${BUSINESS_API_KEY:?required}
+      WORKFLOW_API_KEY: ${WORKFLOW_API_KEY:?required}
+    command: node /app/dev-init.mjs
+    volumes: ["./app-init.mjs:/app/dev-init.mjs:ro", "./uuid.mjs:/app/uuid.mjs:ro"]
+    depends_on:
+      backend: {condition: service_healthy}
+      engine-api1: {condition: service_healthy}
+      engine-api2: {condition: service_healthy}
+      workflow: {condition: service_healthy}
+    networks: [dev]
+  preview-worker:
+    profiles: [preview]
+    image: nebuwork-dev-preview:local
+    build: {context: ../../backend/java/preview-worker}
+    restart: unless-stopped
+    environment:
+      PREVIEW_API_URL: http://backend:42020/nwaa
+      PREVIEW_WORKER_KEY: ${PREVIEW_WORKER_KEY:?required}
+    cap_add: [NET_ADMIN]
+    tmpfs: ["/work:rw,nosuid,size=8g"]
+    networks: [dev]
+    depends_on:
+      backend: {condition: service_healthy}
+networks:
+  dev: {external: true, name: nebuwork-dev}
+volumes:
+  knowledge-v101: {name: nebuwork-dev-knowledge-v101}
+  backend: {external: true, name: nebuwork-dev-backend}
+  workflow-project: {external: true, name: nebuwork-dev-workflow-project}
+  workflow-runtime: {external: true, name: nebuwork-dev-workflow-runtime}

@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+data/
+node_modules/
+web/dist/
+bin/
+test-results/
+__pycache__/
+*.pyc
+*.log
+
+tests/fixtures/
+
+web/public/pdfjs/

@@ -1,0 +1,34 @@
+{
+  "name": "Github项目榜单",
+  "environment": {
+    "mode": "shared"
+  },
+  "steps": {
+    "fetch_trending": {
+      "code": "fetch_trending.py:run",
+      "needs": [],
+      "timeout": 120,
+      "retries": 1,
+      "retry_delay": 3
+    },
+    "summarize": {
+      "code": "summarize.py:run",
+      "needs": [
+        "fetch_trending"
+      ],
+      "timeout": 60,
+      "retries": 0,
+      "retry_delay": 1
+    }
+  },
+  "layout": {
+    "fetch_trending": {
+      "x": 100,
+      "y": 100
+    },
+    "summarize": {
+      "x": 400,
+      "y": 100
+    }
+  }
+}

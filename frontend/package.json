@@ -1,0 +1,27 @@
+{
+  "name": "nebuwork-agent-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "sync:prototype": "node scripts/sync-prototype.mjs",
+    "dev": "npm run dev -w web",
+    "start": "npm run preview -w web",
+    "preview": "npm run preview -w web",
+    "build": "npm run build -w web",
+    "test": "npm run test -w web",
+    "typecheck": "npm run typecheck -w web",
+    "check": "npm run check -w web",
+    "dev:frontend": "npm run dev -w web",
+    "build:frontend": "npm run build -w web",
+    "check:frontend": "npm run check -w web"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "jsdom": "^26.1.0"
+  }
+}

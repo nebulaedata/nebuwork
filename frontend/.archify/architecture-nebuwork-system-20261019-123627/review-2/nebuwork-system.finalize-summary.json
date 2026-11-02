@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\candidate.json",
+    "sha256": "17ff9ebf1ff33671e21c591bd5eff66e606f6e06deadb036e54ac1723b0dee78",
+    "bytes": 19429
+  },
+  "artifact": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\nebuwork-system.html",
+    "sha256": "ba0edf9e25856bf19235259afc08645bf3c1c1b0dccd8d6786d3681ccfbbffeb",
+    "bytes": 866963
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\review-2\\nebuwork-system.finalize.json",
+    "summaryReceipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\review-2\\nebuwork-system.finalize-summary.json",
+    "browserCheckReceipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-system-20261019-123627\\review-2\\nebuwork-system.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-19T04:38:01.281Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 3648,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  },
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "resolvedCrossovers": 7,
+      "routesOverSuggestedBends": 3
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [
+        {
+          "left": {
+            "id": "create-run",
+            "from": "java",
+            "to": "engine-api",
+            "label": "③ JWT + 幂等请求",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "right": {
+            "id": "worker-business",
+            "from": "worker",
+            "to": "java",
+            "label": "上下文 / 鉴权 / 业务工具",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "point": [
+            684,
+            454.00000000000006
+          ],
+          "sharedNode": "java"
+        },
+        {
+          "left": {
+            "id": "persist-run",
+            "from": "engine-api",
+            "to": "engine-db",
+            "label": "④ 提交 Run / 事件",
+            "collectionIndex": 6,
+            "artifactIndex": 7
+          },
+          "right": {
+            "id": "worker-mcp",
+            "from": "worker",
+            "to": "platform-mcp",
+            "label": "授权后 tools/call",
+            "collectionIndex": 21,
+            "artifactIndex": 22
+          },
+          "point": [
+            1365.8,
+            380
+          ]
+        },
+        {
+          "left": {
+            "id": "claim-run",
+            "from": "worker",
+            "to": "engine-db",
+            "label": "⑤ SQL 领取 / 持久化",
+            "collectionIndex": 7,
+            "artifactIndex": 8
+          },
+          "right": {
+            "id": "model-call",
+            "from": "worker",
+            "to": "model",
+            "label": "模型请求 / 流式结果",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "point": [
+            1562.1000000000006,
+            599.5
+          ],
+          "sharedNode": "worker"
+        },
+        {
+          "left": {
+            "id": "api-files",
+            "from": "engine-api",
+            "to": "objects",
+            "label": "上传 / 下载正文",
+            "collectionIndex": 11,
+            "artifactIndex": 12
+          },
+          "right": {
+            "id": "redis-wakeup",
+            "from": "engine-redis",
+            "to": "worker",
+            "label": "异步唤醒",
+            "collectionIndex": 13,
+            "artifactIndex": 14
+          },
+          "point": [
+            1274,
+            681.9500000000007
+          ]
+        },
+        {
+          "left": {
+            "id": "api-files",
+            "from": "engine-api",
+            "to": "objects",
+            "label": "上传 / 下载正文",
+            "collectionIndex": 11,
+            "artifactIndex": 12
+          },
+          "right": {
+            "id": "worker-business",
+            "from": "worker",
+            "to": "java",
+            "label": "上下文 / 鉴权 / 业务工具",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "point": [
+            1274,
+            527
+          ]
+        },
+        {
+          "left": {
+            "id": "redis-notify",
+            "from": "engine-api",
+            "to": "engine-redis",
+            "label": "提交后通知",
+            "collectionIndex": 12,
+            "artifactIndex": 13
+          },
+          "right": {
+            "id": "worker-business",
+            "from": "worker",
+            "to": "java",
+            "label": "上下文 / 鉴权 / 业务工具",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "point": [
+            1108,
+            527
+          ]
+        },
+        {
+          "left": {
+            "id": "worker-business",
+            "from": "worker",
+            "to": "java",
+            "label": "上下文 / 鉴权 / 业务工具",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "right": {
+            "id": "worker-mcp",
+            "from": "worker",
+            "to": "platform-mcp",
+            "label": "授权后 tools/call",
+            "collectionIndex": 21,
+            "artifactIndex": 22
+          },
+          "point": [
+            1365.8,
+            527
+          ],
+          "sharedNode": "worker"
+        }
+      ],
+      "detours": [
+        {
+          "relationship": {
+            "id": "model-call",
+            "from": "worker",
+            "to": "model",
+            "label": "模型请求 / 流式结果",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "bends": 4,
+          "stretch": 1.328,
+          "directCorridorBlockers": [
+            {
+              "id": "engine-db",
+              "label": "⑥ 引擎 MySQL 8",
+              "box": [
+                1400,
+                330,
+                230,
+                100
+              ]
+            }
+          ]
+        },
+        {
+          "relationship": {
+            "id": "worker-business",
+            "from": "worker",
+            "to": "java",
+            "label": "上下文 / 鉴权 / 业务工具",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "bends": 3,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "worker-mcp",
+            "from": "worker",
+            "to": "platform-mcp",
+            "label": "授权后 tools/call",
+            "collectionIndex": 21,
+            "artifactIndex": 22
+          },
+          "bends": 3,
+          "stretch": 1
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "java has 6 relationships facing its right side, which fits 5 ports: make that side at least 102px, or move some of those neighbours so they face another side of java.",
+      "java → engine-api and worker → java cross next to java: move node engine-api or worker so the two reach java from different sides (for example one level with it, one directly above or below it).",
+      "engine-api → engine-db crosses worker → platform-mcp: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "worker → engine-db and worker → model cross next to worker: move node engine-db or model so the two reach worker from different sides (for example one level with it, one directly above or below it).",
+      "engine-api → objects crosses engine-redis → worker: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "engine-api → objects crosses worker → java: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "engine-api → engine-redis crosses worker → java: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "worker → java and worker → platform-mcp cross next to worker: move node java or platform-mcp so the two reach worker from different sides (for example one level with it, one directly above or below it)."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

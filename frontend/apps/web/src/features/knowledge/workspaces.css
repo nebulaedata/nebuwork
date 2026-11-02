@@ -1,0 +1,194 @@
+/* Knowledge readers share the system shell; each surface owns its scrolling. */
+.knowledge-explorer .kw-icon-button,.kw-icon-button { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 40px; width: 40px; height: 40px; min-height: 40px; padding: 0; border: 1px solid transparent; border-radius: 7px; background: transparent; color: var(--text-sub); cursor: pointer; }
+.kw-icon-button:hover { background: var(--surface-2); color: var(--accent); }
+.kw-type-tag,.kw-meta-chip { display: inline-flex; align-items: center; gap: 5px; font: 400 12px/1.4 var(--font-body); padding: 3px 7px; border-radius: 4px; background: var(--surface-2); color: var(--text-sub); overflow-wrap: anywhere; }
+.kw-type-tag { color: var(--accent); background: var(--accent-dim); }
+.kw-type-entity { color: #268369; background: #31a18115; }
+.kw-type-concept { color: #ad6121; background: #dd873e15; }
+.kw-type-synthesis { color: #367db8; background: #5098d815; }
+.kw-type-comparison { color: #ae475a; background: #cf667915; }
+
+/* Wiki: a persistent directory beside a quiet reading surface. */
+.kw-wiki-workspace { display: grid; grid-template-columns: 292px minmax(0,1fr); gap: 0; min-height: 640px; height: calc(100dvh - 204px); border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; background: var(--surface); }
+.kw-wiki-sidebar { display: flex; flex-direction: column; min-width: 0; padding: 16px 10px; border-right: 1px solid var(--border); overflow: hidden; }
+.kw-sidebar-search { display: flex; align-items: center; position: relative; margin: 0 6px 8px; }
+.kw-sidebar-search > svg { position: absolute; left: 11px; color: var(--text-dim); pointer-events: none; }
+.knowledge-explorer .kw-sidebar-search input { min-width: 0; width: 100%; padding-left: 34px; cursor: text; }
+.knowledge-explorer .kw-wiki-index { display: flex; align-items: center; gap: 10px; text-align: left; border: 0; border-radius: 6px; margin-bottom: 12px; }
+.kw-sidebar-tools { display: flex; align-items: center; justify-content: space-between; margin: 0 6px 12px; border-bottom: 1px solid var(--border); gap: 4px; }
+.kw-sidebar-tabs { display: flex; gap: 14px; }
+.knowledge-explorer .kw-sidebar-tabs button { border: 0; border-radius: 0; padding: 9px 0; border-bottom: 2px solid transparent; color: var(--text-sub); font-size: 13px; white-space: nowrap; }
+.knowledge-explorer .kw-sidebar-tabs button.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
+.kw-sidebar-tabs small { font-size: 11px; color: var(--text-dim); margin-left: 4px; }
+.kw-wiki-tree { overflow: auto; flex: 1; min-height: 0; scrollbar-width: thin; }
+.knowledge-explorer :is(.kw-tree-page,.kw-tree-folder) { display: flex; align-items: center; width: 100%; gap: 7px; min-height: 38px; border: 0; text-align: left; padding: 8px 10px; background: transparent; font-size: 13px; border-radius: 6px; }
+.kw-tree-page svg,.kw-tree-folder svg { flex-shrink: 0; color: var(--text-dim); }
+.kw-tree-page span,.kw-tree-folder span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.kw-tree-folder span { font-weight: 500; }
+.kw-tree-folder small { margin-left: auto; color: var(--text-dim); font-weight: 400; }
+.knowledge-explorer :is(.kw-tree-page,.kw-wiki-index).active { background: var(--accent-dim); color: var(--accent); }
+.kw-tree-page.active svg { color: var(--accent); }
+.kw-tree-status { display: block; font-size: 12px; color: var(--text-dim); padding: 12px; line-height: 1.6; }
+.kw-wiki-main { min-width: 0; overflow: auto; padding: 28px 32px; scrollbar-width: thin; }
+.kw-wiki-article { color: var(--text); min-width: 0; }
+.kw-wiki-article-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.kw-wiki-article h1 { font: 600 26px/1.4 var(--font-body); margin: 0 0 12px; overflow-wrap: anywhere; }
+.kw-wiki-page-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 18px; }
+.kw-wiki-updated { display: flex; justify-content: flex-end; align-items: center; gap: 5px; font-size: 12px; color: var(--text-dim); margin-top: -10px; margin-bottom: 16px; }
+.kw-wiki-summary { color: var(--text-sub); line-height: 1.8; margin-bottom: 24px; white-space: pre-wrap; }
+.kw-wiki-body { font-size: 14px; line-height: 1.9; min-height: 100px; }
+.kw-wiki-body :is(h1,h2,h3,h4) { font-family: var(--font-body); line-height: 1.5; }
+.kw-wiki-body a { color: var(--accent); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 4px; }
+.kw-wiki-links { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
+.kw-wiki-links > div { display: grid; grid-template-columns: 70px minmax(0,1fr); gap: 14px; align-items: baseline; }
+.kw-wiki-links > div > span { color: var(--text-dim); font-size: 12px; }
+.kw-wiki-links nav { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.knowledge-explorer .kw-wiki-links button { min-height: auto; padding: 0; border: 0; background: transparent; border-radius: 0; font-size: 13px; color: var(--accent); text-decoration: underline dotted; text-underline-offset: 4px; text-align: left; overflow-wrap: anywhere; }
+
+/* Graph: one large map with floating controls and a contextual reader. */
+.kw-graph-page { gap: 12px; }
+.kw-graph-page-toolbar { display: flex; align-items: center; gap: 10px; }
+.kw-graph-page-toolbar > .kw-icon-button { margin-left: auto; }
+.kw-graph-page-toolbar form + .kw-icon-button { margin-left: 0; }
+.kw-graph-page-toolbar form { display: flex; align-items: center; gap: 8px; margin-left: auto; width: 320px; min-width: 0; }
+.kw-graph-page-toolbar form input { cursor: text; width: 100%; min-width: 0; flex: 1; }
+.kw-graph-page-toolbar form button { flex-shrink: 0; }
+.kw-view-switch { display: flex; border: 1px solid var(--border); border-radius: 8px; padding: 3px; gap: 3px; }
+.knowledge-explorer .kw-view-switch button { border: 0; min-height: 32px; padding: 5px 12px; font-size: 13px; }
+.kw-graph-workspace { display: grid; grid-template-columns: minmax(0,1fr); min-height: 620px; height: calc(100dvh - 256px); overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); }
+.kw-graph-workspace.has-selection { grid-template-columns: minmax(0,1fr) minmax(360px,29%); }
+.kw-graph-stage { min-width: 0; min-height: 0; overflow: hidden; position: relative; }
+.kw-graph-stage > svg { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+.kw-graph-stage > svg:active { cursor: grabbing; }
+.kw-graph-stage svg text { fill: var(--text-sub); pointer-events: none; }
+.kw-graph-stage .kw-graph-cluster { fill: var(--surface-2); opacity: .7; }
+.kw-graph-stage .kw-graph-section-label { fill: var(--text-dim); }
+.kw-node-hit { fill: transparent; cursor: pointer; }
+.kw-node-dot { fill: currentColor; stroke: var(--surface); cursor: pointer; }
+.kw-graph-node { outline: none; }
+.kw-graph-node.active .kw-node-dot { stroke: currentColor; stroke-width: 4px; paint-order: stroke; }
+.kw-graph-node:focus-visible .kw-node-dot { stroke: var(--text); stroke-width: 4px; }
+.kw-graph-node.active text { fill: var(--text); }
+.kw-graph-search { position: absolute; top: 20px; left: 20px; width: min(320px,45%); z-index: 2; }
+.kw-graph-search > label { display: flex; position: relative; align-items: center; }
+.kw-graph-search > label > svg { position: absolute; left: 12px; color: var(--text-dim); }
+.knowledge-explorer .kw-graph-search input { width: 100%; min-width: 0; cursor: text; padding-left: 36px; box-shadow: 0 2px 8px #1612260a; }
+.kw-graph-search-results { margin-top: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 5px; max-height: 320px; overflow: auto; box-shadow: 0 4px 16px #16122612; }
+.knowledge-explorer .kw-graph-search-results button { display: block; border: 0; width: 100%; text-align: left; font-size: 12px; padding: 7px 10px; min-height: 34px; }
+.kw-graph-search-results p { padding: 10px; font-size: 12px; color: var(--text-dim); }
+.knowledge-explorer .kw-graph-options-toggle { display: none; }
+.kw-graph-legend { position: absolute; top: 20px; right: 20px; z-index: 1; width: 176px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); padding: 10px; box-shadow: 0 3px 12px #1612260a; }
+.knowledge-explorer .kw-graph-legend button { display: flex; align-items: center; gap: 8px; width: 100%; border: 0; min-height: 28px; padding: 4px 5px; font-size: 12px; color: var(--text-sub); text-align: left; }
+.kw-graph-legend button i { width: 9px; height: 9px; border-radius: 50%; }
+.kw-graph-legend .is-hidden { opacity: .4; }
+.kw-graph-legend-actions { padding-top: 9px; margin-top: 9px; border-top: 1px solid var(--border); }
+.kw-graph-legend > p { border-top: 1px solid var(--border); padding: 10px 5px 0; margin-top: 8px; font-size: 11px; color: var(--text-dim); line-height: 1.7; }
+.kw-graph-legend strong,.kw-graph-legend small { display: block; font-weight: 400; font-size: 11px; }
+.kw-graph-legend strong { color: var(--text-sub); font-size: 12px; }
+.kw-graph-zoom { display: flex; position: absolute; bottom: 16px; right: 20px; gap: 5px; }
+.knowledge-explorer .kw-graph-zoom button { display: grid; place-items: center; width: 36px; min-height: 36px; padding: 0; }
+.kw-graph-hint { position: absolute; bottom: 18px; left: 20px; color: var(--text-dim); font-size: 11px; pointer-events: none; }
+.kw-graph-empty { display: grid; place-items: center; position: absolute; inset: 140px 20px 60px; color: var(--text-dim); pointer-events: none; }
+.kw-graph-detail { position: relative; min-width: 0; overflow: auto; border-left: 1px solid var(--border); padding: 18px 22px; scrollbar-width: thin; }
+.kw-graph-detail > header { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+.kw-graph-detail > header > button:not(.kw-icon-button) { margin-left: auto; font-size: 12px; min-height: 32px; padding: 5px 9px; }
+.kw-graph-detail h1 { font-size: 24px; }
+.kw-graph-detail .kw-wiki-body { font-size: 15px; line-height: 1.85; }
+.kw-graph-detail .kw-wiki-page-meta { margin-bottom: 12px; }
+.kw-graph-detail.kw-wiki-detail > header { position: absolute; right: 16px; top: 14px; margin: 0; z-index: 2; }
+.kw-graph-detail.kw-wiki-detail .kw-wiki-article-header > div { display: flex; flex-direction: column; }
+.kw-graph-detail.kw-wiki-detail .kw-wiki-page-meta { order: -1; padding-right: 140px; min-height: 36px; margin-bottom: 18px; }
+.kw-graph-detail .kw-wiki-links > div { grid-template-columns: 1fr; gap: 6px; }
+.kw-graph-detail .kw-graph-open-page { display: flex; gap: 8px; align-items: center; margin-top: 20px; color: var(--accent); }
+.kw-entity-detail h2 { font-size: 22px; margin: 0 0 12px; line-height: 1.5; }
+.kw-entity-detail h3 { font-size: 14px; margin: 24px 0 12px; }
+.kw-entity-detail p { font-size: 13px; line-height: 1.8; margin-bottom: 12px; overflow-wrap: anywhere; }
+.kw-entity-detail button { text-align: left; margin-top: 8px; font-size: 12px; color: var(--accent); }
+
+/* Documents: retain the list while opening information and preview on the right. */
+.knowledge-explorer-page.kw-document-workspace { display: grid; grid-template-columns: minmax(0,1fr); padding: 0; gap: 0; min-height: 600px; overflow: hidden; }
+.knowledge-explorer-page.kw-document-workspace.has-document { grid-template-columns: minmax(260px,1fr) minmax(470px,55%); }
+.kw-document-list { padding: 24px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.kw-document-workspace.has-document .kw-document-list { background: var(--surface-2); }
+.kw-document-workspace.has-document .knowledge-result-title strong { font-size: 13px; }
+.kw-document-workspace .knowledge-explorer-row.active { background: var(--accent-dim); border-radius: 7px; }
+.kw-document-workspace .knowledge-result-copy .knowledge-actions button { padding: 3px 0; border: 0; background: transparent; }
+.kw-document-panel { display: flex; flex-direction: column; min-width: 0; border-left: 1px solid var(--border); background: var(--surface); max-height: calc(100dvh - 180px); min-height: 640px; overflow: auto; padding: 0 22px 22px; scrollbar-width: thin; }
+.kw-document-panel-heading { display: flex; align-items: flex-start; gap: 8px; padding: 16px 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; position: sticky; top: 0; z-index: 3; background: var(--surface); }
+.kw-document-panel-heading h2 { flex: 1; font-size: 14px; line-height: 1.7; font-weight: 500; overflow-wrap: anywhere; padding: 5px 0; }
+.kw-document-panel > .knowledge-reader { flex: 1; }
+.kw-document-info { display: flex; flex-direction: column; gap: 22px; }
+.kw-document-info > section { border-bottom: 1px solid var(--border); padding-bottom: 22px; }
+.kw-document-info h3,.kw-content-title { font-size: 14px; font-weight: 500; line-height: 1.6; margin: 0 0 18px; display: flex; gap: 8px; align-items: center; }
+.kw-document-info h3::before,.kw-content-title::before { content: ''; width: 3px; height: 14px; border-radius: 2px; background: var(--accent); flex-shrink: 0; }
+.kw-document-info dl { display: grid; grid-template-columns: 86px minmax(0,1fr); gap: 12px 10px; font-size: 12px; line-height: 1.7; }
+.kw-document-info dt { color: var(--text-dim); overflow-wrap: anywhere; }
+.kw-document-info dd { margin: 0; color: var(--text-sub); overflow-wrap: anywhere; }
+.kw-document-info p { font-size: 13px; line-height: 1.8; white-space: pre-wrap; }
+.kw-document-summary { border: 1px solid var(--border); padding: 12px; border-radius: 7px; color: var(--text-sub); }
+.kw-document-panel .knowledge-reader > header { margin-top: 5px; padding-top: 6px; }
+.kw-document-panel .kw-content-title { margin: 0; white-space: nowrap; }
+.kw-document-panel .kw-content-title small { display: inline; font-size: 11px; margin: 0; }
+.kw-document-panel .knowledge-actions { display: flex; gap: 6px; }
+.kw-document-panel .knowledge-actions button { min-height: 32px; padding: 5px 9px; font-size: 12px; }
+.kw-document-panel .knowledge-original { height: 64vh; min-height: 440px; padding: 10px; }
+.kw-document-panel .knowledge-parsed { max-height: none; }
+.kw-document-panel .knowledge-locate-status { font-size: 12px; padding: 8px 12px; }
+.kw-document-workspace.document-expanded { grid-template-columns: minmax(0,1fr); }
+.kw-document-workspace.document-expanded .kw-document-list { display: none; }
+.kw-document-workspace.document-expanded .kw-document-panel { border-left: 0; }
+.kw-wiki-with-document,.kw-graph-page { position: relative; }
+.kw-wiki-with-document > .kw-document-panel { position: absolute; top: 0; bottom: 0; right: 0; width: calc(100% - 292px); max-height: 100%; height: 100%; min-height: 0; border: 1px solid var(--border); border-radius: 0 var(--r-md) var(--r-md) 0; z-index: 4; }
+.kw-graph-page > .kw-document-panel { position: absolute; top: 52px; bottom: 0; right: 0; width: 55%; max-height: none; min-height: 0; border: 1px solid var(--border); z-index: 4; border-radius: 0 var(--r-md) var(--r-md) 0; }
+.kw-wiki-with-document.document-expanded > .kw-document-panel,.kw-graph-page.document-expanded > .kw-document-panel { width: 100%; }
+.kw-wiki-with-document.has-document .kw-wiki-main { visibility: hidden; }
+
+@media(max-width:1100px) {
+  .kw-wiki-workspace { grid-template-columns: 250px minmax(0,1fr); }
+  .kw-wiki-with-document > .kw-document-panel { width: calc(100% - 250px); }
+  .kw-wiki-main { padding: 24px; }
+  .kw-graph-workspace.has-selection { grid-template-columns: minmax(0,1fr) 340px; }
+  .kw-graph-search { width: 46%; left: 12px; }
+  .kw-graph-legend { width: 150px; right: 12px; }
+  .kw-document-workspace.has-document .kw-document-list { padding: 18px; }
+}
+@media(max-width:800px) {
+  .kw-wiki-workspace { grid-template-columns: 210px minmax(0,1fr); }
+  .kw-wiki-main { padding: 20px; }
+  .kw-wiki-article h1 { font-size: 22px; }
+  .kw-graph-workspace.has-selection { grid-template-columns: minmax(0,1fr); height: auto; }
+  .kw-graph-workspace.has-selection .kw-graph-stage { height: 560px; }
+  .kw-graph-workspace.has-selection .kw-graph-stage { grid-row: 2; }
+  .kw-graph-detail { grid-row: 1; border-left: 0; border-bottom: 1px solid var(--border); max-height: 65vh; }
+  .knowledge-explorer-page.kw-document-workspace.has-document { grid-template-columns: minmax(0,1fr); }
+  .kw-document-workspace.has-document .kw-document-list { display: none; }
+  .kw-document-panel { border-left: 0; }
+  .kw-graph-page > .kw-document-panel { width: 100%; }
+  .kw-wiki-with-document > .kw-document-panel { width: calc(100% - 210px); }
+}
+@media(max-width:680px) {
+  .kw-wiki-workspace { display: flex; flex-direction: column; height: auto; min-height: 640px; }
+  .kw-wiki-sidebar { border-right: 0; border-bottom: 1px solid var(--border); max-height: 290px; padding: 12px 8px; }
+  .kw-wiki-main { padding: 20px 16px; min-height: 400px; }
+  .kw-wiki-links > div { grid-template-columns: 1fr; gap: 5px; }
+  .kw-wiki-page-meta { margin-bottom: 12px; }
+  .kw-graph-page-toolbar { flex-wrap: wrap; }
+  .kw-graph-page-toolbar form { width: 100%; order: 2; }
+  .kw-graph-page-toolbar form input { width: 100%; min-width: 0; }
+  .kw-graph-page-toolbar form + .kw-icon-button { margin-left: auto; }
+  .knowledge-explorer .kw-view-switch button { font-size: 12px; padding: 5px 8px; }
+  .kw-graph-workspace { min-height: 570px; height: 66vh; }
+  .kw-graph-search { top: 12px; width: calc(100% - 24px); }
+  .knowledge-explorer .kw-graph-options-toggle { display: grid; place-items: center; position: absolute; right: 12px; top: 62px; width: 36px; min-height: 36px; padding: 0; }
+  .kw-graph-legend { display: none; top: 106px; width: 160px; padding: 6px; }
+  .kw-graph-legend.is-open { display: block; }
+  .kw-graph-legend > p { font-size: 10px; }
+  .kw-graph-hint { left: 12px; font-size: 10px; }
+  .kw-graph-zoom { right: 12px; }
+  .kw-document-list { padding: 16px; }
+  .kw-document-panel { padding: 0 14px 16px; max-height: none; }
+  .kw-document-panel-heading h2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .kw-wiki-with-document > .kw-document-panel { position: relative; width: 100%; height: auto; max-height: none; }
+  .kw-wiki-with-document.has-document .kw-wiki-main { display: none; }
+  .kw-document-info dl { grid-template-columns: 64px minmax(0,1fr); }
+}

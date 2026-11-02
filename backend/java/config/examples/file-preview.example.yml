@@ -1,0 +1,11 @@
+# Merge into config/application-local.yml after V27/V28 and New2 upgrade.
+nebu:
+  files:
+    enabled: false
+    worker-key: ${NEBU_FILE_PREVIEW_WORKER_KEY:}
+    worker-timeout-ms: 3600000
+    preview-ttl-ms: 604800000
+    preview-cache-dir: /var/cache/nebu-file-previews
+    preview-cache-bytes: 137438953472
+# Keep gateway request limits >= 16 MiB plus headers for the binary part route.
+# Task/project 2 GiB uploads use binary parts; knowledge imports use streamed multipart up to 2 GiB.

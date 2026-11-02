@@ -1,0 +1,22 @@
+FROM golang:1.26-bookworm AS build
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN --mount=type=cache,target=/go/pkg/mod go mod download
+COPY cmd ./cmd
+COPY internal ./internal
+RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -o /out/extraction-api ./cmd/extraction-api
+
+FROM python:3.11-slim-bookworm
+RUN apt-get update && apt-get install -y --no-install-recommends tini ca-certificates && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY extractor/requirements.txt /app/extractor/requirements.txt
+RUN pip install --no-cache-dir -r /app/extractor/requirements.txt
+RUN groupadd -g 10001 nebulaekno && useradd -u 10001 -g nebulaekno -m nebulaekno && mkdir -p /data && chown nebulaekno:nebulaekno /data
+COPY --from=build /out/extraction-api /app/extraction-api
+COPY extractor /app/extractor
+ENV PYTHONUNBUFFERED=1 NEBULAEKNO_DATA_DIR=/data NEBULAEKNO_HOST=0.0.0.0 NEBULAEKNO_PORT=8082
+USER nebulaekno
+EXPOSE 8082
+VOLUME ["/data"]
+HEALTHCHECK --interval=10s --timeout=5s --start-period=90s --retries=3 CMD ["/app/extraction-api","healthcheck"]
+ENTRYPOINT ["/usr/bin/tini","--","/app/extraction-api"]

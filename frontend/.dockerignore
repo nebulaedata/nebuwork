@@ -1,0 +1,9 @@
+**/node_modules
+**/dist
+**/.env*
+**/.git
+**/.qa
+nebu-data
+docs
+agent-hub-proto*
+workbench-core

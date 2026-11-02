@@ -1,0 +1,11 @@
+# Workbench service protocol
+
+The existing independent MCP process also hosts `/services/{workbenchId}/mcp`. Keep it on the internal network behind Java's public `/api/workbench-services/{id}/mcp` route. This does not change the legacy internal `/mcp` Run authorization.
+
+Run `npm run build`, then `npm run start:platform-mcp` with `BUSINESS_API_URL` (including `/nwaa`), `PLATFORM_MCP_SERVICE_KEY` (at least 32 characters), `PLATFORM_MCP_HOST` and `PLATFORM_MCP_PORT`. Defaults listen on `127.0.0.1:42120`. Use the same service key in Java `nebu.platform-mcp.service-key` and its private adapter URL in `nebu.platform-mcp.url`.
+
+Java remains authoritative for identities, manifests, grants, schemas, dispatch, page assets and state. Every SDK request performs the authenticated Java context callback. Business calls and UI helpers independently revalidate the short-lived service token. Capability inputs wrap `{requestKey,body:{projectId,input,releaseId?}}`; asynchronous responses contain a durable operation ID. Generated HTML UI resources use the MCP Apps profile; app helpers do not expose the internal platform administration catalog.
+
+The API advertises `workbenchServiceResults:true`. Java constructs a service manifest from the published configuration; Worker uses the same pi runtime and durable tool journal. A root task must explicitly submit a Schema-valid `service_result_submit` result; Java only finalizes it after the run completes. Normal root tasks can save service/page drafts, without a publishing tool. Do not add a Workflow snapshot or modify Workflow 3.5 for this feature.
+
+Tests: `npm test -- --fileParallelism=false --maxWorkers=1`; focused transport checks in `tests/workbench-service-mcp.test.ts`. `tests/workbench-service-acceptance.ts` is an explicit isolated integration script requiring the Java opt-in execution host, separate Workflow data directories and `deploy/compose.test.yml` infrastructure. It uses a scripted HTTP model fixture with the real pi SDK, MySQL/Redis/S3 and Docker; it is not production-model semantic acceptance. The frontend repository's `docs/workbench-service-delivery.md` covers public configuration, OAuth, gateway discovery rewrites, page SDK and rollback.

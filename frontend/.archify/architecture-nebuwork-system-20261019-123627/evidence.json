@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-19T04:40:26.286Z",
+  "scope": "Current local source and checked-in deployment configuration; no live infrastructure inventory.",
+  "artifact": "nebuwork-system.html",
+  "primarySourceMode": "Git-verified local-only Archify citations in NebuWorkAgent; cross-repository details verified against the working-tree files listed here.",
+  "facts": [
+    {
+      "claim": "API x2, Worker x3, independent migrate, external MySQL/Redis/S3, Worker-only Docker socket",
+      "repository": "NebuAgentCoreNew2",
+      "path": "deploy/compose.yml"
+    },
+    {
+      "claim": "Both API and Worker roles publish transactional outbox notifications; Worker also scans SQL every 500 ms",
+      "repository": "NebuAgentCoreNew2",
+      "path": "src/main.ts",
+      "line": 27,
+      "end_line": 47
+    },
+    {
+      "claim": "SQL is the execution authority, sessions are claimed with SKIP LOCKED, tools/checkpoints persist",
+      "repository": "NebuAgentCoreNew2",
+      "path": "src/store.ts",
+      "line": 416,
+      "end_line": 590
+    },
+    {
+      "claim": "Separate per-run task containers",
+      "repository": "NebuAgentCoreNew2",
+      "path": "src/sandbox.ts",
+      "line": 35,
+      "end_line": 88
+    },
+    {
+      "claim": "Java validates scope and dispatches knowledge, Workflow and memory callbacks",
+      "repository": "Java backend",
+      "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentBridge.java",
+      "line": 83,
+      "end_line": 119
+    },
+    {
+      "claim": "Workflow uses its own SQLite runtime rather than the New2 execution database",
+      "repository": "Workflow 3.5",
+      "path": "nebulae/engine.py",
+      "line": 22,
+      "end_line": 22
+    },
+    {
+      "claim": "Knowledge service stack supports optional graph/vector/object-store profiles; this artifact merges that internal topology",
+      "repository": "WeKnora",
+      "path": "docker-compose.yml"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "NebuWorkAgent",
+      "root": "D:\\Work\\Code\\AiCode\\NebuWorkAgent",
+      "revision": "3b9293c9869fa345731199407027ab1b5631e3e0",
+      "origin": "http://221.226.59.66:22244/agent/nebuworkagent.git",
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "b83c633a0f8836c54ac912fb37edce32ceb390c0e7d2cef7911849e1141d02f8",
+          "lines": 14,
+          "basis": "unchanged committed source",
+          "headSha256": "b83c633a0f8836c54ac912fb37edce32ceb390c0e7d2cef7911849e1141d02f8"
+        },
+        {
+          "path": "apps/web/vite.config.mjs",
+          "sha256": "0ffff4ea7da7f778a6839de9cacf3b279c73bde1cb70a7424375674910f6f589",
+          "lines": 35,
+          "basis": "unchanged committed source",
+          "headSha256": "0ffff4ea7da7f778a6839de9cacf3b279c73bde1cb70a7424375674910f6f589"
+        },
+        {
+          "path": "apps/web/worker/index.js",
+          "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389",
+          "lines": 16,
+          "basis": "unchanged committed source",
+          "headSha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389"
+        },
+        {
+          "path": "apps/web/src/services/apiEndpoint.js",
+          "sha256": "f24ccb375bf2eef77259d4667b3a749a8b996bceeec2894ca7c4183cb2615aa8",
+          "lines": 7,
+          "basis": "unchanged committed source",
+          "headSha256": "f24ccb375bf2eef77259d4667b3a749a8b996bceeec2894ca7c4183cb2615aa8"
+        },
+        {
+          "path": "apps/web/src/services/agentApi.js",
+          "sha256": "193310df391f0da15b287c4086738e47eafcb431f560731768c6610237a9dd46",
+          "lines": 102,
+          "basis": "unchanged committed source",
+          "headSha256": "f92c2c29330198ed371cec247c76b15a193d6ceec03faa47e8f497a4b9e2f1fc"
+        },
+        {
+          "path": "apps/web/src/services/authApi.js",
+          "sha256": "cb7422e8a99409078d1fb807e631cd41e437527c575e2061b46669f500a8fd70",
+          "lines": 88,
+          "basis": "unchanged committed source",
+          "headSha256": "cb7422e8a99409078d1fb807e631cd41e437527c575e2061b46669f500a8fd70"
+        },
+        {
+          "path": "docs/agent-engine-delivery.md",
+          "sha256": "d92c39fb6c975be211010f788693863734dd9a6670a6baa597426dbbb36c5fbc",
+          "lines": 27,
+          "basis": "unchanged committed source",
+          "headSha256": "d92c39fb6c975be211010f788693863734dd9a6670a6baa597426dbbb36c5fbc"
+        },
+        {
+          "path": "docs/platform-mcp-delivery.md",
+          "sha256": "31b5b647b050f2a444fbfbb472f2bc6e9f816e4820b17a43f94c50d0ccafb684",
+          "lines": 105,
+          "basis": "unchanged committed source",
+          "headSha256": "31b5b647b050f2a444fbfbb472f2bc6e9f816e4820b17a43f94c50d0ccafb684"
+        },
+        {
+          "path": "docs/knowledge-full-delivery.md",
+          "sha256": "491fea1418dce5ed05c8baa1af2ebb184c511af2fa54e9332b8448d1e7091d27",
+          "lines": 70,
+          "basis": "unchanged committed source",
+          "headSha256": "491fea1418dce5ed05c8baa1af2ebb184c511af2fa54e9332b8448d1e7091d27"
+        },
+        {
+          "path": "docs/knowledge-v100-delivery.md",
+          "sha256": "085973ddb70b36d9f5fe4fff9e717b22576ac9b664bf5a0a4e653e4e2d5e1c09",
+          "lines": 112,
+          "basis": "unchanged committed source",
+          "headSha256": "30907c264b25ded52df2b0f8b7b002e717d136561aa377347df08b71f24fd1af"
+        },
+        {
+          "path": "docs/workflow-integration-delivery.md",
+          "sha256": "0e18261fdb8da7183bafe9d71a163fc96ec12d8b6c9b71de714488776cbc92ab",
+          "lines": 72,
+          "basis": "unchanged committed source",
+          "headSha256": "0e18261fdb8da7183bafe9d71a163fc96ec12d8b6c9b71de714488776cbc92ab"
+        },
+        {
+          "path": "docs/unified-memory-delivery.md",
+          "sha256": "156631cc16b112ce40bc6ba55abc81fce58f68dc6f2f4199ae0907054b8d8e7d",
+          "lines": 78,
+          "basis": "unchanged committed source",
+          "headSha256": "156631cc16b112ce40bc6ba55abc81fce58f68dc6f2f4199ae0907054b8d8e7d"
+        },
+        {
+          "path": "docs/workbench-delivery.md",
+          "sha256": "e129a026923bfa873c1d5a5c60feb1cdf1ffb8c9aa1fe4993ea6395668c3c88a",
+          "lines": 117,
+          "basis": "unchanged committed source",
+          "headSha256": "e129a026923bfa873c1d5a5c60feb1cdf1ffb8c9aa1fe4993ea6395668c3c88a"
+        },
+        {
+          "path": "docs/unified-auth-migration.md",
+          "sha256": "5980c544b2796d2d3d606d7bf9175c937bf89032c674856c6ee19ddf68fd0ad6",
+          "lines": 50,
+          "basis": "unchanged committed source",
+          "headSha256": "5980c544b2796d2d3d606d7bf9175c937bf89032c674856c6ee19ddf68fd0ad6"
+        },
+        {
+          "path": "docs/workbench-service-delivery.md",
+          "sha256": "8b97255b53e7ead44dd77c63d004772f1d568cd07fa39e0ee352f8700eddaeeb",
+          "lines": 176,
+          "basis": "unchanged committed source",
+          "headSha256": "8b97255b53e7ead44dd77c63d004772f1d568cd07fa39e0ee352f8700eddaeeb"
+        }
+      ]
+    },
+    {
+      "name": "NebuAgentCoreNew2",
+      "root": "D:/Work/Code/AiCode/NebuAgentCoreNew2",
+      "revision": "924ac85123e94b98f70e7c39a04836802eb71594",
+      "origin": null,
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "ac9d8959b67b080513f3b1f40d529e83c7bdb1de5eaa7f45f6fb655f4a8e4f68",
+          "lines": 140,
+          "basis": "working-tree source; not represented as HEAD evidence",
+          "headSha256": "01d6301a7a47f9ab6eac0c6e5e6b37a37756c4f2080e9fa916e64f13cae87b4b"
+        },
+        {
+          "path": "docs/architecture.md",
+          "sha256": "7ee9790dd384e71ff8f37d8b870e832f705d1c717bf0cc31dee9ffb7f9ef2403",
+          "lines": 55,
+          "basis": "unchanged committed source",
+          "headSha256": "7ee9790dd384e71ff8f37d8b870e832f705d1c717bf0cc31dee9ffb7f9ef2403"
+        },
+        {
+          "path": "deploy/compose.yml",
+          "sha256": "7c5ab2259f5fc709eb96a4caabbd7cd1c4b4e57b4dff92b8ab0c5d52e2148abc",
+          "lines": 55,
+          "basis": "working-tree source; not represented as HEAD evidence",
+          "headSha256": "d4393450abb6acd846b326d82c773301ca184d5c87ad8f20d2760b3e2d47d119"
+        },
+        {
+          "path": "src/main.ts",
+          "sha256": "dd55a800b69ac9db156b3d9084a53e8136b44a0d9c8a2c7bbc6edd0f4ccaf6c0",
+          "lines": 61,
+          "basis": "unchanged committed source",
+          "headSha256": "dd55a800b69ac9db156b3d9084a53e8136b44a0d9c8a2c7bbc6edd0f4ccaf6c0"
+        },
+        {
+          "path": "src/store.ts",
+          "sha256": "a167e31324d75fd521efcb9b6854bf40728336247318aa3fcd6186395ca18b99",
+          "lines": 909,
+          "basis": "working-tree source; not represented as HEAD evidence",
+          "headSha256": "df6935fc7190a8e04defc1f1a19745e75e86fb3176010bc154522f3da2dd0536"
+        },
+        {
+          "path": "src/runtime.ts",
+          "sha256": "381664876d6b288bd94c5d8ab29299184a9de4ddb841538ee18bffb6c715e0a2",
+          "lines": 1209,
+          "basis": "working-tree source; not represented as HEAD evidence",
+          "headSha256": "a824da8b18c6d84d138fc8aeb2464710fc9aa2edbf7af699e728f6959b418c6d"
+        },
+        {
+          "path": "src/worker.ts",
+          "sha256": "35cc2ce34f28258ac5487548b06461c142fc000f99164f9f7ec4f36e8dddc3e4",
+          "lines": 188,
+          "basis": "unchanged committed source",
+          "headSha256": "35cc2ce34f28258ac5487548b06461c142fc000f99164f9f7ec4f36e8dddc3e4"
+        },
+        {
+          "path": "src/sandbox.ts",
+          "sha256": "969088dcbf361d55fe7802658581684aac91f81b8d805117ff9756ceec562eeb",
+          "lines": 243,
+          "basis": "unchanged committed source",
+          "headSha256": "969088dcbf361d55fe7802658581684aac91f81b8d805117ff9756ceec562eeb"
+        },
+        {
+          "path": "src/objects.ts",
+          "sha256": "0d6c695de882385993459b571018d3033de23e86c7845815be5dd2f56ca601d5",
+          "lines": 90,
+          "basis": "unchanged committed source",
+          "headSha256": "0d6c695de882385993459b571018d3033de23e86c7845815be5dd2f56ca601d5"
+        },
+        {
+          "path": "src/api.ts",
+          "sha256": "86a7e72586c981452b9a1250950aafc7ca91c440c893793c2fe096b21e24c145",
+          "lines": 490,
+          "basis": "working-tree source; not represented as HEAD evidence",
+          "headSha256": "6dc11e772ea42a564c036dabfffcf4f3e0703a317a89a110b362c481de2d4fc9"
+        }
+      ]
+    },
+    {
+      "name": "Java backend",
+      "root": "D:/Work/Code/cccs/content-cloud-cluster-service",
+      "revision": "6653a1a0d9182ebc893627d806ba525dba02f485",
+      "origin": "http://221.226.59.66:22244/cccs/content-cloud-cluster-service.git",
+      "files": [
+        {
+          "path": "nebuwork-backend-api/src/main/resources/application.yml",
+          "sha256": "dd66fbf244aa36f37cb6cfc3d020dcca206defabbba7314dd6138a82a06c3e17",
+          "lines": 24,
+          "basis": "unchanged committed source",
+          "headSha256": "335061263675651e6857a417561eb4f9a29f9a73022317c2790041d56e71ef56"
+        },
+        {
+          "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentBridge.java",
+          "sha256": "d4e1c0ce66795b088a1751674c3862b7b76e24bf08338fc3b27dfbcf6c7f21f2",
+          "lines": 124,
+          "basis": "unchanged committed source",
+          "headSha256": "78c9bc43c5687ce38ed267150cfc2e103019649933f0adc1903e7251c8b7bc5d"
+        },
+        {
+          "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentBridgeController.java",
+          "sha256": "8a6b0e6eca94131d0002f7c4a185227c00b770089e6b9fab747c8e3f0466cc5a",
+          "lines": 14,
+          "basis": "unchanged committed source",
+          "headSha256": "8a6b0e6eca94131d0002f7c4a185227c00b770089e6b9fab747c8e3f0466cc5a"
+        },
+        {
+          "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/agent/AgentClient.java",
+          "sha256": "24103bfcef34098cce9b696d603846db8fe2da95c0d0835bf4f6f1fbc42d304e",
+          "lines": 108,
+          "basis": "unchanged committed source",
+          "headSha256": "24103bfcef34098cce9b696d603846db8fe2da95c0d0835bf4f6f1fbc42d304e"
+        },
+        {
+          "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/workflow/WorkflowClient.java",
+          "sha256": "5ad2f458d1d007ccc55f9576d2fa57a013b49354df7c458c3ae7fc898eb16d67",
+          "lines": 67,
+          "basis": "unchanged committed source",
+          "headSha256": "5ad2f458d1d007ccc55f9576d2fa57a013b49354df7c458c3ae7fc898eb16d67"
+        },
+        {
+          "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryRuntime.java",
+          "sha256": "9050771cc13151bd959f514c1afcc15cf31059a2294b96b13000b74a0c27e358",
+          "lines": 17,
+          "basis": "unchanged committed source",
+          "headSha256": "9050771cc13151bd959f514c1afcc15cf31059a2294b96b13000b74a0c27e358"
+        },
+        {
+          "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/HindsightClient.java",
+          "sha256": "37741a31e21518916bca787f40faab4bdd609b3434b3543ba922d69fe1527fbe",
+          "lines": 81,
+          "basis": "unchanged committed source",
+          "headSha256": "37741a31e21518916bca787f40faab4bdd609b3434b3543ba922d69fe1527fbe"
+        },
+        {
+          "path": "nebuwork-backend-api/src/main/java/cn/nebulaedata/cccs/nebuwork/backend/api/memory/MemoryWorker.java",
+          "sha256": "35e04e8698ef47c93220269cc53e5b66c750061ee185f2a71a6208d5dccada03",
+          "lines": 105,
+          "basis": "unchanged committed source",
+          "headSha256": "35e04e8698ef47c93220269cc53e5b66c750061ee185f2a71a6208d5dccada03"
+        }
+      ]
+    },
+    {
+      "name": "Workflow 3.5",
+      "root": "D:/Work/Code/AiCode/nebulae-ai-platform-v3.5",
+      "revision": "4faadfa1d6d86789a16351252cb3d16ce7a2195a",
+      "origin": "http://221.226.59.66:22244/cccs/nebulae-ai-platform.git",
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "ed73fc297c5c7bbc3d629639b1a695289b8e3b6143a4055fa37e6f1ce29eb561",
+          "lines": 239,
+          "basis": "unchanged committed source",
+          "headSha256": "38038a07206e1033c9fd3a62f2afd5b47fa78e13bb79139394fc85b588ca3363"
+        },
+        {
+          "path": "nebulae/api.py",
+          "sha256": "a0d357383d04c78475d27ffab90ef645af69f7fc1c42d5c3831c8efceb1d205c",
+          "lines": 372,
+          "basis": "unchanged committed source",
+          "headSha256": "a0d357383d04c78475d27ffab90ef645af69f7fc1c42d5c3831c8efceb1d205c"
+        },
+        {
+          "path": "nebulae/engine.py",
+          "sha256": "c51998ca6f7af5109ef4f69dc35ffb6f6128f1ce672339cd65217b248c167b0a",
+          "lines": 444,
+          "basis": "unchanged committed source",
+          "headSha256": "c51998ca6f7af5109ef4f69dc35ffb6f6128f1ce672339cd65217b248c167b0a"
+        },
+        {
+          "path": "nebulae/store.py",
+          "sha256": "19744fd75304fb02c31e5b091380efe76a22cee9fcdd95bc84475940bbe238e4",
+          "lines": 163,
+          "basis": "unchanged committed source",
+          "headSha256": "ee152f60f32b54d385d0b21b97dab00d5288d5ea73dcb23d6fa1a930e926e90c"
+        }
+      ]
+    },
+    {
+      "name": "WeKnora",
+      "root": "D:/Work/Code/AiCode/nebulae-weknora",
+      "revision": "4d2d5f0ec5533312f18edaabb7421ee6ae5005b1",
+      "origin": "http://221.226.59.66:22244/agent/weknora.git",
+      "files": [
+        {
+          "path": "docker-compose.yml",
+          "sha256": "781044140f9882c84a431a352f143f0ff2052da5fee368b4bf5a26a17ccf48f9",
+          "lines": 1067,
+          "basis": "unchanged committed source",
+          "headSha256": "ba801af652917bca6b9940e9973e62bc54e3226d78068d7a14ab330151dd9fc6"
+        },
+        {
+          "path": "internal/router/routes_knowledge.go",
+          "sha256": "d1b145d97a54af70ee9ae0f19a1d751ba3788fad0ea39f46a2e50f205634da2c",
+          "lines": 378,
+          "basis": "unchanged committed source",
+          "headSha256": "d1b145d97a54af70ee9ae0f19a1d751ba3788fad0ea39f46a2e50f205634da2c"
+        },
+        {
+          "path": "website-docs/04-api/03-external-integration.md",
+          "sha256": "cf345853f3e49e5770a7c713f58bc9cc9aed4c071b69e55fcac1324dc19c0edb",
+          "lines": 504,
+          "basis": "unchanged committed source",
+          "headSha256": "f85fb52e3372272eec60d16f99cf39455280ded6febb08fab1b984a4711dc619"
+        }
+      ]
+    }
+  ]
+}

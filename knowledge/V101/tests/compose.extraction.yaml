@@ -1,0 +1,17 @@
+services:
+  app:
+    image: nebulaekno:extraction-check
+  extraction:
+    image: nebulaekno-extraction:extraction-check
+    volumes:
+      - ../extractor:/app/extractor:ro
+  extraction-fixture:
+    image: nebulaekno-extraction:extraction-check
+    entrypoint: [python3, /fixtures/extraction_fixture.py]
+    healthcheck:
+      test: [CMD, python3, -c, "import socket; socket.create_connection(('127.0.0.1',9000),2).close()"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - ./extraction_fixture.py:/fixtures/extraction_fixture.py:ro

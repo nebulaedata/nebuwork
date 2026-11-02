@@ -1,0 +1,15 @@
+.git
+.env
+.env.*
+data
+node_modules
+web/node_modules
+web/dist
+web/public/pdfjs
+tests/fixtures
+docs/screenshots
+bin
+test-results
+**/__pycache__
+reader/ofd-renderer/target
+*.log

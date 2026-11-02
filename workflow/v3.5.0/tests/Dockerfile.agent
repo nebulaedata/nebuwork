@@ -1,0 +1,12 @@
+FROM node:22.19.0-slim AS node
+FROM python:3.12
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/npm
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+RUN pip install --no-cache-dir fastapi==0.143.0 uvicorn==0.54.0 mcp==2.3.0 pytest==9.1.1 httpx==0.28.1
+WORKDIR /opt/pi
+COPY package.json package-lock.json ./
+RUN npm ci --ignore-scripts --no-audit --no-fund
+WORKDIR /tmp/project
+ENV NEBULAE_AGENT_RUNTIME=/opt/pi PYTHONUNBUFFERED=1
+CMD ["python", "/source/tests/run_linux_agent.py"]

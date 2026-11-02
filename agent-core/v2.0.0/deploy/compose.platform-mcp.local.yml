@@ -1,0 +1,7 @@
+# This host's deployment override. Application/Workflow source is unchanged.
+# Bind only loopback and the private VMnet8 interface used by the Java host.
+services:
+  platform-mcp:
+    ports: !override
+      - "127.0.0.1:42120:42120"
+      - "192.168.204.1:42120:42120"

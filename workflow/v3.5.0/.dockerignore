@@ -1,0 +1,14 @@
+.git
+.env*
+.venv
+.runtime
+.qa
+**/__pycache__
+**/node_modules
+**/dist
+nebulae/web
+frontend/test-results
+frontend/playwright-report
+build
+dist
+*.egg-info

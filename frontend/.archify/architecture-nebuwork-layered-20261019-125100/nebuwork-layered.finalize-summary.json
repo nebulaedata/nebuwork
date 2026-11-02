@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-layered-20261019-125100\\candidate.json",
+    "sha256": "873d4955f6588da83d91c2a1fc815b8b4aed9f08a2639cdc1f51b3e8bc2b89a2",
+    "bytes": 18448
+  },
+  "artifact": {
+    "path": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-layered-20261019-125100\\nebuwork-layered.html",
+    "sha256": "1d39ef41d32afc9ea52c1a6bb0187f3ee5c2eac7dced750106266dd43e6584a9",
+    "bytes": 871300
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-layered-20261019-125100\\nebuwork-layered.finalize.json",
+    "summaryReceipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-layered-20261019-125100\\nebuwork-layered.finalize-summary.json",
+    "browserCheckReceipt": "D:\\Work\\Code\\AiCode\\NebuWorkAgent\\.archify\\architecture-nebuwork-layered-20261019-125100\\nebuwork-layered.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-19T04:38:01.281Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 3676,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  },
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "resolvedCrossovers": 16,
+      "routesOverSuggestedBends": 4
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [
+        {
+          "left": {
+            "id": "create-run",
+            "from": "java",
+            "to": "engine-api",
+            "label": "JWT / 幂等 Run",
+            "collectionIndex": 6,
+            "artifactIndex": 7
+          },
+          "right": {
+            "id": "knowledge-call",
+            "from": "java",
+            "to": "knowledge",
+            "label": "启用后检索 / 管理",
+            "collectionIndex": 20,
+            "artifactIndex": 21
+          },
+          "point": [
+            136.94999999999996,
+            560
+          ],
+          "sharedNode": "java"
+        },
+        {
+          "left": {
+            "id": "claim-run",
+            "from": "worker",
+            "to": "engine-db",
+            "label": "领取 / 检查点",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "right": {
+            "id": "api-files",
+            "from": "engine-api",
+            "to": "objects",
+            "label": "上传 / 下载",
+            "collectionIndex": 12,
+            "artifactIndex": 13
+          },
+          "point": [
+            295,
+            984.5
+          ]
+        },
+        {
+          "left": {
+            "id": "claim-run",
+            "from": "worker",
+            "to": "engine-db",
+            "label": "领取 / 检查点",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "right": {
+            "id": "redis-notify",
+            "from": "engine-api",
+            "to": "engine-redis",
+            "label": "提交后通知",
+            "collectionIndex": 13,
+            "artifactIndex": 14
+          },
+          "point": [
+            295,
+            902.9999999999998
+          ]
+        },
+        {
+          "left": {
+            "id": "model-call",
+            "from": "worker",
+            "to": "model",
+            "label": "模型请求",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "right": {
+            "id": "worker-files",
+            "from": "worker",
+            "to": "objects",
+            "label": "工作区 / 成果",
+            "collectionIndex": 11,
+            "artifactIndex": 12
+          },
+          "point": [
+            574.0000000000001,
+            824
+          ],
+          "sharedNode": "worker"
+        },
+        {
+          "left": {
+            "id": "model-call",
+            "from": "worker",
+            "to": "model",
+            "label": "模型请求",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "right": {
+            "id": "api-files",
+            "from": "engine-api",
+            "to": "objects",
+            "label": "上传 / 下载",
+            "collectionIndex": 12,
+            "artifactIndex": 13
+          },
+          "point": [
+            574,
+            984.5
+          ]
+        },
+        {
+          "left": {
+            "id": "model-call",
+            "from": "worker",
+            "to": "model",
+            "label": "模型请求",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "right": {
+            "id": "workflow-call",
+            "from": "java",
+            "to": "workflow",
+            "label": "启用后 DAG",
+            "collectionIndex": 21,
+            "artifactIndex": 22
+          },
+          "point": [
+            580.7790697674419,
+            1356.9186046511627
+          ]
+        },
+        {
+          "left": {
+            "id": "model-call",
+            "from": "worker",
+            "to": "model",
+            "label": "模型请求",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "right": {
+            "id": "memory-call",
+            "from": "java",
+            "to": "memory",
+            "label": "启用后召回 / 同步",
+            "collectionIndex": 22,
+            "artifactIndex": 23
+          },
+          "point": [
+            874,
+            1357
+          ]
+        },
+        {
+          "left": {
+            "id": "sandbox-tools",
+            "from": "worker",
+            "to": "sandbox",
+            "label": "容器工具",
+            "collectionIndex": 10,
+            "artifactIndex": 11
+          },
+          "right": {
+            "id": "workflow-call",
+            "from": "java",
+            "to": "workflow",
+            "label": "启用后 DAG",
+            "collectionIndex": 21,
+            "artifactIndex": 22
+          },
+          "point": [
+            584,
+            750
+          ]
+        }
+      ],
+      "detours": [
+        {
+          "relationship": {
+            "id": "model-call",
+            "from": "worker",
+            "to": "model",
+            "label": "模型请求",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "bends": 3,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "redis-notify",
+            "from": "engine-api",
+            "to": "engine-redis",
+            "label": "提交后通知",
+            "collectionIndex": 13,
+            "artifactIndex": 14
+          },
+          "bends": 4,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "knowledge-call",
+            "from": "java",
+            "to": "knowledge",
+            "label": "启用后检索 / 管理",
+            "collectionIndex": 20,
+            "artifactIndex": 21
+          },
+          "bends": 4,
+          "stretch": 1.181
+        },
+        {
+          "relationship": {
+            "id": "worker-mcp",
+            "from": "worker",
+            "to": "platform-mcp",
+            "label": "授权后调用",
+            "collectionIndex": 23,
+            "artifactIndex": 24
+          },
+          "bends": 4,
+          "stretch": 1.338,
+          "directCorridorBlockers": [
+            {
+              "id": "sandbox",
+              "label": "Run / 专家任务容器",
+              "box": [
+                640,
+                700,
+                210,
+                100
+              ]
+            }
+          ]
+        }
+      ],
+      "truncated": true
+    },
+    "hints": [
+      "java → engine-api and java → knowledge cross next to java: move node engine-api or knowledge so the two reach java from different sides (for example one level with it, one directly above or below it).",
+      "worker → engine-db crosses engine-api → objects: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "worker → engine-db crosses engine-api → engine-redis: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "worker → model and worker → objects cross next to worker: move node model or objects so the two reach worker from different sides (for example one level with it, one directly above or below it).",
+      "worker → model crosses engine-api → objects: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "worker → model crosses java → workflow: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "worker → model crosses java → memory: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "worker → sandbox crosses java → workflow: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

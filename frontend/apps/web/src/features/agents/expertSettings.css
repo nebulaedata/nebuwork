@@ -1,0 +1,27 @@
+.expert-profile-form { padding: 20px; }
+.expert-settings-runtime > .runtime-editor { margin: 0; padding: 20px; border-width: 1px 0; border-radius: 0; box-shadow: none; }
+.runtime-editor[data-runtime-section="extensions"] .runtime-form > .runtime-section:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.expert-profile-title { font-size: 14px; font-weight: 600; margin: 0 0 16px; }
+.expert-profile-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.expert-profile-grid > .field, .expert-profile-grid .expert-ability-field { margin-bottom: 0; }
+.expert-profile-wide { grid-column: 1 / -1; min-width: 0; }
+.expert-profile-form input, .expert-profile-form textarea { width: 100%; box-sizing: border-box; }
+.expert-model-actions, .expert-ability-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.expert-model-actions { margin-top: 8px; }
+.expert-ability-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.expert-ability-heading > label { margin: 0; }
+.expert-ability-note { font-size: 11.5px; color: var(--text-sub); line-height: 1.6; margin-top: 6px; }
+.expert-ability-note.error, .expert-profile-error { color: var(--danger); }
+.expert-profile-error { margin-top: 12px; font-size: 12px; overflow-wrap: anywhere; }
+.expert-profile-error:empty { display: none; }
+.expert-ability-actions > [hidden], .expert-ability-suggestion[hidden] { display: none; }
+.expert-ability-suggestion { border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-top: 10px; background: var(--surface-2); }
+.expert-ability-suggestion > p { font-size: 12px; color: var(--text-sub); }
+.expert-ability-suggestion > pre { font-family: inherit; font-size: 13px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; margin: 8px 0; }
+.expert-profile-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; margin-top: 18px; border-top: 1px solid var(--border); font-size: 12px; }
+@media (max-width: 700px) {
+  .expert-profile-form { padding: 16px; }
+  .expert-settings-runtime > .runtime-editor { padding: 16px; }
+  .expert-profile-grid { grid-template-columns: 1fr; }
+  .expert-ability-heading, .expert-profile-footer { align-items: flex-start; flex-wrap: wrap; }
+}

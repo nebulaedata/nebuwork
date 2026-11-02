@@ -1,0 +1,38 @@
+{
+  "name": "nebulaekno-admin",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node copy-pdf-assets.mjs && vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test:upload": "node tests/http-upload.mjs",
+    "prebuild": "node copy-pdf-assets.mjs"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.4.0",
+    "@xyflow/react": "12.12.0",
+    "d3-force": "^3.0.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-markdown": "9.1.0",
+    "react-pdf": "10.5.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "tdesign-icons-react": "0.6.11",
+    "tdesign-react": "1.18.4",
+    "video.js": "8.23.7"
+  },
+  "devDependencies": {
+    "@types/d3-force": "^3.0.10",
+    "@types/node": "22.20.5",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "6.1.2",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "vite": "8.3.5"
+  }
+}

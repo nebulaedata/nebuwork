@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NebuWork · 智能体工作台</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.dataset.theme = localStorage.getItem('ah-theme') || 'light';</script>
+</head>
+<body>
+
+<aside class="app-nav">
+  <div class="nav-logo"><span class="logo-mark" id="logo-icon"></span></div>
+  <nav class="nav-links" id="nav-links">
+    <a class="nav-item" data-nav="workbench" href="#/workbench" title="工作台"><span class="ni-ic" data-ic="layout-dashboard"></span></a>
+    <a class="nav-item" data-nav="projects" href="#/projects" title="项目"><span class="ni-ic" data-ic="folder-kanban"></span></a>
+    <a class="nav-item" data-nav="agents" href="#/agents" title="专家智能体"><span class="ni-ic" data-ic="bot"></span></a>
+    <a class="nav-item" data-nav="plaza" href="#/plaza" title="广场"><span class="ni-ic" data-ic="store"></span></a>
+  </nav>
+  <div class="nav-foot">
+    <div class="user-card" id="user-card">
+      <span class="avatar avatar-photo">沈<img src="assets/avatar.png" alt="用户头像" onerror="this.remove()"></span>
+      <div class="user-pop" id="user-pop">
+        <a class="up-btn" href="#/settings" data-up-ic="settings" title="设置"></a>
+        <button class="up-btn" id="up-theme" title="切换主题"></button>
+        <button class="up-btn" id="up-help" data-up-ic="help-circle" title="帮助与反馈"></button>
+        <div class="up-quota" id="up-quota"></div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<header class="app-topbar">
+  <span class="topbar-title" id="topbar-title"></span>
+  <span class="topbar-crumb" id="topbar-crumb"></span>
+  <div class="topbar-tabs" id="topbar-tabs"></div>
+  <span class="topbar-spacer"></span>
+  <span id="topbar-actions"></span>
+  <button class="btn-icon" id="btn-search" title="全局搜索"></button>
+  <button class="btn-icon" id="btn-notify" title="通知"></button>
+</header>
+
+<div class="notif-mask" id="notif-mask">
+  <div class="notif-panel">
+    <div class="ntf-head"><span class="ntf-title">消息</span><button class="btn-icon" id="ntf-close"></button></div>
+    <div class="ntf-list" id="ntf-list"></div>
+  </div>
+</div>
+
+<main id="app-content"></main>
+
+<div class="search-mask" id="search-mask">
+  <div class="search-panel">
+    <div class="sp-input"><span id="sp-icon"></span><input id="sp-input" placeholder="搜索任务标题或消息内容…"></div>
+    <div class="sp-list" id="sp-list"></div>
+  </div>
+</div>
+
+<div class="modal-mask" id="modal-mask"><div class="modal" id="modal-box"></div></div>
+<div id="toast-wrap"></div>
+
+<script src="icons.js"></script>
+<script src="mock.js"></script>
+<script src="api.js"></script>
+<script src="views/workbench.js"></script>
+<script src="views/projects.js"></script>
+<script src="views/project-detail.js"></script>
+<script src="views/agents.js"></script>
+<script src="views/task.js"></script>
+<script src="views/settings.js"></script>
+<script src="views/plaza.js"></script>
+<script src="views/login.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

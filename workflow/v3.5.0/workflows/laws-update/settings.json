@@ -1,0 +1,23 @@
+{
+  "output_dir": "D:/Work/Code/AiCode/WfLaw1/data",
+  "sources": ["npc", "github"],
+  "github_repo": "LawRefBook/Laws",
+  "github_branch": "master",
+  "type_codes": [102, 110, 120, 130, 140, 150, 160, 170, 180, 190, 195, 210, 311, 320, 330, 340, 350],
+  "status_codes": [],
+  "page_size": 50,
+  "max_pages": 0,
+  "max_documents": 0,
+  "refresh_days": 7,
+  "request_interval": 1.2,
+  "request_timeout": 30,
+  "request_retries": 3,
+  "download_workers": 1,
+  "allow_partial": true,
+  "cache_only": false,
+  "cached_catalog_path": null,
+  "force_refresh": false,
+  "dry_run": false,
+  "publish_to_workflow": true,
+  "snapshot_inputs": []
+}

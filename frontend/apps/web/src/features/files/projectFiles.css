@@ -1,0 +1,39 @@
+.project-files { min-width: 0; font: 13px/1.6 var(--font-body); color: var(--text); }
+.project-files .project-file-tools { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface-2); }
+.project-file-upload-icon, .project-file-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--r-md); }
+.project-file-upload-icon { color: var(--accent); background: var(--accent-dim); }
+.project-file-upload-copy { flex: 1; min-width: 180px; }
+.project-file-upload-copy h2, .project-file-list-heading h2 { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; }
+.project-file-upload-copy p { margin: 5px 0 0; color: var(--text-sub); font-size: 12px; }
+.project-files .btn { min-height: 40px; justify-content: center; }
+.project-file-upload-button { flex-shrink: 0; }
+.project-file-list { overflow: hidden; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface); }
+.project-file-list-heading { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.project-file-list-heading > span { color: var(--text-sub); font-size: 12px; font-variant-numeric: tabular-nums; }
+.project-file-list > ul { margin: 0; padding: 0; list-style: none; }
+.project-file-row { display: flex; align-items: center; gap: 14px; padding: 16px 20px; transition: background .15s ease; }
+.project-file-row + .project-file-row { border-top: 1px solid var(--border); }
+.project-file-row:hover { background: var(--surface-2); }
+.project-file-icon { color: var(--accent); background: var(--accent-dim); border-radius: var(--r-sm); }
+.project-file-copy { flex: 1; min-width: 0; }
+.project-file-name { display: block; max-width: 100%; padding: 0; border: 0; border-radius: 3px; background: transparent; color: var(--text); font: inherit; font-weight: 500; text-align: left; overflow-wrap: anywhere; }
+.project-file-name:hover { color: var(--accent); }
+.project-file-copy p { display: flex; align-items: center; gap: 8px; margin: 4px 0 0; color: var(--text-sub); font-size: 12px; }
+.project-file-copy p > span { color: var(--text-dim); }
+.project-file-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.project-file-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 48px 20px; text-align: center; color: var(--text-sub); }
+.project-file-empty > svg { color: var(--text-dim); margin-bottom: 2px; }
+.project-file-empty strong { color: var(--text); font-size: 14px; font-weight: 500; }
+.project-file-empty p { margin: 0; font-size: 12px; }
+.project-file-error { margin: 16px 0 0; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); color: var(--danger); overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .project-files .project-file-tools { padding: 16px; gap: 12px; }
+  .project-file-upload-copy { min-width: 0; flex-basis: calc(100% - 52px); }
+  .project-file-upload-button { width: 100%; }
+  .project-file-list-heading { padding: 14px 16px; }
+  .project-file-row { flex-wrap: wrap; align-items: flex-start; gap: 12px; padding: 16px; }
+  .project-file-copy { flex-basis: calc(100% - 52px); }
+  .project-file-actions { width: 100%; padding-left: 52px; }
+  .project-file-actions .btn { flex: 1; padding-inline: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .project-file-row { transition: none; } }

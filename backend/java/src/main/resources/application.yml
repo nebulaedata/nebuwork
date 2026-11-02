@@ -1,0 +1,67 @@
+server:
+  port: ${NEBU_API_PORT:42020}
+  servlet:
+    context-path: /nwaa
+spring:
+  application:
+    name: nebuwork-backend-api
+  config:
+    import: optional:file:./config/application-local.yml
+  datasource:
+    url: ${NEBU_DB_URL:jdbc:mysql://127.0.0.1:43316/nebuwork_1?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai}
+    username: ${NEBU_DB_USERNAME:nebuwork}
+    password: ${NEBU_DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: ${NEBU_REDIS_HOST:127.0.0.1}
+    port: ${NEBU_REDIS_PORT:6379}
+    database: ${NEBU_REDIS_DATABASE:0}
+    password: ${NEBU_REDIS_PASSWORD:}
+    timeout: 3s
+  flyway:
+    enabled: true
+    clean-disabled: true
+  servlet:
+    multipart:
+      max-file-size: ${NEBU_HTTP_MAX_FILE_SIZE:2048MB}
+      max-request-size: ${NEBU_HTTP_MAX_REQUEST_SIZE:2100MB}
+      file-size-threshold: 0B
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+nebu:
+  auth:
+    allowed-origins: ${NEBU_ALLOWED_ORIGINS:*}
+    cookie-secure: ${NEBU_AUTH_COOKIE_SECURE:false}
+    bootstrap:
+      enabled: ${NEBU_AUTH_BOOTSTRAP_ENABLED:false}
+      id: ${NEBU_AUTH_ADMIN_ID:}
+      account: ${NEBU_AUTH_ADMIN_ACCOUNT:}
+      password: ${NEBU_AUTH_ADMIN_PASSWORD:}
+  models:
+    block-special-addresses: ${NEBU_MODELS_BLOCK_SPECIAL_ADDRESSES:false}
+    internal-allowlist-enabled: ${NEBU_MODELS_INTERNAL_ALLOWLIST_ENABLED:false}
+    encryption-key: ${NEBU_MODELS_ENCRYPTION_KEY:}
+  knowledge:
+    block-special-addresses: ${NEBU_KNOWLEDGE_BLOCK_SPECIAL_ADDRESSES:false}
+    internal-allowlist-enabled: ${NEBU_KNOWLEDGE_INTERNAL_ALLOWLIST_ENABLED:false}
+    encryption-key: ${NEBU_KNOWLEDGE_ENCRYPTION_KEY:${NEBU_MODELS_ENCRYPTION_KEY:}}
+    admin-ids: ${NEBU_KNOWLEDGE_ADMIN_IDS:}
+  databases:
+    target-allowlist-enabled: ${NEBU_DATABASES_TARGET_ALLOWLIST_ENABLED:false}
+    block-special-addresses: ${NEBU_DATABASES_BLOCK_SPECIAL_ADDRESSES:false}
+  memory:
+    admin-ids: ${NEBU_MEMORY_ADMIN_IDS:}
+  extension-market:
+    enabled: false
+    admin-ids: ${NEBU_EXTENSION_ADMIN_IDS:}
+logging:
+  level:
+    org.apache.http.wire: "OFF"
+    org.apache.http.headers: "OFF"
+    org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor: WARN
